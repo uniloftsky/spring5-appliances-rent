@@ -38,5 +38,6 @@ public class Item extends BaseEntity {
     private BigDecimal price;
     private LocalDate date;
     private String description;
+    private boolean active = true;
 
 }
