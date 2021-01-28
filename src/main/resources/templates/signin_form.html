@@ -5,14 +5,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
           rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css">
-    <title>Title</title>
+    <title>Оренда побутової техніки - Авторизація</title>
 </head>
 <body>
 <header>
     <div class="wrap">
-        <div class="wrap flex">
+        <div class="header-in">
             <div class="title-box">
                 <div class="title">
                     <p><b>AUTO</b>MARKET</p>
@@ -22,7 +24,7 @@
                 </div>
             </div>
             <div class="title-box">
-                <div class="inner-box">
+                <div class="inner-box inner-box-login">
                     <i class="user secret icon" style="color: #2185D0;"></i>
                     <p style="color: #bcbcbc; font-weight: 600;">Login</p>
                 </div>
@@ -32,10 +34,10 @@
                 </div>
             </div>
             <div class="title-box">
-                <button class="ui primary button" style="margin-right: 1.5em;">
+                <button class="ui primary button">
                     <i class="plus icon"></i>ADD AN OFFER
                 </button>
-                <button class="ui button">
+                <button class="ui button" style="margin-right: 0;">
                     PAGES
                 </button>
             </div>
@@ -43,69 +45,111 @@
     </div>
 </header>
 <div class="subheader">
-    <div class="wrap flex" style="align-items: center;">
-        <div class="subheader-inner" style="width: 25%;">
-            <div class="menu-item active">
-                <i class="car icon"></i>
-                <p>CARS</p>
+    <div class="wrap">
+        <div class="subheader-items">
+            <div class="subheader-inner">
+                <div class="menu-item active">
+                    <i class="car icon"></i>
+                    <p>CARS</p>
+                </div>
+                <div class="menu-item">
+                    <i class="motorcycle icon"></i>
+                    <p>BIKES</p>
+                </div>
             </div>
-            <div class="menu-item">
-                <i class="motorcycle icon"></i>
-                <p>BIKES</p>
+            <div class="subheader-inner" style="width: 70%;">
+                <div class="ui left icon input search-input">
+                    <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+                <button class="ui primary button search-button">
+                    <i class="hidden search icon"></i>Search
+                </button>
             </div>
-        </div>
-        <div class="subheader-inner" style="width: 70%;">
-            <div class="ui input"
-                 style="display: inline-block; width: 80%; margin-right: 1em; background-color: #F3F3F3; padding: .25em;">
-                <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
-            </div>
-            <button class="ui primary button">
-                <i class="search icon"></i>Search
-            </button>
         </div>
     </div>
 </div>
-<main style="z-index: -2; position: relative;">
+<main style="z-index: 0; position: relative;">
     <section class="page-title-section">
         <div class="wrap">
             <p class="page-title"><b>Vehicle</b> Insurance</p>
             <p class="page-path">Home <i class="angle double right icon"></i> Vehicle Insurance</p>
         </div>
     </section>
+
+    <section class="login-form-section">
+        <div class="login-form-block">
+            <p class="login-form-title"><b>Returning</b> user</p>
+            <form class="ui form login-form">
+                <div class="form-login-inputs">
+                    <div class="form-login-input">
+                        <div class="field" style="margin-bottom: .5em;">
+                            <label>Login</label>
+                        </div>
+                        <div class="ui left icon input" style="width: 100%;">
+                            <input type="text" placeholder="Login">
+                            <i class="user icon"></i>
+                        </div>
+                    </div>
+                    <div class="form-login-input">
+                        <div class="field" style="margin-bottom: .5em;">
+                            <label>Password</label>
+                        </div>
+                        <div class="ui left icon input" style="width: 100%;">
+                            <input type="password" placeholder="Password">
+                            <i class="lock icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui buttons">
+                    <button class="ui labeled icon primary button login-button">
+                        <i class="sign in alternate icon"></i>
+                        LOG IN
+                    </button>
+                    <div class="or hidden-or" data-text="or"></div>
+                    <button id="register-btn" class="ui right labeled icon positive button login-button">
+                        <i class="user plus icon"></i>
+                        REGISTER
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
 </main>
 <section class="footer-links-section">
-    <div class="wrap flex">
-        <div class="link">
-            <p class="link-title"><b>About</b> us</p>
-            <ul>
-                <li>Contact</li>
-                <li>Our partners</li>
-                <li>Advertising Online</li>
-                <li>Site Map</li>
-            </ul>
-        </div>
-        <div class="link">
-            <p class="link-title"><b>Need</b> Help?</p>
-            <ul>
-                <li>How do I add an offer?</li>
-                <li>How do I find a vehicle</li>
-                <li>Price list</li>
-                <li>Office for car dealers</li>
-            </ul>
-        </div>
-        <div class="link">
-            <p class="link-title"><b>User</b> area</p>
-            <ul>
-                <li>Add an offer</li>
-                <li>Register dealder</li>
-                <li>Login Dealer</li>
-                <li>News</li>
-            </ul>
-        </div>
-        <div class="link">
-            <p class="link-title"><b>Find</b> us here</p>
-            <div>
-                <div style="display: flex; margin-bottom: 1em;">
+    <div class="wrap">
+        <div class="links">
+            <div class="link">
+                <p class="link-title"><b>About</b> us</p>
+                <ul>
+                    <li>Contact</li>
+                    <li>Our partners</li>
+                    <li>Advertising Online</li>
+                    <li>Site Map</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Need</b> Help?</p>
+                <ul>
+                    <li>How do I add an offer?</li>
+                    <li>How do I find a vehicle</li>
+                    <li>Price list</li>
+                    <li>Office for car dealers</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>User</b> area</p>
+                <ul>
+                    <li>Add an offer</li>
+                    <li>Register dealder</li>
+                    <li>Login Dealer</li>
+                    <li>News</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Find</b> us here</p>
+                <div class="hrefs">
                     <div class="link-icon-box"><i class="facebook icon"></i></div>
                     <div class="link-icon-box"><i class="google icon"></i></div>
                     <div class="link-icon-box"><i class="twitter icon"></i></div>
@@ -116,13 +160,45 @@
     </div>
 </section>
 <footer>
-    <div class="wrap flex">
-        <p>© 2012 Automarket. All Rights Reserved</p>
-        <p>Webdesign by ClaPat Studio</p>
+    <div class="wrap">
+        <div class="footer-text">
+            <p>© 2012 Automarket. All Rights Reserved</p>
+            <p>Webdesign by ClaPat Studio</p>
+        </div>
     </div>
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script type="text/javascript">
+    // jQuery(document).ready(function(){
+    //     function classFunction(){
+    //         if(jQuery('body').width() <= 450){
+    //             jQuery('#register-btn').removeClass('right');
+    //         }
+    //         else{
+    //             jQuery('#register-btn')
+    //                 .removeClass('ui')
+    //                 .removeClass('labeled')
+    //                 .removeClass('icon')
+    //                 .removeClass('positive')
+    //                 .removeClass('button')
+    //                 .removeClass('login-button')
+    //                 .addClass('ui')
+    //                 .addClass('right')
+    //                 .addClass('labeled')
+    //                 .addClass('icon')
+    //                 .addClass('positive')
+    //                 .addClass('button')
+    //                 .addClass('login-button')
+    //
+    //
+    //         }
+    //     }
+    //
+    //     classFunction();
+    //     jQuery(window).resize(classFunction);
+    // })
+</script>
 <!--<script type="text/javascript">-->
 <!--    $(document).ready(function(){-->
 <!--        $('.ui.accordion').accordion();-->
