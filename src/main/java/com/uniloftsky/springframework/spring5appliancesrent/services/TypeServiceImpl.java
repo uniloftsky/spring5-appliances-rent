@@ -5,6 +5,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.repositories.TypeRep
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,6 +35,11 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Type save(Type obj) {
         return typeRepository.save(obj);
+    }
+
+    @Override
+    public List<Type> saveAll(List<Type> types) {
+        return typeRepository.saveAll(types);
     }
 
     @Override

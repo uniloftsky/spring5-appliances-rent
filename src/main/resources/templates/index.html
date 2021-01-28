@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Welcome to CodeJava.net</h1>
+    <h3><a th:href="@{/users}">List of Users</a></h3>
+    <h3><a th:href="@{/register}">Register</a></h3>
+    <h3><a th:href="@{/login}">Login</a></h3>
+    <h3><a th:href="@{/postOffer}">Post offer</a></h3>
+
+<!--    <div>-->
+<!--        <div th:each="item : ${items}">-->
+<!--            <p th:text="${item.name}"></p>-->
+<!--            <p th:text="${item.description}"></p>-->
+<!--            <p th:text="${item.user.firstName}"></p>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div>
+        <div th:each="item : ${activePosts}">
+            <p th:text="${item.id}"></p>
+            <p th:text="${item.isActive()}"></p>
+        </div>
+    </div>
+    <p>===================================</p>
+    <div>
+        <div th:each="item : ${lastPosts}">
+            <p th:text="${item.id}"></p>
+            <p th:text="${item.isActive()}"></p>
+        </div>
+    </div>
+
+    <p>===================================</p>
+
+</div>
+</body>
+</html>

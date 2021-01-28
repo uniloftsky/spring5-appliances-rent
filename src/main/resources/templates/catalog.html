@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Welcome to CodeJava.net</h1>
+    <h3><a th:href="@{/users}">List of Users</a></h3>
+    <h3><a th:href="@{/register}">Register</a></h3>
+    <h3><a th:href="@{/login}">Login</a></h3>
+    <h3><a th:href="@{/postOffer}">Post offer</a></h3>
+
+    <p>===================================</p>
+
+    <ul class="pagination" style="display: flex; list-style: none; justify-content: space-between; width: 300px;">
+        <li th:if="${currentPage != 0}"><a th:href="@{/catalog(size=2, page=0)}"><<< </a><a th:href="@{/catalog(size=2, page=${currentPage - 1})}"><<</a></li>
+        <li th:if="${currentPage - 2 >= 0}"><a th:href="@{/catalog(size=2, page=${currentPage - 2})}" th:text="${(currentPage + 1) - 2}"></a>|</li>
+        <li th:if="${currentPage - 1 >= 0}"><a th:href="@{/catalog(size=2, page=${currentPage - 1})}" th:text="${(currentPage + 1) - 1}"></a>|</li>
+        <li><a th:href="@{/catalog(size=2, page=${currentPage})}" th:text="${currentPage + 1}" style="color: red;"></a></li>
+        <li th:if="${currentPage + 1 <= maxPage}">|<a th:href="@{/catalog(size=2, page=${currentPage + 1})}" th:text="${(currentPage + 1) + 1}"></a></li>
+        <li th:if="${currentPage + 2 <= maxPage}">|<a th:href="@{/catalog(size=2, page=${currentPage + 2})}" th:text="${(currentPage + 1) + 2}"></a></li>
+        <li th:if="${currentPage != maxPage}"><a th:href="@{/catalog(size=2, page=${currentPage + 1})}">>> </a><a th:href="@{/catalog(size=2, page=${maxPage})}">>>></a></li>
+<!--        <li class="page-item texter">-->
+<!--            <a class="page-link" th:text="${currentPage == 0} ? Pages : Previous" th:href="${currentPage == 0} ? '#' : @{/catalog(size=2, page=${currentPage - 1})}">Pages</a>-->
+<!--        </li>-->
+<!--        <th:block th:each="pageNumber : ${pageNumbers}">-->
+<!--            <li class="page-item"><a th:href="@{/catalog(size=2, page=${pageNumber - 1})}" th:text="${pageNumber}"></a></li>-->
+<!--        </th:block>-->
+<!--            <li>...</li>-->
+<!--            <li><a th:href="@{/catalog(size=2, page=${maxPage})}" th:text="${maxPage}"></a></li>-->
+<!--        <li class="page-item texter">-->
+<!--            <a class="page-link" th:href="@{/catalog(size=2, page=${currentPage + 1})}">Next</a>-->
+<!--        </li>-->
+    </ul>
+    <div th:each="page : ${page}">
+        <div th:text="${page.name}"></div>
+    </div>
+
+</div>
+</body>
+</html>

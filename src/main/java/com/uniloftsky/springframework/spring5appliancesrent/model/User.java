@@ -3,10 +3,7 @@ package com.uniloftsky.springframework.spring5appliancesrent.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,9 +14,13 @@ public class User extends BaseEntity {
 
     public User() {}
 
-    public User(String phone, String email) {
+    public User(String login, String password, String phone, String email, String firstName, String lastName) {
+        this.login = login;
+        this.password = password;
         this.phone = phone;
         this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
@@ -28,8 +29,12 @@ public class User extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "user")
     private Set<Item> items = new HashSet<>();
 
+    @Column(unique = true)
     private String login;
+
     private String password;
     private String phone;
     private String email;
+    private String firstName;
+    private String lastName;
 }

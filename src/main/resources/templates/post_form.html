@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container text-center">
+    <h1>Welcome to CodeJava.net</h1>
+    <h3><a th:href="@{/index}">index</a></h3>
+    <form th:object="${item}" method="post" th:action="@{/postOffer}">
+        <p th:text="${#request.userPrincipal.getName()}">yes</p>
+        <label>name</label>
+        <input th:field="*{name}" type="text" required>
+        <label>description</label>
+        <input th:field="*{description}" type="text" required>
+<!--        <select th:field="*{}">-->
+<!--            <option th:each="type : ${types}" th:text="${type.typeName}" th:value="${type.id}">-->
+<!--            </option>-->
+<!--        </select>-->
+        <label>category</label>
+        <select th:field="*{category}">
+            <option th:each="category : ${categories}" th:text="${category.categoryName}" th:value="${category.id}"></option>
+        </select>
+        <label>location</label>
+        <input th:field="*{location}" type="text" required>
+        <label>price</label>
+        <input th:field="*{price}" type="number" required>
+        <input type="submit" value="Post">
+    </form>
+</div>
+</body>
+</html>

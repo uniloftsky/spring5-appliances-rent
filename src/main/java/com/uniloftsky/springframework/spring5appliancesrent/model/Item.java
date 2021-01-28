@@ -15,7 +15,7 @@ public class Item extends BaseEntity {
 
     public Item() {}
 
-    public Item(Category category, User user, String name, String img, String location, BigDecimal price, LocalDate date, String description) {
+    public Item(Category category, User user, String name, String img, String location, BigDecimal price, LocalDate date, String description, boolean active) {
         this.category = category;
         this.user = user;
         this.name = name;
@@ -24,6 +24,7 @@ public class Item extends BaseEntity {
         this.price = price;
         this.date = date;
         this.description = description;
+        this.active = active;
     }
 
     @ManyToOne

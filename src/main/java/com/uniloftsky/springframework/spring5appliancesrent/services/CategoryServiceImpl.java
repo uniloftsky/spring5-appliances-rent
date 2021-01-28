@@ -5,6 +5,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.repositories.Categor
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -34,6 +35,11 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category save(Category obj) {
         return categoryRepository.save(obj);
+    }
+
+    @Override
+    public List<Category> saveAll(List<Category> categories) {
+        return categoryRepository.saveAll(categories);
     }
 
     @Override
