@@ -3,8 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+<div class="ui people shape">
+    <div class="sides">
+        <div class="side">
+            <div class="ui card">
+                <div class="image">
+                    <img src="/images/avatar/large/steve.jpg">
+                </div>
+                <div class="content">
+                    <div class="header">Steve Jobes</div>
+                    <div class="meta">
+                        <a>Acquaintances</a>
+                    </div>
+                    <div class="description">
+                        Steve Jobes is a fictional character designed to resemble someone familiar to readers.
+                    </div>
+                </div>
+                <div class="extra content">
+          <span class="right floated">
+            Joined in 2014
+          </span>
+                    <span>
+            <i class="user icon"></i>
+            151 Friends
+          </span>
+                </div>
+            </div>
+        </div>
+        <div class="side active">
+            <div class="ui card">
+                <div class="image">
+                    <img src="/images/avatar/large/stevie.jpg">
+                </div>
+                <div class="content">
+                    <a class="header">Stevie Feliciano</a>
+                    <div class="meta">
+                        <span class="date">Joined in 2014</span>
+                    </div>
+                    <div class="description">
+                        Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
+                    </div>
+                </div>
+                <div class="extra content">
+                    <a>
+                        <i class="user icon"></i>
+                        22 Friends
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn" onclick="$('.shape').shape('flip left');"></button>
 <div class="container text-center">
     <h1>Welcome to CodeJava.net</h1>
     <h3><a th:href="@{/users}">List of Users</a></h3>
@@ -37,5 +91,22 @@
     <p>===================================</p>
 
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.ui.dropdown').dropdown();
+        $('.ui.accordion').accordion();
+        $('.button')
+            .popup({
+                inline: true
+            });
+        $('.shape')
+            .shape('set next side', '.second.side')
+            .shape('flip down')
+        ;
+    });
+</script>
 </body>
 </html>

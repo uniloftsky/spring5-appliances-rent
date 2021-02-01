@@ -2,42 +2,514 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css">
+    <title>Оренда побутової техніки - Авторизація</title>
 </head>
 <body>
-<div class="container text-center">
-    <h1>Welcome to CodeJava.net</h1>
-    <h3><a th:href="@{/users}">List of Users</a></h3>
-    <h3><a th:href="@{/register}">Register</a></h3>
-    <h3><a th:href="@{/login}">Login</a></h3>
-    <h3><a th:href="@{/postOffer}">Post offer</a></h3>
-
-    <p>===================================</p>
-
-    <ul class="pagination" style="display: flex; list-style: none; justify-content: space-between; width: 300px;">
-        <li th:if="${currentPage != 0}"><a th:href="@{/catalog(size=2, page=0)}"><<< </a><a th:href="@{/catalog(size=2, page=${currentPage - 1})}"><<</a></li>
-        <li th:if="${currentPage - 2 >= 0}"><a th:href="@{/catalog(size=2, page=${currentPage - 2})}" th:text="${(currentPage + 1) - 2}"></a>|</li>
-        <li th:if="${currentPage - 1 >= 0}"><a th:href="@{/catalog(size=2, page=${currentPage - 1})}" th:text="${(currentPage + 1) - 1}"></a>|</li>
-        <li><a th:href="@{/catalog(size=2, page=${currentPage})}" th:text="${currentPage + 1}" style="color: red;"></a></li>
-        <li th:if="${currentPage + 1 <= maxPage}">|<a th:href="@{/catalog(size=2, page=${currentPage + 1})}" th:text="${(currentPage + 1) + 1}"></a></li>
-        <li th:if="${currentPage + 2 <= maxPage}">|<a th:href="@{/catalog(size=2, page=${currentPage + 2})}" th:text="${(currentPage + 1) + 2}"></a></li>
-        <li th:if="${currentPage != maxPage}"><a th:href="@{/catalog(size=2, page=${currentPage + 1})}">>> </a><a th:href="@{/catalog(size=2, page=${maxPage})}">>>></a></li>
-<!--        <li class="page-item texter">-->
-<!--            <a class="page-link" th:text="${currentPage == 0} ? Pages : Previous" th:href="${currentPage == 0} ? '#' : @{/catalog(size=2, page=${currentPage - 1})}">Pages</a>-->
-<!--        </li>-->
-<!--        <th:block th:each="pageNumber : ${pageNumbers}">-->
-<!--            <li class="page-item"><a th:href="@{/catalog(size=2, page=${pageNumber - 1})}" th:text="${pageNumber}"></a></li>-->
-<!--        </th:block>-->
-<!--            <li>...</li>-->
-<!--            <li><a th:href="@{/catalog(size=2, page=${maxPage})}" th:text="${maxPage}"></a></li>-->
-<!--        <li class="page-item texter">-->
-<!--            <a class="page-link" th:href="@{/catalog(size=2, page=${currentPage + 1})}">Next</a>-->
-<!--        </li>-->
-    </ul>
-    <div th:each="page : ${page}">
-        <div th:text="${page.name}"></div>
+<header>
+    <div class="wrap">
+        <div class="header-in">
+            <div class="title-box">
+                <div class="title">
+                    <p><b>AUTO</b>MARKET</p>
+                </div>
+                <div class="subtitle">
+                    <p><b>THIS IS A TITLE</b></p>
+                </div>
+            </div>
+            <div class="title-box">
+                <div class="inner-box inner-box-login">
+                    <i class="user secret icon" style="color: #2185D0;"></i>
+                    <p style="color: #bcbcbc; font-weight: 600;">Login</p>
+                </div>
+                <div class="inner-box">
+                    <i class="power off icon" style="color: #969DAC;"></i>
+                    <p style="font-weight: 400; color: #bcbcbc;">Sign out</p>
+                </div>
+            </div>
+            <div class="title-box">
+                <button class="ui primary button">
+                    <i class="plus icon"></i>ADD AN OFFER
+                </button>
+                <button class="ui button" style="margin-right: 0;">
+                    PAGES
+                </button>
+            </div>
+        </div>
     </div>
-
+</header>
+<div class="subheader">
+    <div class="wrap">
+        <div class="subheader-items">
+            <div class="subheader-inner">
+                <div class="menu-item active">
+                    <i class="car icon"></i>
+                    <p>CARS</p>
+                </div>
+                <div class="menu-item">
+                    <i class="motorcycle icon"></i>
+                    <p>BIKES</p>
+                </div>
+            </div>
+            <div class="subheader-inner" style="width: 70%;">
+                <div class="ui left icon input search-input">
+                    <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
+                </div>
+                <button class="ui primary button search-button">
+                    <i class="hidden search icon"></i>Search
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
+<main style="z-index: 0; position: relative;">
+    <section class="page-title-section">
+        <div class="wrap">
+            <p class="page-title"><b>Каталог</b> техніки</p>
+            <div class="ui breadcrumb">
+                <a class="section" href="/index">Головна</a>
+                <i class="right angle icon divider"></i>
+                <a class="section" href="/catalog">Каталог</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="catalog-section">
+        <div class="wrap">
+            <div class="catalog-section-in">
+                <div class="filter-section">
+                    <p class="page-title"><b>Search</b> filters</p>
+                    <div class="filter">
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <div class="filter-in-flex">
+                                <div class="filter-in-in">
+                                    <label>Filter 1:</label>
+                                    <div class="ui input">
+                                        <input type="number" placeholder="Min">
+                                    </div>
+                                </div>
+                                <div class="filter-in-in">
+                                    <label>Filter 1:</label>
+                                    <div class="ui input">
+                                        <input type="number" placeholder="Max">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+                        <div class="filter-in">
+                            <label>Filter 1:</label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <button class="ui labeled icon primary button">
+                        <i class="search icon"></i>
+                        Search
+                    </button>
+                </div>
+                <div class="catalog">
+                    <div class="pagination-block">
+                        <div class="ui pagination menu">
+                            <a class="item"><i class="angle double left icon"></i></a>
+                            <a class="item"><i class="angle left icon"></i></a>
+                            <a class="item">3</a>
+                            <a class="item">2</a>
+                            <a class="active item">1</a>
+                            <a class="item">2</a>
+                            <a class="item">3</a>
+                            <a class="item"><i class="angle double right icon"></i></a>
+                            <a class="item"><i class="angle right icon"></i></a>
+                        </div>
+                    </div>
+                    <div class="catalog-items">
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog-item">
+                            <div class="catalog-item-img-block">
+                                <img class="catalog-item-img" src="" th:src="@{/images/items/fridge1.jpg}" alt="">
+                            </div>
+                            <div class="catalog-item-info">
+                                <div class="catalog-item-header">
+                                    <p class="catalog-item-title"><b>Холодильник SAMSUNG RB29FSRNDSA/UA</b></p>
+                                    <p class="catalog-item-price">11499 грн.</p>
+                                </div>
+                                <div class="catalog-item-main">
+                                    <p class="catalog-item-punkt">Пункт1</p>
+                                    <p class="catalog-item-punkt">Пункт2</p>
+                                    <p class="catalog-item-punkt">Пункт3</p>
+                                    <p class="catalog-item-punkt">Пункт4</p>
+                                </div>
+                                <div class="catalog-item-footer">
+                                    <p class="catalog-item-location">м. Бердичів, вул. Соборна, 18</p>
+                                    <a class="catalog-item-href">View details <i
+                                            class="ong arrow alternate right icon"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pagination-block">
+                        <div class="ui pagination menu">
+                            <a class="item"><i class="angle double left icon"></i></a>
+                            <a class="item"><i class="angle left icon"></i></a>
+                            <a class="item">3</a>
+                            <a class="item">2</a>
+                            <a class="active item">1</a>
+                            <a class="item">2</a>
+                            <a class="item">3</a>
+                            <a class="item"><i class="angle double right icon"></i></a>
+                            <a class="item"><i class="angle right icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+</main>
+<section class="footer-links-section">
+    <div class="wrap">
+        <div class="links">
+            <div class="link">
+                <p class="link-title"><b>About</b> us</p>
+                <ul>
+                    <li>Contact</li>
+                    <li>Our partners</li>
+                    <li>Advertising Online</li>
+                    <li>Site Map</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Need</b> Help?</p>
+                <ul>
+                    <li>How do I add an offer?</li>
+                    <li>How do I find a vehicle</li>
+                    <li>Price list</li>
+                    <li>Office for car dealers</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>User</b> area</p>
+                <ul>
+                    <li>Add an offer</li>
+                    <li>Register dealder</li>
+                    <li>Login Dealer</li>
+                    <li>News</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Find</b> us here</p>
+                <div class="hrefs">
+                    <div class="link-icon-box"><i class="facebook icon"></i></div>
+                    <div class="link-icon-box"><i class="google icon"></i></div>
+                    <div class="link-icon-box"><i class="twitter icon"></i></div>
+                </div>
+                <p style="font-size: .75rem;">Become our fan, and we will love you forever</p>
+            </div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="wrap">
+        <div class="footer-text">
+            <p>© 2012 Automarket. All Rights Reserved</p>
+            <p>Webdesign by ClaPat Studio</p>
+        </div>
+    </div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ui.dropdown')
+            .dropdown();
+    });
+</script>
 </body>
 </html>
