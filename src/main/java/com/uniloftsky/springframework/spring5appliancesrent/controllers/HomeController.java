@@ -54,15 +54,15 @@ public class HomeController {
 //        return "users";
 //    }
 //
-//    @GetMapping("/postOffer")
-//    public String showPostForm(Model model, Principal principal) {
+    @GetMapping("/postOffer")
+    public String showPostForm(Model model) {
 //        Item item = new Item();
 //        model.addAttribute("username", principal.getName());
 //        model.addAttribute("item", item);
 //        model.addAttribute("types", typeService.findAll());
 //        model.addAttribute("categories", categoryService.findAll());
-//        return "post_form";
-//    }
+        return "post_form";
+    }
 //
 //    @PostMapping("/postOffer")
 //    public String processPostForm(@ModelAttribute Item item, Principal principal) {

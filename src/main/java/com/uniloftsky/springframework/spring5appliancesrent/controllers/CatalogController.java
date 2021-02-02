@@ -26,8 +26,6 @@ public class CatalogController {
     public String getPageableItems(@PageableDefault(sort = {"id"}, size = 2) Pageable pageable, Model model) {
         Page<Item> pages = itemService.findAll(pageable);
         Integer maxPage = pages.getTotalPages();
-        System.out.println(maxPage);
-        System.out.println(pages.getNumber());
         model.addAttribute("maxPage", maxPage);
         model.addAttribute("page", pages);
         List<Integer> pageNumbers = IntStream.rangeClosed(1, pages.getTotalPages()).boxed().collect(Collectors.toList());
