@@ -2,110 +2,275 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css">
+    <title>Оренда побутової техніки - Авторизація</title>
 </head>
 <body>
-<div class="ui people shape">
-    <div class="sides">
-        <div class="side">
-            <div class="ui card">
-                <div class="image">
-                    <img src="/images/avatar/large/steve.jpg">
+<header>
+    <div class="wrap">
+        <div class="header-in">
+            <div class="title-box">
+                <div class="title">
+                    <p><b>AUTO</b>MARKET</p>
                 </div>
-                <div class="content">
-                    <div class="header">Steve Jobes</div>
-                    <div class="meta">
-                        <a>Acquaintances</a>
-                    </div>
-                    <div class="description">
-                        Steve Jobes is a fictional character designed to resemble someone familiar to readers.
-                    </div>
-                </div>
-                <div class="extra content">
-          <span class="right floated">
-            Joined in 2014
-          </span>
-                    <span>
-            <i class="user icon"></i>
-            151 Friends
-          </span>
+                <div class="subtitle">
+                    <p><b>THIS IS A TITLE</b></p>
                 </div>
             </div>
+            <div class="title-box">
+                <div class="inner-box inner-box-login">
+                    <i class="user secret icon" style="color: #2185D0;"></i>
+                    <p style="color: #bcbcbc; font-weight: 600;">Login</p>
+                </div>
+                <div class="inner-box">
+                    <i class="power off icon" style="color: #969DAC;"></i>
+                    <p style="font-weight: 400; color: #bcbcbc;">Sign out</p>
+                </div>
+            </div>
+            <div class="title-box">
+                <button class="ui primary button">
+                    <i class="plus icon"></i>ADD AN OFFER
+                </button>
+                <button class="ui button" style="margin-right: 0;">
+                    PAGES
+                </button>
+            </div>
         </div>
-        <div class="side active">
-            <div class="ui card">
-                <div class="image">
-                    <img src="/images/avatar/large/stevie.jpg">
+    </div>
+</header>
+<div class="subheader">
+    <div class="wrap">
+        <div class="subheader-items">
+            <div class="subheader-inner">
+                <div class="menu-item active">
+                    <i class="car icon"></i>
+                    <p>CARS</p>
                 </div>
-                <div class="content">
-                    <a class="header">Stevie Feliciano</a>
-                    <div class="meta">
-                        <span class="date">Joined in 2014</span>
-                    </div>
-                    <div class="description">
-                        Stevie Feliciano is a library scientist living in New York City. She likes to spend her time reading, running, and writing.
-                    </div>
+                <div class="menu-item">
+                    <i class="motorcycle icon"></i>
+                    <p>BIKES</p>
                 </div>
-                <div class="extra content">
-                    <a>
-                        <i class="user icon"></i>
-                        22 Friends
-                    </a>
+            </div>
+            <div class="subheader-inner" style="width: 70%;">
+                <div class="ui left icon input search-input">
+                    <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
+                    <i class="search icon"></i>
                 </div>
+                <button class="ui primary button search-button">
+                    <i class="hidden search icon"></i>Search
+                </button>
             </div>
         </div>
     </div>
 </div>
-<button class="btn" onclick="$('.shape').shape('flip left');"></button>
-<div class="container text-center">
-    <h1>Welcome to CodeJava.net</h1>
-    <h3><a th:href="@{/users}">List of Users</a></h3>
-    <h3><a th:href="@{/register}">Register</a></h3>
-    <h3><a th:href="@{/login}">Login</a></h3>
-    <h3><a th:href="@{/postOffer}">Post offer</a></h3>
+<main style="z-index: 0; position: relative;">
+    <section class="page-title-section">
+        <div class="wrap">
+            <p class="page-title"><b>Last</b> offers</p>
+            <div class="last-offers">
+                <div class="left-offer">
+                    <div class="left-offer-img-block">
+                        <img th:src="@{/images/items/fridge2.webp}" class="left-offer-img" alt="">
+                    </div>
+                    <div class="left-offer-info">
+                        <p class="left-offer-title">Mercedes-Benz CLS 320</p>
+                        <p class="left-offer-price">54980 грн.</p>
+                    </div>
+                </div>
+                <div class="right-offers">
+                    <div class="right-offer">
+                        <div class="right-offer-img-block">
+                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                        </div>
+                        <div class="right-offer-info">
+                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                            <p class="right-offer-price">54980 грн.</p>
+                        </div>
+                    </div>
+                    <div class="right-offer">
+                        <div class="right-offer-img-block">
+                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                        </div>
+                        <div class="right-offer-info">
+                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                            <p class="right-offer-price">54980 грн.</p>
+                        </div>
+                    </div>
+                    <div class="right-offer">
+                        <div class="right-offer-img-block">
+                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                        </div>
+                        <div class="right-offer-info">
+                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                            <p class="right-offer-price">54980 грн.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!--    <div>-->
-<!--        <div th:each="item : ${items}">-->
-<!--            <p th:text="${item.name}"></p>-->
-<!--            <p th:text="${item.description}"></p>-->
-<!--            <p th:text="${item.user.firstName}"></p>-->
-<!--        </div>-->
-<!--    </div>-->
+    <section class="main-section">
+        <div class="wrap">
+            <div class="first-buttons">
+                <div class="main-button">
+                    <div class="search-icon">
+                        <i class="search icon"></i>
+                    </div>
+                    <div class="main-text">
+                        <p class="main-text-title"><b>Looking</b> for a car?</p>
+                        <p class="main-text-body">1.000 new offers every day. 35.000 offers on site</p>
+                    </div>
+                    <div class="main-search-button">
+                        <button class="ui button">Search</button>
+                    </div>
+                </div>
+                <div class="main-button">
+                    <div class="search-icon">
+                        <i class="search icon"></i>
+                    </div>
+                    <div class="main-text">
+                        <p class="main-text-title"><b>Looking</b> for a car?</p>
+                        <p class="main-text-body">1.000 new offers every day. 35.000 offers on site</p>
+                    </div>
+                    <div class="main-search-button">
+                        <button class="ui button">Sell</button>
+                    </div>
+                </div>
+            </div>
+            <div class="main-links">
+                <div class="main-link">
+                    <p class="main-link-title"><b>Popular</b> articles</p>
+                    <div class="main-link-articles">
+                        <div class="main-link-article">
+                            <p class="article-title">Here are many variations of passages of Lorem Ipsum..</p>
+                            <a class="article-more">Read more <i class="ong arrow alternate right icon"></i></a>
+                        </div>
+                        <div class="main-link-article">
+                            <p class="article-title">Here are many variations of passages of Lorem Ipsum..</p>
+                            <a class="article-more">Read more <i class="ong arrow alternate right icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-link">
+                    <p class="main-link-title"><b>Car</b> dealers</p>
+                    <div class="main-link-dealers">
+                        <div class="main-link-dealer">
+                            <div class="dealer-left">
+                                <i class="circle icon"></i>
+                                <p class="dealer-name">Dealer</p>
+                            </div>
+                            <p class="dealer-right">162 offers</p>
+                        </div>
+                        <div class="main-link-dealer">
+                            <div class="dealer-left">
+                                <i class="circle icon"></i>
+                                <p class="dealer-name">Dealer</p>
+                            </div>
+                            <p class="dealer-right">162 offers</p>
+                        </div>
+                        <div class="main-link-dealer">
+                            <div class="dealer-left">
+                                <i class="circle icon"></i>
+                                <p class="dealer-name">Dealer</p>
+                            </div>
+                            <p class="dealer-right">162 offers</p>
+                        </div>
+                        <div class="main-link-dealer">
+                            <div class="dealer-left">
+                                <i class="circle icon"></i>
+                                <p class="dealer-name">Dealer</p>
+                            </div>
+                            <p class="dealer-right">162 offers</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main-link">
+                    <p class="main-link-title"><b>Get</b> daily offers</p>
+                    <div class="daily-email">
+                        <div class="ui input">
+                            <input type="text" placeholder="Email here">
+                        </div>
+                        <p class="daily-email-note">
+                            Available, but have suffered alteration in some form injected humour, or randomised words which don't look even slightly believable.
+                        </p>
+                        <div class="subscribe-email">
+                            <button class="ui primary button">
+                                SUBSCRIBE
+                            </button>
+                            <p class="subscribe-email-counter">
+                                15000+ other subscribers
+                            </p>
+                        </div>
 
-    <div>
-        <div th:each="item : ${activePosts}">
-            <p th:text="${item.id}"></p>
-            <p th:text="${item.isActive()}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+<section class="footer-links-section">
+    <div class="wrap">
+        <div class="links">
+            <div class="link">
+                <p class="link-title"><b>About</b> us</p>
+                <ul>
+                    <li>Contact</li>
+                    <li>Our partners</li>
+                    <li>Advertising Online</li>
+                    <li>Site Map</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Need</b> Help?</p>
+                <ul>
+                    <li>How do I add an offer?</li>
+                    <li>How do I find a vehicle</li>
+                    <li>Price list</li>
+                    <li>Office for car dealers</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>User</b> area</p>
+                <ul>
+                    <li>Add an offer</li>
+                    <li>Register dealder</li>
+                    <li>Login Dealer</li>
+                    <li>News</li>
+                </ul>
+            </div>
+            <div class="link">
+                <p class="link-title"><b>Find</b> us here</p>
+                <div class="hrefs">
+                    <div class="link-icon-box"><i class="facebook icon"></i></div>
+                    <div class="link-icon-box"><i class="google icon"></i></div>
+                    <div class="link-icon-box"><i class="twitter icon"></i></div>
+                </div>
+                <p style="font-size: .75rem;">Become our fan, and we will love you forever</p>
+            </div>
         </div>
     </div>
-    <p>===================================</p>
-    <div>
-        <div th:each="item : ${lastPosts}">
-            <p th:text="${item.id}"></p>
-            <p th:text="${item.isActive()}"></p>
+</section>
+<footer>
+    <div class="wrap">
+        <div class="footer-text">
+            <p>© 2012 Automarket. All Rights Reserved</p>
+            <p>Webdesign by ClaPat Studio</p>
         </div>
     </div>
-
-    <p>===================================</p>
-
-</div>
-
+</footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('.ui.dropdown').dropdown();
-        $('.ui.accordion').accordion();
-        $('.button')
-            .popup({
-                inline: true
-            });
-        $('.shape')
-            .shape('set next side', '.second.side')
-            .shape('flip down')
-        ;
+    $(document).ready(function () {
+        $('.ui.dropdown')
+            .dropdown();
     });
 </script>
 </body>
