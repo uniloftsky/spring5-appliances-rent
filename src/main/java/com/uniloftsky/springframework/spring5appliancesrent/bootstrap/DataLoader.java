@@ -1,16 +1,15 @@
 package com.uniloftsky.springframework.spring5appliancesrent.bootstrap;
 
 import com.uniloftsky.springframework.spring5appliancesrent.model.Category;
-import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.model.Role;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
+import com.uniloftsky.springframework.spring5appliancesrent.repositories.RoleRepository;
 import com.uniloftsky.springframework.spring5appliancesrent.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,22 +21,38 @@ public class DataLoader implements CommandLineRunner {
     private final RentingService rentingService;
     private final TypeService typeService;
     private final UserService userService;
+    private final RoleRepository roleRepository;
 
-    public DataLoader(ItemService itemService, CategoryService categoryService, RentingService rentingService, TypeService typeService, UserService userService) {
+    public DataLoader(ItemService itemService, CategoryService categoryService, RentingService rentingService, TypeService typeService, UserService userService, RoleRepository roleRepository) {
         this.itemService = itemService;
         this.categoryService = categoryService;
         this.rentingService = rentingService;
         this.typeService = typeService;
         this.userService = userService;
+        this.roleRepository = roleRepository;
     }
 
     @Override
     public void run(String... args) throws Exception {
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role("USER"));
+        roles.add(new Role("ADMIN"));
+        roleRepository.saveAll(roles);
+
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk");
         String password = encoder.encode("123456");
         user.setPassword(password);
+        user.getRoles().add(roles.get(1));
+        user.getRoles().add(roles.get(0));
+
+        User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk");
+        String password1 = encoder.encode("123456");
+        user1.setPassword(password1);
+        user1.getRoles().add(roles.get(0));
+
         userService.save(user);
+        userService.save(user1);
 
         List<Type> types = new ArrayList<>();
         types.add(new Type("Побутова техніка"));
@@ -68,7 +83,7 @@ public class DataLoader implements CommandLineRunner {
 
         categoryService.saveAll(categories2);
 
-        List<Item> items = new ArrayList<>();
+        /*List<Item> items = new ArrayList<>();
         items.add(new Item(categories1.get(0), user, "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name2", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
@@ -84,6 +99,6 @@ public class DataLoader implements CommandLineRunner {
         items.add(new Item(categories1.get(0), user, "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
 
-        itemService.saveAll(items);
+        itemService.saveAll(items);*/
     }
 }

@@ -55,16 +55,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
                 .antMatchers("/users").authenticated()
+                .antMatchers("/postOffer").hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/users")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
     }
 
 }

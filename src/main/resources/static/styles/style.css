@@ -783,6 +783,23 @@ footer p {
     font-weight: 600;
 }
 
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.register-page .input-block-inner {
+    width: 49%;
+}
+
+.register-page .input-block-inner {
+    margin-bottom: 1em;
+}
+
+.register-page .input-block-inner:nth-child(3),
+.register-page .input-block-inner:nth-child(4) {
+    margin-bottom: 0;
+}
+
 /* media queries */
 
 @media screen and (max-width: 844px) {
@@ -923,6 +940,10 @@ footer p {
 
     .input-block:first-child .input-block-inner:last-child {
         margin-bottom: 0;
+    }
+
+    .register-page .input-block-inner:nth-child(3) {
+        margin-bottom: 1em;
     }
 }
 
