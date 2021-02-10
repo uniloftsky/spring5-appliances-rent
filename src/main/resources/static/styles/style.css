@@ -800,6 +800,19 @@ footer p {
     margin-bottom: 0;
 }
 
+.main-section {
+    padding: 0 1em 0 1em;
+}
+
+.main-button {
+    display: flex;
+}
+
+.main-button-info {
+    display: flex;
+    align-items: center;
+}
+
 /* media queries */
 
 @media screen and (max-width: 844px) {
@@ -867,6 +880,31 @@ footer p {
         width: 100%;
     }
 
+    .last-offers {
+        flex-direction: column;
+    }
+
+    .left-offer,
+    .right-offers {
+        width: 100%;
+    }
+
+    .right-offer-img {
+        min-height: 600px;
+    }
+
+    .right-offer-info p {
+        font-size: 1.25rem;
+    }
+
+    .right-offer {
+        margin-bottom: 2em;
+    }
+
+    .left-offer {
+        margin-bottom: 2em;
+    }
+
 }
 
 @media screen and (max-width: 775px) {
@@ -895,6 +933,36 @@ footer p {
 
     .catalog-item-title {
         font-size: 1rem;
+    }
+
+    .main-links {
+        flex-direction: column;
+    }
+
+    .main-link {
+        width: 100%;
+        margin-bottom: 2em;
+    }
+
+    .main-link:last-child {
+        margin-bottom: 0;
+    }
+
+    .first-buttons {
+        flex-direction: column;
+    }
+
+    .main-button,
+    .main-search-button .ui.button {
+        width: 100%;
+    }
+
+    .main-button {
+        margin-bottom: 1em;
+    }
+
+    .main-button:last-child {
+        margin-bottom: 0;
     }
 
 }
@@ -1137,6 +1205,20 @@ footer p {
 
     .pagination-block .item {
         font-size: .8rem;
+    }
+
+    .main-button {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-search-button {
+        margin-left: 0;
+        width: 120px;
+    }
+
+    .main-button-info {
+        margin-bottom: 1.25em;
     }
 
 }
