@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
-
+    
 @Controller
 public class OffersController {
 
@@ -15,6 +15,11 @@ public class OffersController {
         LocalDate date1 = LocalDate.parse(date);
         System.out.println(date1);
         return "index";
+    }
+
+    @GetMapping("/offer")
+    public String getOffer() {
+        return "offer";
     }
 
 }

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="header-fragment">
+    <header>
+        <div class="wrap">
+            <div class="header-in">
+                <div class="title-box">
+                    <div class="title">
+                        <p><b>AUTO</b>MARKET</p>
+                    </div>
+                    <div class="subtitle">
+                        <p><b>THIS IS A TITLE</b></p>
+                    </div>
+                </div>
+                <div class="title-box">
+                    <div class="inner-box inner-box-login">
+                        <i class="user secret icon" style="color: #2185D0;"></i>
+                        <p style="color: #bcbcbc; font-weight: 600;">Login</p>
+                    </div>
+                    <div class="inner-box">
+                        <i class="power off icon" style="color: #969DAC;"></i>
+                        <p style="font-weight: 400; color: #bcbcbc;">Sign out</p>
+                    </div>
+                </div>
+                <div class="title-box">
+                    <button class="ui primary button">
+                        <i class="plus icon"></i>ADD AN OFFER
+                    </button>
+                    <button class="ui button" style="margin-right: 0;">
+                        PAGES
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="subheader">
+        <div class="wrap">
+            <div class="subheader-items">
+                <div class="subheader-inner">
+                    <div class="menu-item active">
+                        <i class="car icon"></i>
+                        <p>CARS</p>
+                    </div>
+                    <div class="menu-item">
+                        <i class="motorcycle icon"></i>
+                        <p>BIKES</p>
+                    </div>
+                </div>
+                <div class="subheader-inner" style="width: 70%;">
+                    <div class="ui left icon input search-input">
+                        <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
+                        <i class="search icon"></i>
+                    </div>
+                    <button class="ui primary button search-button">
+                        <i class="hidden search icon"></i>Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>

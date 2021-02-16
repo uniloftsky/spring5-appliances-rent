@@ -12,63 +12,7 @@
     <title>Оренда побутової техніки - Авторизація</title>
 </head>
 <body>
-<header>
-    <div class="wrap">
-        <div class="header-in">
-            <div class="title-box">
-                <div class="title">
-                    <p><b>AUTO</b>MARKET</p>
-                </div>
-                <div class="subtitle">
-                    <p><b>THIS IS A TITLE</b></p>
-                </div>
-            </div>
-            <div class="title-box">
-                <div class="inner-box inner-box-login">
-                    <i class="user secret icon" style="color: #2185D0;"></i>
-                    <p style="color: #bcbcbc; font-weight: 600;">Login</p>
-                </div>
-                <div class="inner-box">
-                    <i class="power off icon" style="color: #969DAC;"></i>
-                    <p style="font-weight: 400; color: #bcbcbc;">Sign out</p>
-                </div>
-            </div>
-            <div class="title-box">
-                <button class="ui primary button">
-                    <i class="plus icon"></i>ADD AN OFFER
-                </button>
-                <button class="ui button" style="margin-right: 0;">
-                    PAGES
-                </button>
-            </div>
-        </div>
-    </div>
-</header>
-<div class="subheader">
-    <div class="wrap">
-        <div class="subheader-items">
-            <div class="subheader-inner">
-                <div class="menu-item active">
-                    <i class="car icon"></i>
-                    <p>CARS</p>
-                </div>
-                <div class="menu-item">
-                    <i class="motorcycle icon"></i>
-                    <p>BIKES</p>
-                </div>
-            </div>
-            <div class="subheader-inner" style="width: 70%;">
-                <div class="ui left icon input search-input">
-                    <input style="display: inline-block; width: 100%;" type="text" placeholder="Search...">
-                    <i class="search icon"></i>
-                </div>
-                <button class="ui primary button search-button">
-                    <i class="hidden search icon"></i>Search
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
+<th:block th:insert="~{fragments/header-fragment}"></th:block>
 <main style="z-index: 0; position: relative;">
     <section class="page-title-section">
         <div class="wrap">
@@ -121,56 +65,7 @@
     </section>
 
 </main>
-<section class="footer-links-section">
-    <div class="wrap">
-        <div class="links">
-            <div class="link">
-                <p class="link-title"><b>About</b> us</p>
-                <ul>
-                    <li>Contact</li>
-                    <li>Our partners</li>
-                    <li>Advertising Online</li>
-                    <li>Site Map</li>
-                </ul>
-            </div>
-            <div class="link">
-                <p class="link-title"><b>Need</b> Help?</p>
-                <ul>
-                    <li>How do I add an offer?</li>
-                    <li>How do I find a vehicle</li>
-                    <li>Price list</li>
-                    <li>Office for car dealers</li>
-                </ul>
-            </div>
-            <div class="link">
-                <p class="link-title"><b>User</b> area</p>
-                <ul>
-                    <li>Add an offer</li>
-                    <li>Register dealder</li>
-                    <li>Login Dealer</li>
-                    <li>News</li>
-                </ul>
-            </div>
-            <div class="link">
-                <p class="link-title"><b>Find</b> us here</p>
-                <div class="hrefs">
-                    <div class="link-icon-box"><i class="facebook icon"></i></div>
-                    <div class="link-icon-box"><i class="google icon"></i></div>
-                    <div class="link-icon-box"><i class="twitter icon"></i></div>
-                </div>
-                <p style="font-size: .75rem;">Become our fan, and we will love you forever</p>
-            </div>
-        </div>
-    </div>
-</section>
-<footer>
-    <div class="wrap">
-        <div class="footer-text">
-            <p>© 2012 Automarket. All Rights Reserved</p>
-            <p>Webdesign by ClaPat Studio</p>
-        </div>
-    </div>
-</footer>
+<th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <!--<script type="text/javascript">-->
