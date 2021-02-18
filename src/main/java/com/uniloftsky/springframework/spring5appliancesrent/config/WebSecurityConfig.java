@@ -54,7 +54,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/users").authenticated()
+//                .antMatchers("/users").authenticated()
                 .antMatchers("/postOffer").hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()
@@ -64,6 +64,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/").permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
     }
 
 }

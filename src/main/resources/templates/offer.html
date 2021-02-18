@@ -13,7 +13,147 @@
 <body>
 <th:block th:insert="~{fragments/header-fragment}"></th:block>
 <main style="z-index: 0; position: relative;">
+    <section class="page-title-section">
+        <div class="wrap">
+            <div class="offer-header">
+                <div class="offer-header-info">
+                    <p class="page-title"><b>Холодильник</b></p>
+                    <div class="ui breadcrumb">
+                        <a class="section" href="/index">Головна</a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" href="/offer">Холодильник</a>
+                    </div>
+                </div>
+                <div class="offer-header-id">
+                    <p class="id-text">Offer ID: 12345</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="offer-section">
+        <div class="wrap">
+            <div class="offer-section-header">
+                <div class="offer-section-header-img-block">
+                    <img class="offer-section-img" th:src="@{images/items/fridge4.webp}">
+                </div>
+                <div class="offer-section-header-info">
+                    <p class="offer-price">54.980 EURO</p>
+                    <div class="offer-info-details">
+                        <div class="offer-info-detail">
+                            <p class="offer-detail-name">Category</p>
+                            <p class="offer-detail-info">Car</p>
+                        </div>
+                        <div class="offer-info-detail">
+                            <p class="offer-detail-name">Type</p>
+                            <p class="offer-detail-info">Car1</p>
+                        </div>
+                        <div class="offer-info-detail">
+                            <p class="offer-detail-name">Location</p>
+                            <p class="offer-detail-info">location</p>
+                        </div>
+                    </div>
+                    <div class="similar-sell-block">
+                        <p class="similar-sell-text">You want to sell similar?</p>
+                        <a href="">+ ADD AN OFFER</a>
+                    </div>
 
+                    <div class="offer-map">
+                        <p class="offer-map-title"><b>Map</b> location</p>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41126.13730243615!2d28.56422373451863!3d49.89160152266436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472cf987459e4d1f%3A0xfed4d70ca7c66999!2z0JHQtdGA0LTQuNGH0LXQsiwg0JbQuNGC0L7QvNC40YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMTMzMDk!5e0!3m2!1sru!2sua!4v1613477371517!5m2!1sru!2sua"
+                                frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="offer-section-main">
+                <div class="offer-section-main-info">
+                    <p class="offer-section-main-title"><b>Item</b> info</p>
+                    <p class="offer-section-main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus.
+                        In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam. Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu orci.</p>
+                </div>
+            </div>
+            <div class="offer-section-main">
+                <div class="offer-section-main-info">
+                    <p class="offer-section-main-title"><b>Contact</b> details</p>
+                    <div class="contact-details">
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="phone icon"></i>
+                            </div>
+                            <p class="contact-detail-text">
+                                0040 742 016 756
+                            </p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="envelope icon"></i>
+                            </div>
+                            <p class="contact-detail-text">Contact vendor via e-mail</p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="map marker alternate icon"></i>
+                            </div>
+                            <p class="contact-detail-text">
+                                Berlin, Germany, nr. 250330, main street
+                            </p>
+                        </div>
+                        <div class="contact-detail">
+                            <div class="contact-detail-icon">
+                                <i class="user icon"></i>
+                            </div>
+                            <p class="contact-detail-text">
+                                http://www.dealer.automarket.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="offer-section-main">
+                <p class="offer-section-main-title"><b>Other</b> offers</p>
+                <div class="other-offers-block">
+                    <div class="other-offers">
+                        <div class="right-offer offer-page">
+                            <div class="right-offer-img-block">
+                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                            </div>
+                            <div class="right-offer-info">
+                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                                <p class="right-offer-price">54980 грн.</p>
+                            </div>
+                        </div>
+                        <div class="right-offer offer-page">
+                            <div class="right-offer-img-block">
+                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                            </div>
+                            <div class="right-offer-info">
+                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                                <p class="right-offer-price">54980 грн.</p>
+                            </div>
+                        </div>
+                        <div class="right-offer offer-page">
+                            <div class="right-offer-img-block">
+                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                            </div>
+                            <div class="right-offer-info">
+                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                                <p class="right-offer-price">54980 грн.</p>
+                            </div>
+                        </div>
+                        <div class="right-offer offer-page">
+                            <div class="right-offer-img-block">
+                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                            </div>
+                            <div class="right-offer-info">
+                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
+                                <p class="right-offer-price">54980 грн.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
 </main>
 <th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

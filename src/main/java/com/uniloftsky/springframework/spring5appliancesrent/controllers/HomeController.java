@@ -48,11 +48,11 @@ public class HomeController {
         return itemService.getLastPosts();
     }
 
-//    @GetMapping("/users")
-//    public String listUsers(Model model) {
+    @GetMapping("/users")
+    public String listUsers(Model model) {
 //        model.addAttribute("users", userService.findAll());
-//        return "users";
-//    }
+        return "users";
+    }
 //
     @GetMapping("/postOffer")
     public String showPostForm(Model model) {

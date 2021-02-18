@@ -2,6 +2,7 @@ package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
@@ -20,6 +21,11 @@ public class OffersController {
     @GetMapping("/offer")
     public String getOffer() {
         return "offer";
+    }
+
+    @ModelAttribute("zalupa")
+    public String zalupa() {
+        return "punk1\npunkt2\npunlt3";
     }
 
 }
