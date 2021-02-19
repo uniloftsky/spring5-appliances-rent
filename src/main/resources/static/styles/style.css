@@ -1043,8 +1043,29 @@ footer p {
 
 /* profile edit */
 
+.ui.modal>.change-password-header {
+    font-family: 'Montserrat', sans-serif;
+}
+
 .profile-edit .input-block-inner:first-child {
     margin-bottom: 1em;
+}
+
+.change-password {
+    width: 100%;
+}
+
+.change-password label {
+    margin-bottom: .5em;
+}
+
+.change-password label,
+.change-password input {
+    font-size: 1rem;
+}
+
+.change-password .ui.input {
+    width: 100%;
 }
 
 /* media queries */

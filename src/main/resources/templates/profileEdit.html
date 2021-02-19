@@ -80,7 +80,7 @@
                         </div>
                     </div>
                     <div class="input-block-inner">
-                        <button class="ui green button" style="margin-top: auto; padding: .6em;">Change password</button>
+                        <button class="ui green button click" style="margin-top: auto; padding: .6em;">Change password</button>
                     </div>
                 </div>
             </div>
@@ -90,10 +90,36 @@
         </div>
     </section>
 
+    <div class="ui mini modal">
+        <div class="header change-password-header">Changing password</div>
+        <div class="content">
+            <form>
+                <div class="input-block-inner change-password">
+                    <label>New password: <span class="required-color">*</span></label>
+                    <div class="ui input">
+                        <input type="text" placeholder="New password">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="actions">
+            <div class="ui negative button">Back</div>
+            <div class="ui positive button">Update</div>
+        </div>
+    </div>
+
+
 </main>
+
 <th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+<script type="text/javascript">
+    $('.click').click(function () {
+        $('.mini.modal')
+            .modal('show');
+    });
+</script>
 </body>
 </html>
