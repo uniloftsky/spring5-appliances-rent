@@ -133,6 +133,7 @@ footer p {
 
 .menu-item p {
     font-weight: 600;
+    text-align: center;
 }
 
 .active i {
@@ -1068,15 +1069,39 @@ footer p {
     width: 100%;
 }
 
+.profile-edit .input-block-inner:last-child {
+    margin-right: auto;
+    margin-left: 1.5em;
+}
+
 /* media queries */
 
 @media screen and (max-width: 990px){
-    .profile-filter {
+
+    .header-in {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title-box {
+        margin-bottom: 1.5em;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .title-box button {
         width: 30%;
     }
 
-    .profile-section {
-        width: 65%;
+    .title,
+    .subtitle {
+        width: 50%;
+    }
+
+    .title {
+        text-align: right;
+        padding-right: .5em;
     }
 }
 
@@ -1109,7 +1134,7 @@ footer p {
     }
 }
 
-@media screen and (max-width: 844px) {
+@media screen and (max-width: 850px) {
     .header-in {
         flex-direction: column;
         align-items: center;
@@ -1220,10 +1245,6 @@ footer p {
         width: 100%;
     }
 
-}
-
-@media screen and (max-width: 778px) {
-
     .hidden {
         position: absolute;
         width: 1px;
@@ -1241,6 +1262,28 @@ footer p {
     .search-button {
         width: 25%;
     }
+
+}
+
+@media screen and (max-width: 778px) {
+
+    /*.hidden {*/
+    /*    position: absolute;*/
+    /*    width: 1px;*/
+    /*    height: 1px;*/
+    /*    clip: rect(0 0 0 0);*/
+    /*    clip-path: inset(50%);*/
+    /*    white-space: nowrap;*/
+    /*    overflow: hidden;*/
+    /*}*/
+
+    /*.search-input {*/
+    /*    width: 70%;*/
+    /*}*/
+
+    /*.search-button {*/
+    /*    width: 25%;*/
+    /*}*/
 
     .inner-right {
         width: 70%;
@@ -1371,9 +1414,13 @@ footer p {
     .similar-sell-block {
         flex-direction: row;
     }
+
+    .profile-edit .input-block-inner:last-child {
+        margin-left: 0;
+    }
 }
 
-@media screen and (max-width: 562px) {
+@media screen and (max-width: 571px) {
 
     .title {
         font-size: 1.5rem;
@@ -1651,6 +1698,14 @@ footer p {
         min-height: unset!important;
     }
 
+    .menu-item p {
+        font-size: .75rem;
+    }
+
+    .similar-sell-block {
+        flex-direction: column;
+    }
+
 }
 
 @media screen and (max-width: 400px) {
@@ -1691,9 +1746,7 @@ footer p {
         font-size: .9rem;
     }
 
-    .similar-sell-block {
-        flex-direction: column;
-    }
+
 
     .offer-header {
         flex-direction: column;

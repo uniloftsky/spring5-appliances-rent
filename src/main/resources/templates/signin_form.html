@@ -27,24 +27,24 @@
 
     <section class="login-form-section">
         <div class="login-form-block">
-            <p class="login-form-title"><b>Returning</b> user</p>
+            <p class="login-form-title"><b>Авторизація</b> у профіль</p>
             <form class="ui form login-form" th:action="@{/login}" method="post">
                 <div class="form-login-inputs">
                     <div class="form-login-input">
                         <div class="field" style="margin-bottom: .5em;">
-                            <label>Login</label>
+                            <label>Логін</label>
                         </div>
                         <div class="ui left icon input" style="width: 100%;">
-                            <input type="text" placeholder="Login" name="username">
+                            <input type="text" placeholder="Логін" name="username">
                             <i class="user icon"></i>
                         </div>
                     </div>
                     <div class="form-login-input">
                         <div class="field" style="margin-bottom: .5em;">
-                            <label>Password</label>
+                            <label>Пароль</label>
                         </div>
                         <div class="ui left icon input" style="width: 100%;">
-                            <input type="password" placeholder="Password" name="password">
+                            <input type="password" placeholder="Пароль" name="password">
                             <i class="lock icon"></i>
                         </div>
                     </div>
@@ -52,12 +52,12 @@
                 <div class="ui buttons">
                     <button type="submit" class="ui labeled icon primary button login-button">
                         <i class="sign in alternate icon"></i>
-                        LOG IN
+                        УВІЙТИ
                     </button>
                     <div class="or hidden-or" data-text="or"></div>
                     <button id="register-btn" class="ui right labeled icon positive button login-button">
                         <i class="user plus icon"></i>
-                        REGISTER
+                        РЕЄСТРАЦІЯ
                     </button>
                 </div>
             </form>
