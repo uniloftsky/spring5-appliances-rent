@@ -63,6 +63,11 @@ public class HomeController {
 //        model.addAttribute("categories", categoryService.findAll());
         return "post_form";
     }
+
+    @GetMapping("/profile")
+    public String showProfile() {
+        return "profile";
+    }
 //
 //    @PostMapping("/postOffer")
 //    public String processPostForm(@ModelAttribute Item item, Principal principal) {

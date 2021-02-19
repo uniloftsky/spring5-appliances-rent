@@ -981,13 +981,86 @@ footer p {
     padding: 0 1em 0 1em;
 }
 
+/* profile page */
+
+.profile-in .ui.header {
+    font-size: 1rem;
+}
+
+.profile-section {
+    width: 71%;
+}
+
+.profile-page-title {
+    font-size: 1.15rem;
+    margin-bottom: 1.5em;
+}
+
+.profile-title {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.profile-in {
+    margin-bottom: 1.75em;
+}
+
+.profile-text {
+    margin-bottom: .25em;
+    font-size: .8rem;
+}
+
+.profile-text:last-child {
+    margin-bottom: 0;
+}
+
+.profile-text b {
+    font-weight: 550;
+}
+
+.profile-information-in {
+    display: flex;
+    align-items: center;
+    margin-bottom: .5em;
+}
+
+.profile-icon-box i {
+    background-color: #2185D0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    margin-right: .5em;
+}
+
+.ui.top.attached.tabular.menu .item {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.ui.top.attached.tabular.menu {
+    display: flex;
+}
+
 /* media queries */
+
+@media screen and (max-width: 990px){
+    .profile-filter {
+        width: 30%;
+    }
+
+    .profile-section {
+        width: 65%;
+    }
+}
+
 
 @media screen and (max-width: 960px){
     .offer-page .right-offer-info p {
         font-size: .65rem;
     }
 }
+
+
 
 @media screen and (max-width: 900px){
 
@@ -1114,6 +1187,10 @@ footer p {
     .offer-page .right-offer-img {
         min-height: 100px;
         max-height: 300px;
+    }
+
+    .profile-section {
+        width: 100%;
     }
 
 }
@@ -1357,6 +1434,27 @@ footer p {
 
     .offer-page .right-offer-info {
         padding: 1em;
+    }
+
+    .ui.top.attached.tabular.menu {
+        flex-direction: column;
+    }
+
+    .ui.top.attached.tabular.menu .active {
+        border-bottom: 1px solid #d4d4d5;
+    }
+
+    .ui.top.attached.tabular.menu .item {
+        border-left: 1px solid #d4d4d5;
+        border-right: 1px solid #d4d4d5;
+    }
+
+    .ui.top.attached.tabular.menu .item:first-child {
+        border-top: 1px solid #d4d4d5;
+    }
+
+    .ui.segment[class*="bottom attached"] {
+        margin-bottom: 0;
     }
 
 }
