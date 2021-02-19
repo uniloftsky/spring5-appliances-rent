@@ -1041,6 +1041,12 @@ footer p {
     display: flex;
 }
 
+/* profile edit */
+
+.profile-edit .input-block-inner:first-child {
+    margin-bottom: 1em;
+}
+
 /* media queries */
 
 @media screen and (max-width: 990px){

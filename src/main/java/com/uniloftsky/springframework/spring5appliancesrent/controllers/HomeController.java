@@ -47,12 +47,6 @@ public class HomeController {
     public Set<Item> getLastPosts() {
         return itemService.getLastPosts();
     }
-
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-//        model.addAttribute("users", userService.findAll());
-        return "users";
-    }
 //
     @GetMapping("/postOffer")
     public String showPostForm(Model model) {
@@ -64,10 +58,6 @@ public class HomeController {
         return "post_form";
     }
 
-    @GetMapping("/profile")
-    public String showProfile() {
-        return "profile";
-    }
 //
 //    @PostMapping("/postOffer")
 //    public String processPostForm(@ModelAttribute Item item, Principal principal) {

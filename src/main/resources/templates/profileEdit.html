@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css">
+    <title>Оренда побутової техніки - Авторизація</title>
+</head>
+<body>
+<th:block th:insert="~{fragments/header-fragment}"></th:block>
+<main style="z-index: 0; position: relative;">
+    <section class="page-title-section">
+        <div class="wrap">
+            <p class="page-title"><b>Редагування</b> профіля</p>
+            <div class="ui breadcrumb">
+                <a class="section" href="/index">Головна</a>
+                <i class="right angle icon divider"></i>
+                <a class="section" href="/postOffer">Профіль</a>
+                <i class="right angle icon divider"></i>
+                <a class="section" href="/postOffer">Редагування профіля</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="post-offer-section">
+        <div class="wrap">
+            <div class="input-block">
+                <p class="input-block-title"><b>User</b> data</p>
+                <div class="input-block-in profile-edit" style="flex-wrap:  wrap;">
+                    <div class="input-block-inner">
+                        <label>Ім'я: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Login">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <label>Прізвище: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <label>По батькові: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Repeat password">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <label>Номер телефону: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Repeat password">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <label>Пошта: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Repeat password">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <label>Адреса: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="Repeat password">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="input-block">
+                <p class="input-block-title"><b>Security</b> data</p>
+                <div class="input-block-in flex-wrap register-page">
+                    <div class="input-block-inner">
+                        <label>Login: <span class="required-color">*</span></label>
+                        <div class="ui input">
+                            <input type="text" placeholder="First name">
+                        </div>
+                    </div>
+                    <div class="input-block-inner">
+                        <button class="ui green button" style="margin-top: auto; padding: .6em;">Change password</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block-buttons">
+                <button class="ui primary button">Update</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+<th:block th:insert="~{fragments/footer-fragment}"></th:block>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
+</body>
+</html>
