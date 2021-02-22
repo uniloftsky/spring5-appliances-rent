@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" th:href="@{/styles/style.css}" type="text/css">
+    <title>Оренда побутової техніки - Авторизація</title>
+</head>
+<body>
+<th:block th:insert="~{fragments/header-fragment}"></th:block>
+<main style="z-index: 0; position: relative;">
+    <section class="page-title-section">
+        <div class="wrap">
+            <div class="offer-header">
+                <div class="offer-header-info">
+                    <p class="page-title"><b>Оформлення оренди</b></p>
+                    <div class="ui breadcrumb">
+                        <a class="section" href="/index">Головна</a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" href="/offer">Оформлення оголошення</a>
+                    </div>
+                </div>
+                <div class="offer-header-id">
+                    <p class="id-text">ID оголошення: 12345</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="order-section">
+        <div class="wrap">
+            <div class="ui blue message">
+                <p><b>Інструкція щодо оформлення оренди</b></p>
+                <p>Якщо ви знайшли бажану техніку і хочете оформити оренду, слідуйте наступним крокам:</p>
+                <ul class="order-instruction">
+                    <li>Зв'яжіться із власником техніки за допомогою номера телефону або напишіть йому на електронну пошту</li>
+                    <li>Узгодьте методи оплати і транспортування побутової техніки</li>
+                    <li>Оформіть оренду на сайті</li>
+                </ul>
+            </div>
+            <div class="order-information">
+                <p class="input-block-title"><b>Інформація</b> про замовлення</p>
+                <div class="ui items">
+                    <div class="item">
+                        <div class="ui small image">
+                            <img src="/images/wireframe/image.png" th:src="@{/images/items/fridge3.webp}">
+                        </div>
+                        <div class="content">
+                            <div class="header">Холодильник Самсунг</div>
+                            <div class="meta">
+                                <span class="price">5000 грн</span>
+                                <span class="stay">Холодильники</span>
+                            </div>
+                            <div class="description">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus. In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam. Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu orci.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="ui green button">Підтвердити замовлення</button>
+            </div>
+        </div>
+
+    </section>
+</main>
+<th:block th:insert="~{fragments/footer-fragment}"></th:block>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.ui.dropdown')
+            .dropdown();
+    });
+</script>
+</body>
+</html>

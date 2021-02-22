@@ -1074,6 +1074,32 @@ footer p {
     margin-left: 1.5em;
 }
 
+/* order section */
+
+.order-section {
+    margin-top: 2.5em;
+    padding: 0 1em 0 1em;
+    margin-bottom: 2.5em;
+}
+
+.order-instruction {
+    padding-left: 1.25em;
+}
+
+.order-information {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-information .ui.items {
+    margin-top: 0;
+}
+
+.order-information .ui.green.button {
+    margin-top: 1em;
+    margin-left: auto;
+}
+
 /* media queries */
 
 @media screen and (max-width: 990px){
@@ -1746,8 +1772,6 @@ footer p {
         font-size: .9rem;
     }
 
-
-
     .offer-header {
         flex-direction: column;
     }
@@ -1759,6 +1783,10 @@ footer p {
     .offer-header-id {
         margin-bottom: 1.5em;
         order: 1;
+    }
+
+    .order-information .ui.green.button {
+        margin: 0 auto;
     }
 }
 
