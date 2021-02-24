@@ -4,10 +4,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.TypeRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class TypeServiceImpl implements TypeService {
@@ -21,6 +18,13 @@ public class TypeServiceImpl implements TypeService {
     @Override
     public Set<Type> findAll() {
         return new HashSet<>(typeRepository.findAll());
+    }
+
+    @Override
+    public Set<Type> findAllSortedById(Comparator<Type> comparator) {
+        TreeSet<Type> sortedTypes = new TreeSet<>(comparator);
+        typeRepository.findAll().stream().iterator().forEachRemaining(sortedTypes::add);
+        return sortedTypes;
     }
 
     @Override

@@ -25,12 +25,16 @@ public class SecurityController {
     }
 
     @PostMapping("/register")
-    public String processRegister(@ModelAttribute User user) {
+    public String processRegister(@ModelAttribute User user, Model model) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String encodedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodedPassword);
         userService.save(user);
-        return "register_success";
+        model.addAttribute("registered", true);
+        return "signin_form";
     }
+
+//    @ModelAttribute("user")
+//    public
 
 }

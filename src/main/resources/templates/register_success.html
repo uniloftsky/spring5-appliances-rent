@@ -5,9 +5,29 @@
     <title>Title</title>
 </head>
 <body>
-<div class="container text-center">
-    <h3>You have signed up successfully!</h3>
-    <h4><a th:href="@{/login}">Click here to Login</a></h4>
+<div class="catalog-items">
+    <div class="catalog-item" th:each="item : ${catalogItems}">
+        <div class="catalog-item-img-block">
+            <img class="catalog-item-img" src="" th:src="${item.img}" alt="">
+        </div>
+        <div class="catalog-item-info">
+            <div class="catalog-item-header">
+                <p class="catalog-item-title"><b th:text="${item.name}">Холодильник SAMSUNG
+                    RB29FSRNDSA/UA</b></p>
+                <p class="catalog-item-price" th:text="${item.price + ' грн.'}">11499 грн.</p>
+            </div>
+            <div class="catalog-item-main">
+                <p class="catalog-item-punkt" th:text="${item.category.type.typeName}">Пункт1</p>
+                <p class="catalog-item-punkt" th:text="${item.category.categoryName}">Пункт2</p>
+            </div>
+            <div class="catalog-item-footer">
+                <p class="catalog-item-location" th:text="${item.location}">м. Бердичів, вул.
+                    Соборна, 18</p>
+                <a class="catalog-item-href" th:href="@{/offer(id = ${item.id})}">Докладніше <i
+                        class="ong arrow alternate right icon"></i></a>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

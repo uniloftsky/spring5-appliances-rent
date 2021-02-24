@@ -61,6 +61,14 @@ footer p {
     align-items: center;
 }
 
+.title-box .ui.dropdown {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.title-box .ui.dropdown .menu>.item a {
+    color: black;
+}
+
 .title {
     font-size: 2rem;
     border-right: 1px solid #575757;
@@ -77,6 +85,12 @@ footer p {
     display: flex;
     align-items: baseline;
 }
+
+.inner-box-anonymous {
+    display: flex;
+    align-items: baseline;
+}
+
 
 .inner-box:first-child {
     border-right: 1px solid #575757;
@@ -1289,27 +1303,17 @@ footer p {
         width: 25%;
     }
 
+    .filter-in .filter-in-in .ui.input {
+        width: 100%;
+    }
+
+    .filter-section .button {
+        margin-right: 0;
+    }
+
 }
 
 @media screen and (max-width: 778px) {
-
-    /*.hidden {*/
-    /*    position: absolute;*/
-    /*    width: 1px;*/
-    /*    height: 1px;*/
-    /*    clip: rect(0 0 0 0);*/
-    /*    clip-path: inset(50%);*/
-    /*    white-space: nowrap;*/
-    /*    overflow: hidden;*/
-    /*}*/
-
-    /*.search-input {*/
-    /*    width: 70%;*/
-    /*}*/
-
-    /*.search-button {*/
-    /*    width: 25%;*/
-    /*}*/
 
     .inner-right {
         width: 70%;
@@ -1458,8 +1462,10 @@ footer p {
         padding: 4em 0 4em 0;
     }
 
-    .title-box button {
+    .title-box button,
+    .title-box .ui.button {
         width: 70%;
+        text-align: center;
     }
 
     .title-box .ui.primary {

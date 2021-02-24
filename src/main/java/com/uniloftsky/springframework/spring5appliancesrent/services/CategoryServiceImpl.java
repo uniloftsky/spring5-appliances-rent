@@ -4,10 +4,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.model.Category;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -21,6 +18,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Set<Category> findAll() {
         return new HashSet<>(categoryRepository.findAll());
+    }
+
+    @Override
+    public Set<Category> findAllSortedById(Comparator<Category> comparator) {
+        TreeSet<Category> sortedCategories = new TreeSet<>(comparator);
+        categoryRepository.findAll().stream().iterator().forEachRemaining(sortedCategories::add);
+        return sortedCategories;
     }
 
     @Override

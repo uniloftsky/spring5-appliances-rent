@@ -1,15 +1,14 @@
 package com.uniloftsky.springframework.spring5appliancesrent.bootstrap;
 
-import com.uniloftsky.springframework.spring5appliancesrent.model.Category;
-import com.uniloftsky.springframework.spring5appliancesrent.model.Role;
-import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
-import com.uniloftsky.springframework.spring5appliancesrent.model.User;
+import com.uniloftsky.springframework.spring5appliancesrent.model.*;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.RoleRepository;
 import com.uniloftsky.springframework.spring5appliancesrent.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -83,7 +82,7 @@ public class DataLoader implements CommandLineRunner {
 
         categoryService.saveAll(categories2);
 
-        /*List<Item> items = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         items.add(new Item(categories1.get(0), user, "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name2", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
@@ -91,14 +90,14 @@ public class DataLoader implements CommandLineRunner {
         items.add(new Item(categories1.get(0), user, "name4", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name5", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name6", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name7", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name8", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name9", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name10", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name11", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name7", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name8", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name9", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name10", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name11", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), user, "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
 
-        itemService.saveAll(items);*/
+        itemService.saveAll(items);
     }
 }

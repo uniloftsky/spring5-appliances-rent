@@ -17,15 +17,17 @@
         <div class="wrap">
             <div class="offer-header">
                 <div class="offer-header-info">
-                    <p class="page-title"><b>Холодильник</b></p>
+                    <p class="page-title"><b th:text="${offer.name}">Холодильник</b></p>
                     <div class="ui breadcrumb">
                         <a class="section" href="/index">Головна</a>
                         <i class="right angle icon divider"></i>
-                        <a class="section" href="/offer">Холодильник</a>
+                        <a class="section" href="/catalog">Каталог</a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" th:href="@{/offer(id = ${offer.id})}" th:text="${offer.name}">Холодильник</a>
                     </div>
                 </div>
                 <div class="offer-header-id">
-                    <p class="id-text">ID оголошення: 12345</p>
+                    <p class="id-text">ID оголошення: <span th:text="${offer.id}">12345</span></p>
                 </div>
             </div>
         </div>
@@ -37,19 +39,19 @@
                     <img class="offer-section-img" th:src="@{images/items/fridge4.webp}">
                 </div>
                 <div class="offer-section-header-info">
-                    <p class="offer-price">54.980 EURO</p>
+                    <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>
                     <div class="offer-info-details">
                         <div class="offer-info-detail">
                             <p class="offer-detail-name">Категорія</p>
-                            <p class="offer-detail-info">Car</p>
+                            <p class="offer-detail-info" th:text="${offer.category.categoryName}">Car</p>
                         </div>
                         <div class="offer-info-detail">
                             <p class="offer-detail-name">Тип</p>
-                            <p class="offer-detail-info">Car1</p>
+                            <p class="offer-detail-info" th:text="${offer.category.type.typeName}">Car1</p>
                         </div>
                         <div class="offer-info-detail">
                             <p class="offer-detail-name">Розташування</p>
-                            <p class="offer-detail-info">location</p>
+                            <p class="offer-detail-info" th:text="${offer.location}">location</p>
                         </div>
                     </div>
                     <div class="similar-sell-block">
@@ -67,7 +69,7 @@
             <div class="offer-section-main">
                 <div class="offer-section-main-info">
                     <p class="offer-section-main-title"><b>Інформація</b> про оголошення</p>
-                    <p class="offer-section-main-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus.
+                    <p class="offer-section-main-text" th:text="${offer.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus.
                         In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam. Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu orci.</p>
                 </div>
             </div>
@@ -79,7 +81,7 @@
                             <div class="contact-detail-icon">
                                 <i class="phone icon"></i>
                             </div>
-                            <p class="contact-detail-text">
+                            <p class="contact-detail-text" th:text="${offer.user.phone}">
                                 0040 742 016 756
                             </p>
                         </div>
@@ -93,7 +95,7 @@
                             <div class="contact-detail-icon">
                                 <i class="map marker alternate icon"></i>
                             </div>
-                            <p class="contact-detail-text">
+                            <p class="contact-detail-text" th:text="${offer.location}">
                                 Berlin, Germany, nr. 250330, main street
                             </p>
                         </div>
@@ -112,42 +114,17 @@
                 <p class="offer-section-main-title"><b>Інші</b> оголошення</p>
                 <div class="other-offers-block">
                     <div class="other-offers">
-                        <div class="right-offer offer-page">
-                            <div class="right-offer-img-block">
-                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                        <a th:each="similar : ${similarPosts}" th:href="@{/offer(id = ${similar.id})}" class="right-offer offer-page">
+                            <div  class="right-offer">
+                                <div class="right-offer-img-block">
+                                    <img th:src="${similar.img}" class="right-offer-img" alt="">
+                                </div>
+                                <div class="right-offer-info">
+                                    <p class="right-offer-title" th:text="${similar.name}">Mercedes-Benz CLS 320</p>
+                                    <p class="right-offer-price" th:text="${similar.price}">54980 грн.</p>
+                                </div>
                             </div>
-                            <div class="right-offer-info">
-                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                                <p class="right-offer-price">54980 грн.</p>
-                            </div>
-                        </div>
-                        <div class="right-offer offer-page">
-                            <div class="right-offer-img-block">
-                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
-                            </div>
-                            <div class="right-offer-info">
-                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                                <p class="right-offer-price">54980 грн.</p>
-                            </div>
-                        </div>
-                        <div class="right-offer offer-page">
-                            <div class="right-offer-img-block">
-                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
-                            </div>
-                            <div class="right-offer-info">
-                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                                <p class="right-offer-price">54980 грн.</p>
-                            </div>
-                        </div>
-                        <div class="right-offer offer-page">
-                            <div class="right-offer-img-block">
-                                <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
-                            </div>
-                            <div class="right-offer-info">
-                                <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                                <p class="right-offer-price">54980 грн.</p>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

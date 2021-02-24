@@ -26,63 +26,66 @@
 
     <section class="post-offer-section">
         <div class="wrap">
-            <div class="input-block">
-                <p class="input-block-title"><b>Інформація</b> користувача</p>
-                <div class="input-block-in">
-                    <div class="input-block-inner">
-                        <label>Логін: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Логін">
-                        </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Пароль: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Пароль">
-                        </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Повторіть пароль: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Повторіть пароль">
-                        </div>
-                    </div>
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <div class="input-block">
+                    <p class="input-block-title"><b>Інформація</b> користувача</p>
 
-                </div>
-            </div>
-            <div class="input-block">
-                <p class="input-block-title"><b>Додаткова</b> інформація</p>
-                <div class="input-block-in flex-wrap register-page">
-                    <div class="input-block-inner">
-                        <label>Ім'я: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="First name">
+                    <div class="input-block-in">
+                        <div class="input-block-inner">
+                            <label>Логін: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" name="login" th:field="*{login}" placeholder="Логін">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Прізвище: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Last name">
+                        <div class="input-block-inner">
+                            <label>Пароль: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" name="password" th:field="*{password}" placeholder="Пароль">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Пошта: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="email" placeholder="Email">
+                        <div class="input-block-inner">
+                            <label>Повторіть пароль: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" name="repeat_password" placeholder="Повторіть пароль">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Номер телефону: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Phone">
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
-            <div class="input-block-buttons">
-                <button class="ui primary button">Зареєструватись</button>
-            </div>
+                <div class="input-block">
+                    <p class="input-block-title"><b>Додаткова</b> інформація</p>
+                    <div class="input-block-in flex-wrap register-page">
+                        <div class="input-block-inner">
+                            <label>Ім'я: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" name="firstName" th:field="*{firstName}" placeholder="First name">
+                            </div>
+                        </div>
+                        <div class="input-block-inner">
+                            <label>Прізвище: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" th:field="*{lastName}" placeholder="Last name">
+                            </div>
+                        </div>
+                        <div class="input-block-inner">
+                            <label>Пошта: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="email" th:field="*{email}" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="input-block-inner">
+                            <label>Номер телефону: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" th:field="*{phone}" placeholder="Phone">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="input-block-buttons">
+                    <button class="ui primary button">Зареєструватись</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -91,43 +94,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <script src="https://cdn.rawgit.com/mdehoog/Semantic-UI/6e6d051d47b598ebab05857545f242caf2b4b48c/dist/semantic.min.js"></script>
-<script type="text/javascript">
-    $("#imageText").click(function () {
-        $(this).parent().find("#imageUpload").click();
-    });
-
-    $("#imageButton").click(function () {
-        $(this).parent().find("#imageUpload").click();
-    });
-
-    $('input:file', '.ui.action.input')
-        .on('change', function (e) {
-            var name = e.target.files[0].name;
-            $('input:text', $(e.target).parent()).val(name);
-        });
-
-    var calendarOpts = {
-        type: 'date',
-        formatter: {
-            date: function (date, settings) {
-                if (!date) return '';
-                var day = date.getDate() + '';
-                if (day.length < 2) {
-                    day = '0' + day;
-                }
-                var month = (date.getMonth() + 1) + '';
-                if (month.length < 2) {
-                    month = '0' + month;
-                }
-                var year = date.getFullYear();
-                return year + '-' + month + '-' + day;
-            }
-        }
-    };
-    $('#datefield').calendar(calendarOpts);
-    $(document).ready(function () {
-        $('.ui.dropdown').dropdown();
-    });
-</script>
 </body>
 </html>

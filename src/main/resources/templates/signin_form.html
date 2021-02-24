@@ -61,22 +61,19 @@
                     </button>
                 </div>
             </form>
+            <div th:if="${registered == true}" class="ui positive message">
+                <div class="header">
+                    Ви успішно зареєструвались
+                </div>
+                <p>Використайте <b>форму вище</b> для авторизації.</p>
+            </div>
         </div>
+
     </section>
 
 </main>
 <th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-<!--<script type="text/javascript">-->
-<!--    $(document).ready(function(){-->
-<!--        $('.ui.accordion').accordion();-->
-<!--        $('.button')-->
-<!--            .popup({-->
-<!--                inline: true-->
-<!--            })-->
-<!--        ;-->
-<!--    });-->
-<!--</script>-->
 </body>
 </html>

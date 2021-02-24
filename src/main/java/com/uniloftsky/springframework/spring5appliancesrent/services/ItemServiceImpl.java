@@ -3,11 +3,17 @@ package com.uniloftsky.springframework.spring5appliancesrent.services;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemAscComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.model.User;
+import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemPage;
+import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemSearchCriteria;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.ItemRepository;
+import com.uniloftsky.springframework.spring5appliancesrent.repositories.item.ItemCriteriaRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static java.util.stream.Collectors.toCollection;
@@ -18,9 +24,13 @@ public class ItemServiceImpl implements ItemService {
     private final ItemRepository itemRepository;
     private final Comparator<Item> comparatorAscById = new ItemAscComparatorById();
     private final Comparator<Item> comparatorDescById = new ItemDescComparatorById();
+    private final UserService userService;
+    private final ItemCriteriaRepository itemCriteriaRepository;
 
-    public ItemServiceImpl(ItemRepository itemRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, UserService userService, ItemCriteriaRepository itemCriteriaRepository) {
         this.itemRepository = itemRepository;
+        this.userService = userService;
+        this.itemCriteriaRepository = itemCriteriaRepository;
     }
 
     @Override
@@ -41,13 +51,28 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Set<Item> getLastPosts() {
-        return findAllSortedById(comparatorDescById).stream().limit(3).collect(toCollection(() -> new TreeSet<>(comparatorDescById)));
+    public Set<Item> getLimitedCountPosts(Comparator<Item> comparator, int count) {
+        return findAllSortedById(comparator).stream().limit(count).collect(toCollection(() -> new TreeSet<>(comparator)));
+    }
+
+    @Override
+    public Set<Item> getLastPostsIndexPage() {
+        return getLimitedCountPosts(comparatorDescById, 3);
+    }
+
+    @Override
+    public Set<Item> getSimilarPosts() {
+        return getLimitedCountPosts(comparatorDescById, 4);
     }
 
     @Override
     public Page<Item> findAll(Pageable pageable) {
         return itemRepository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Item> getCatalogItems(ItemPage itemPage, ItemSearchCriteria itemSearchCriteria) {
+        return itemCriteriaRepository.findAllWithFilters(itemPage, itemSearchCriteria);
     }
 
     @Override
@@ -60,7 +85,10 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item save(Item obj) {
+    public Item save(Item obj, Authentication authentication) {
+        User user = userService.findByLogin(authentication.getName());
+        obj.setUser(user);
+        obj.setDate(LocalDate.now());
         return itemRepository.save(obj);
     }
 

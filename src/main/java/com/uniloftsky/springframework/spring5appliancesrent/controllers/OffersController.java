@@ -1,26 +1,52 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
+import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService;
+import com.uniloftsky.springframework.spring5appliancesrent.services.UserService;
+import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.time.LocalDate;
-    
+import java.util.Set;
+
 @Controller
 public class OffersController {
 
-    @GetMapping("/testD")
-    public String test(@RequestParam("date") String date) {
-        System.out.println(date);
-        LocalDate date1 = LocalDate.parse(date);
-        System.out.println(date1);
+    private final ItemService itemService;
+    private final UserService userService;
+
+    public OffersController(ItemService itemService, UserService userService) {
+        this.itemService = itemService;
+        this.userService = userService;
+    }
+
+    @GetMapping("/postOffer")
+    public String initPostOfferForm(Model model) {
+        model.addAttribute("offer", new Item());
+        return "post_form";
+    }
+
+    @PostMapping("/postOffer")
+    public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication) {
+        Item savedItem = itemService.save(item, authentication);
         return "index";
     }
 
-    @GetMapping("/offer")
-    public String getOffer() {
+    @GetMapping(value = "/offer", params = "id")
+    public String getOffer(@Param("id") Long id, Model model) {
+        model.addAttribute("offer", itemService.findById(id));
         return "offer";
     }
+
+    @ModelAttribute("similarPosts")
+    public Set<Item> getSimilarPosts() {
+        return itemService.getSimilarPosts();
+    }
+
 
     @GetMapping("/order")
     public String getOrder() {

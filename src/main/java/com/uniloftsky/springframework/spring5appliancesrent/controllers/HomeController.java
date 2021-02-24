@@ -43,20 +43,10 @@ public class HomeController {
         return itemService.findAll();
     }
 
-    @ModelAttribute("lastPosts")
-    public Set<Item> getLastPosts() {
-        return itemService.getLastPosts();
-    }
-//
-    @GetMapping("/postOffer")
-    public String showPostForm(Model model) {
-//        Item item = new Item();
-//        model.addAttribute("username", principal.getName());
-//        model.addAttribute("item", item);
-//        model.addAttribute("types", typeService.findAll());
-//        model.addAttribute("categories", categoryService.findAll());
-        return "post_form";
-    }
+//    @ModelAttribute("lastPosts")
+//    public Set<Item> getLastPosts() {
+//        return itemService.getLastPosts();
+//    }
 
 //
 //    @PostMapping("/postOffer")

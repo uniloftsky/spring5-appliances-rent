@@ -26,78 +26,78 @@
 
     <section class="post-offer-section">
         <div class="wrap">
-            <div class="input-block">
-                <p class="input-block-title"><b>Інформація</b> про оголошення</p>
-                <div class="input-block-in">
-                    <div class="input-block-inner">
-                        <label>Тип: <span class="required-color">*</span></label>
-                        <select class="ui dropdown">
-                            <option value="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                        </select>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Категорія: <span class="required-color">*</span></label>
-                        <select class="ui corner labeled dropdown">
-                            <option value="">Gender</option>
-                            <option value="1">Male</option>
-                            <option value="0">Female</option>
-                        </select>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Розташування: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Location">
+            <form th:action="@{/postOffer}" method="post" th:object="${offer}">
+                <div class="input-block">
+                    <p class="input-block-title"><b>Інформація</b> про оголошення</p>
+                    <div class="input-block-in">
+                        <div class="input-block-inner">
+                            <label>Тип: <span class="required-color">*</span></label>
+                            <select class="ui dropdown">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
                         </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="input-block">
-                <p class="input-block-title"><b>Опис</b> оголошення</p>
-                <div class="input-block-in">
-                    <div class="input-block-inner full-width">
-                        <div class="ui form">
-                            <label>Опис: <span class="required-color">*</span></label>
-                            <div class="field">
-                                <textarea style="resize: none"></textarea>
-                            </div>
+                        <div class="input-block-inner">
+                            <label>Категорія: <span class="required-color">*</span></label>
+                            <select class="ui corner labeled dropdown" th:field="*{category}">
+                                <option value="">Gender</option>
+                                <option value="1">Male</option>
+                                <option value="0">Female</option>
+                            </select>
                         </div>
-                    </div>
-
-                </div>
-            </div>
-            <div class="input-block">
-                <p class="input-block-title"><b>Ціна</b> оголошення</p>
-                <div class="input-block-in">
-                    <div class="input-block-inner">
-                        <label>Ціна: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="number" placeholder="Ціна">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="input-block">
-                <p class="input-block-title"><b>Зображення</b> оголошення</p>
-                <div class="input-block-in">
-                    <div class="input-block-inner">
-                        <label>Зображення: <span class="required-color">*</span></label>
-                        <div class="ui action input">
-                            <input id="imageText" type="text" placeholder="Фото" readonly>
-                            <input id="imageUpload" type="file">
-                            <div id="imageButton" class="ui icon button">
-                                <i class="attach icon"></i>
+                        <div class="input-block-inner">
+                            <label>Розташування: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Location" th:field="*{location}">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="input-block-buttons">
-                <button class="ui green button">Підтвердити</button>
-                <button class="ui primary button">Попередній перегляд</button>
-            </div>
+                <div class="input-block">
+                    <p class="input-block-title"><b>Опис</b> оголошення</p>
+                    <div class="input-block-in">
+                        <div class="input-block-inner full-width">
+                            <div class="ui form">
+                                <label>Опис: <span class="required-color">*</span></label>
+                                <div class="field">
+                                    <textarea style="resize: none" th:field="*{description}"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-block">
+                    <p class="input-block-title"><b>Ціна</b> оголошення</p>
+                    <div class="input-block-in">
+                        <div class="input-block-inner">
+                            <label>Ціна: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="number" placeholder="Ціна" th:field="*{price}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-block">
+                    <p class="input-block-title"><b>Зображення</b> оголошення</p>
+                    <div class="input-block-in">
+                        <div class="input-block-inner">
+                            <label>Зображення: <span class="required-color">*</span></label>
+                            <div class="ui action input">
+                                <input id="imageText" type="text" placeholder="Фото" readonly>
+                                <input id="imageUpload" type="file">
+                                <div id="imageButton" class="ui icon button">
+                                    <i class="attach icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-block-buttons">
+                    <button type="submit" class="ui green button">Підтвердити</button>
+                    <button class="ui primary button">Попередній перегляд</button>
+                </div>
+            </form>
         </div>
     </section>
 
@@ -109,11 +109,11 @@
 <script type="text/javascript">
     $("#imageText").click(function () {
         $(this).parent().find("#imageUpload").click();
-        });
+    });
 
     $("#imageButton").click(function () {
         $(this).parent().find("#imageUpload").click();
-        });
+    });
 
     $('input:file', '.ui.action.input')
         .on('change', function (e) {
