@@ -48,6 +48,7 @@ public class DataLoader implements CommandLineRunner {
         User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk");
         String password1 = encoder.encode("123456");
         user1.setPassword(password1);
+        user1.getRoles().add(roles.get(1));
         user1.getRoles().add(roles.get(0));
 
         userService.save(user);

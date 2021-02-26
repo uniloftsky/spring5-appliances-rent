@@ -19,6 +19,7 @@ public class OffersController {
     private final ItemService itemService;
     private final UserService userService;
 
+
     public OffersController(ItemService itemService, UserService userService) {
         this.itemService = itemService;
         this.userService = userService;
@@ -30,10 +31,13 @@ public class OffersController {
         return "post_form";
     }
 
+    //todo
     @PostMapping("/postOffer")
     public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication) {
+        item.setImg("img");
+        item.setName("nameNew");
         Item savedItem = itemService.save(item, authentication);
-        return "index";
+        return "redirect:/offer?id=" + savedItem.getId();
     }
 
     @GetMapping(value = "/offer", params = "id")
@@ -45,6 +49,11 @@ public class OffersController {
     @ModelAttribute("similarPosts")
     public Set<Item> getSimilarPosts() {
         return itemService.getSimilarPosts();
+    }
+
+    @ModelAttribute("lastPosts")
+    public Set<Item> getLastPosts() {
+        return itemService.getLastPostsIndexPage();
     }
 
 

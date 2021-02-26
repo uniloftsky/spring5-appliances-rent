@@ -19,39 +19,21 @@
             <div class="last-offers">
                 <div class="left-offer">
                     <div class="left-offer-img-block">
-                        <img th:src="@{/images/items/fridge2.webp}" class="left-offer-img" alt="">
+                        <img th:src="${lastPost.img}" class="left-offer-img" alt="">
                     </div>
                     <div class="left-offer-info">
-                        <p class="left-offer-title">Mercedes-Benz CLS 320</p>
-                        <p class="left-offer-price">54980 грн.</p>
+                        <p class="left-offer-title" th:text="${lastPost.name}">Mercedes-Benz CLS 320</p>
+                        <p class="left-offer-price" th:text="${lastPost.price + ' грн.'}"><54980 грн.</p>
                     </div>
                 </div>
                 <div class="right-offers">
-                    <div class="right-offer">
+                    <div class="right-offer" th:each="lastPost1 : ${lastPosts}">
                         <div class="right-offer-img-block">
-                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
+                            <img th:src="${lastPost1.img}" class="right-offer-img" alt="">
                         </div>
                         <div class="right-offer-info">
-                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                            <p class="right-offer-price">54980 грн.</p>
-                        </div>
-                    </div>
-                    <div class="right-offer">
-                        <div class="right-offer-img-block">
-                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
-                        </div>
-                        <div class="right-offer-info">
-                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                            <p class="right-offer-price">54980 грн.</p>
-                        </div>
-                    </div>
-                    <div class="right-offer">
-                        <div class="right-offer-img-block">
-                            <img th:src="@{/images/items/fridge2.webp}" class="right-offer-img" alt="">
-                        </div>
-                        <div class="right-offer-info">
-                            <p class="right-offer-title">Mercedes-Benz CLS 320</p>
-                            <p class="right-offer-price">54980 грн.</p>
+                            <p class="right-offer-title" th:text="${lastPost1.name}">Mercedes-Benz CLS 320</p>
+                            <p class="right-offer-price" th:text="${lastPost1.price + ' грн.'}">54980 грн.</p>
                         </div>
                     </div>
                 </div>
@@ -165,10 +147,11 @@
 <th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-<script type="text/javascript">
+<script>
     $(document).ready(function () {
-        $('.ui.dropdown')
-            .dropdown();
+        $('.ui.dropdown').dropdown({
+            action: 'select'
+        });
     });
 </script>
 </body>

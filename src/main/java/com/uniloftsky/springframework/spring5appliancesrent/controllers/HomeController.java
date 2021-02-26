@@ -1,5 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.services.CategoryService;
 import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.Comparator;
 import java.util.Set;
 
 @Controller
@@ -19,6 +21,8 @@ public class HomeController {
     private final ItemService itemService;
     private final CategoryService categoryService;
     private final TypeService typeService;
+
+    private final Comparator<Item> comparator = new ItemDescComparatorById();
 
     public HomeController(UserService userService, ItemService itemService, CategoryService categoryService, TypeService typeService) {
         this.userService = userService;
@@ -30,6 +34,7 @@ public class HomeController {
     @GetMapping({"", "/", "index", "/index"})
     public String getIndexPage(Model model) {
         model.addAttribute("items", itemService.findAll());
+        model.addAttribute("lastPost", itemService.getLimitedCountPosts(comparator, 1).stream().findFirst().get());
         return "index";
     }
 
@@ -43,10 +48,10 @@ public class HomeController {
         return itemService.findAll();
     }
 
-//    @ModelAttribute("lastPosts")
-//    public Set<Item> getLastPosts() {
-//        return itemService.getLastPosts();
-//    }
+    @ModelAttribute("lastPosts")
+    public Set<Item> getLastPosts() {
+        return itemService.getLastPostsIndexPage();
+    }
 
 //
 //    @PostMapping("/postOffer")

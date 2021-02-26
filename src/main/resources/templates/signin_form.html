@@ -55,7 +55,7 @@
                         УВІЙТИ
                     </button>
                     <div class="or hidden-or" data-text="or"></div>
-                    <button id="register-btn" class="ui right labeled icon positive button login-button">
+                    <button type="button" onclick="window.location='/register';" id="register-btn" class="ui right labeled icon positive button login-button">
                         <i class="user plus icon"></i>
                         РЕЄСТРАЦІЯ
                     </button>
@@ -75,5 +75,12 @@
 <th:block th:insert="~{fragments/footer-fragment}"></th:block>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.ui.dropdown').dropdown({
+            action: 'select'
+        });
+    });
+</script>
 </body>
 </html>
