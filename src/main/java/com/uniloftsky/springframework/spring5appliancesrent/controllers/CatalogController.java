@@ -52,12 +52,6 @@ public class CatalogController {
         return categoryService.findAllSortedById(comparator);
     }
 
-//    @ModelAttribute("catalogItems")
-//    public Set<Item> getItemsCatalog() {
-//        final Comparator<Item> comparator = new ItemAscComparatorById();
-//        return itemService.findAllSortedById(comparator);
-//    }
-
     @GetMapping("catalogFilter")
     public String filterItems(ItemPage itemPage, ItemSearchCriteria itemSearchCriteria, Model model) {
         Page<Item> pages = itemService.getCatalogItems(itemPage, itemSearchCriteria);

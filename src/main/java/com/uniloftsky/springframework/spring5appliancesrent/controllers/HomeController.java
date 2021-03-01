@@ -53,13 +53,4 @@ public class HomeController {
         return itemService.getLastPostsIndexPage();
     }
 
-//
-//    @PostMapping("/postOffer")
-//    public String processPostForm(@ModelAttribute Item item, Principal principal) {
-//        item.setDate(LocalDate.now());
-//        item.setUser(userService.findByLogin(principal.getName()));
-//        itemService.save(item);
-//        return "redirect:/index";
-//    }
-
 }

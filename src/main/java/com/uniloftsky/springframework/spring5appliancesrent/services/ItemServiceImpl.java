@@ -9,7 +9,6 @@ import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.Ite
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.ItemRepository;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.item.ItemCriteriaRepository;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -67,11 +66,6 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public Set<Item> getSimilarPosts() {
         return getLimitedCountPosts(comparatorDescById, 4);
-    }
-
-    @Override
-    public Page<Item> findAll(Pageable pageable) {
-        return itemRepository.findAll(pageable);
     }
 
     @Override

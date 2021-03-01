@@ -34,7 +34,4 @@ public class SecurityController {
         return "signin_form";
     }
 
-//    @ModelAttribute("user")
-//    public
-
 }

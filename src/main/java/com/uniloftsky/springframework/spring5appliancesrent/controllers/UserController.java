@@ -19,11 +19,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/users")
-    public String listUsers(Model model) {
-        return "users";
-    }
-
     @GetMapping(value = "/profile", params = "login")
     public String showProfile(Model model, @RequestParam("login") String login) {
         model.addAttribute("user", userService.findByLogin(login));
