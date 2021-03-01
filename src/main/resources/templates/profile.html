@@ -41,8 +41,8 @@
                                 </div>
                             </h2>
                             <div class="profile-information">
-                                <p class="profile-text">Прізвище: <b>Кулик</b></p>
-                                <p class="profile-text">Ім'я: <b>Антон</b></p>
+                                <p class="profile-text">Прізвище: <b th:text="${user.lastName}">Кулик</b></p>
+                                <p class="profile-text">Ім'я: <b th:text="${user.firstName}">Антон</b></p>
                             </div>
                         </div>
                         <div class="profile-in">
@@ -57,13 +57,13 @@
                                     <div class="profile-icon-box">
                                         <i class="envelope icon"></i>
                                     </div>
-                                    <p class="profile-text">Пошта: <b>mail@mail.ru</b></p>
+                                    <p class="profile-text">Пошта: <b th:text="${user.email}">mail@mail.ru</b></p>
                                 </div>
                                 <div class="profile-information-in">
                                     <div class="profile-icon-box">
                                         <i class="phone icon"></i>
                                     </div>
-                                    <p class="profile-text">Телефон: <b>380971279332</b></p>
+                                    <p class="profile-text">Телефон: <b th:text="${user.phone}">380971279332</b></p>
                                 </div>
                                 <div class="profile-information-in">
                                     <div class="profile-icon-box">
@@ -81,12 +81,12 @@
                                 </div>
                             </h2>
                             <div class="profile-information">
-                                <p class="profile-text">Логін: <b>login</b></p>
-                                <p class="profile-text">Дата реєстрації: <b>20.02.2020</b></p>
+                                <p class="profile-text">Логін: <b th:text="${user.login}">login</b></p>
+                                <p class="profile-text">Дата реєстрації: <b th:text="${user.registerDate}">20.02.2020</b></p>
                             </div>
                         </div>
                     </div>
-                    <button class="ui labeled icon primary button">
+                    <button onclick="window.location = '/editProfile';" th:if="${#request.getParameter('login') == #authentication.name}" class="ui labeled icon primary button">
                         <i class="edit icon"></i>
                         Edit
                     </button>

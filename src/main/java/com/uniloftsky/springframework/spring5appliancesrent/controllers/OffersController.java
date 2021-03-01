@@ -19,7 +19,6 @@ public class OffersController {
     private final ItemService itemService;
     private final UserService userService;
 
-
     public OffersController(ItemService itemService, UserService userService) {
         this.itemService = itemService;
         this.userService = userService;
@@ -46,6 +45,11 @@ public class OffersController {
         return "offer";
     }
 
+    @GetMapping("/offer")
+    public String getOfferPage() {
+        return "redirect:/offer?id=1";
+    }
+
     @ModelAttribute("similarPosts")
     public Set<Item> getSimilarPosts() {
         return itemService.getSimilarPosts();
@@ -55,7 +59,6 @@ public class OffersController {
     public Set<Item> getLastPosts() {
         return itemService.getLastPostsIndexPage();
     }
-
 
     @GetMapping("/order")
     public String getOrder() {

@@ -39,13 +39,13 @@ public class DataLoader implements CommandLineRunner {
         roleRepository.saveAll(roles);
 
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk");
+        User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
         String password = encoder.encode("123456");
         user.setPassword(password);
         user.getRoles().add(roles.get(1));
         user.getRoles().add(roles.get(0));
 
-        User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk");
+        User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
         String password1 = encoder.encode("123456");
         user1.setPassword(password1);
         user1.getRoles().add(roles.get(0));

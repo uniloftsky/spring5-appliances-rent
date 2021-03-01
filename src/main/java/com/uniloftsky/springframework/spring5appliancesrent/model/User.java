@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,13 +15,14 @@ public class User extends BaseEntity {
 
     public User() {}
 
-    public User(String login, String password, String phone, String email, String firstName, String lastName) {
+    public User(String login, String password, String phone, String email, String firstName, String lastName, LocalDate registerDate) {
         this.login = login;
         this.password = password;
         this.phone = phone;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.registerDate = registerDate;
     }
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -41,4 +43,5 @@ public class User extends BaseEntity {
     private String email;
     private String firstName;
     private String lastName;
+    private LocalDate registerDate;
 }

@@ -28,59 +28,65 @@
 
     <section class="post-offer-section">
         <div class="wrap">
-            <div class="input-block">
-                <p class="input-block-title"><b>User</b> data</p>
-                <div class="input-block-in profile-edit" style="flex-wrap:  wrap;">
-                    <div class="input-block-inner">
-                        <label>Ім'я: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Login">
+            <form th:method="post" th:object="${user}" th:action="@{/editProfile}">
+                <input type="hidden" th:field="*{id}">
+                <input type="hidden" th:field="*{registerDate}">
+                <div class="input-block">
+                    <p class="input-block-title"><b>Дані</b> користувача</p>
+                    <div class="input-block-in profile-edit" style="flex-wrap:  wrap;">
+                        <div class="input-block-inner">
+                            <label>Ім'я: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Ім'я" th:field="*{firstName}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Прізвище: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Password">
+                        <div class="input-block-inner">
+                            <label>Прізвище: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Прізвище" th:field="*{lastName}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Номер телефону: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Repeat password">
+                        <div class="input-block-inner">
+                            <label>Номер телефону: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Номер телефону" th:field="*{phone}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Пошта: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Repeat password">
+                        <div class="input-block-inner">
+                            <label>Пошта: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Пошта" th:field="*{email}">
+                            </div>
                         </div>
-                    </div>
-                    <div class="input-block-inner">
-                        <label>Адреса: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Repeat password">
+                        <div class="input-block-inner">
+                            <label>Адреса: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Адреса">
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
-            </div>
-            <div class="input-block">
-                <p class="input-block-title"><b>Дані</b> захисту</p>
-                <div class="input-block-in flex-wrap register-page">
-                    <div class="input-block-inner">
-                        <label>Логін: <span class="required-color">*</span></label>
-                        <div class="ui input">
-                            <input type="text" placeholder="Логін">
+                <div class="input-block">
+                    <p class="input-block-title"><b>Дані</b> захисту</p>
+                    <div class="input-block-in flex-wrap register-page">
+                        <div class="input-block-inner">
+                            <label>Логін: <span class="required-color">*</span></label>
+                            <div class="ui input">
+                                <input type="text" placeholder="Логін" th:field="*{login}">
+                            </div>
+                        </div>
+                        <div class="input-block-inner">
+                            <button class="ui green button click" style="margin-top: auto; padding: .6em;">Зміна
+                                паролю
+                            </button>
                         </div>
                     </div>
-                    <div class="input-block-inner">
-                        <button class="ui green button click" style="margin-top: auto; padding: .6em;">Зміна паролю</button>
-                    </div>
                 </div>
-            </div>
-            <div class="input-block-buttons">
-                <button class="ui primary button">Оновити</button>
-            </div>
+                <div class="input-block-buttons">
+                    <button class="ui primary button">Оновити</button>
+                </div>
+            </form>
         </div>
     </section>
 

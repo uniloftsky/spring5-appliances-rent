@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findById(Long id) {
         Optional<User> optional = userRepository.findById(id);
-        if(optional.isEmpty()) {
+        if (optional.isEmpty()) {
             throw new RuntimeException("Expected user not found!");
         }
         return optional.get();
@@ -43,7 +43,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User obj) {
-        return userRepository.save(obj);
+        if (obj.getId() != null) {
+            User foundUser = findById(obj.getId());
+            foundUser.setFirstName(obj.getFirstName());
+            foundUser.setLastName(obj.getLastName());
+            foundUser.setEmail(obj.getEmail());
+            foundUser.setPhone(obj.getPhone());
+            foundUser.setLogin(obj.getLogin());
+            return userRepository.save(foundUser);
+        } else {
+            return userRepository.save(obj);
+        }
+
     }
 
     @Override
