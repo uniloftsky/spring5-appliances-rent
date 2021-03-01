@@ -5,6 +5,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.repositories.UserRep
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -55,6 +56,11 @@ public class UserServiceImpl implements UserService {
             return userRepository.save(obj);
         }
 
+    }
+
+    @Override
+    public List<User> saveAll(List<User> list) {
+        return userRepository.saveAll(list);
     }
 
     @Override

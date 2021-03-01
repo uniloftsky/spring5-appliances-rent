@@ -8,12 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Set;
 
-public interface ItemService {
+public interface ItemService extends GenericService<Item, Long> {
 
-    Set<Item> findAll();
     Set<Item> findAllActive();
     Set<Item> findAllSortedById(Comparator<Item> comparator);
     Set<Item> getLimitedCountPosts(Comparator<Item> comparator, int count);
@@ -21,9 +19,6 @@ public interface ItemService {
     Set<Item> getSimilarPosts();
     Page<Item> findAll(Pageable pageable);
     Page<Item> getCatalogItems(ItemPage employeePage, ItemSearchCriteria employeeSearchCriteria);
-    Item findById(Long id);
     Item save(Item obj, Authentication authentication);
-    List<Item> saveAll(List<Item> items);
-    void delete(Item obj);
 
 }

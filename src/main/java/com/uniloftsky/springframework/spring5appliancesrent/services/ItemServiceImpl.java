@@ -89,6 +89,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public Item save(Item obj) {
+        return itemRepository.save(obj);
+    }
+
+    @Override
     public Item save(Item obj, Authentication authentication) {
         User user = userService.findByLogin(authentication.getName());
         obj.setUser(user);
