@@ -33,23 +33,21 @@
                         <div class="input-block-inner">
                             <label>Тип: <span class="required-color">*</span></label>
                             <select class="ui dropdown">
-                                <option value="">Gender</option>
-                                <option value="1">Male</option>
-                                <option value="0">Female</option>
+                                <option value="">Тип</option>
+                                <option value="1" th:each="type : ${typeList}" th:text="${type.typeName}">Male</option>
                             </select>
                         </div>
                         <div class="input-block-inner">
                             <label>Категорія: <span class="required-color">*</span></label>
                             <select class="ui corner labeled dropdown" th:field="*{category}">
-                                <option value="">Gender</option>
-                                <option value="1">Male</option>
-                                <option value="0">Female</option>
+                                <option value="">Категорія</option>
+                                <option value="1" th:each="category : ${categoryList}" th:text="${category.categoryName}">Male</option>
                             </select>
                         </div>
                         <div class="input-block-inner">
                             <label>Розташування: <span class="required-color">*</span></label>
                             <div class="ui input">
-                                <input type="text" placeholder="Location" th:field="*{location}">
+                                <input type="text" placeholder="Розташування" th:field="*{location}">
                             </div>
                         </div>
                     </div>

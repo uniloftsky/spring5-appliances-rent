@@ -1,10 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.CategoryAscComparatorById;
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.TypeAscComparatorById;
-import com.uniloftsky.springframework.spring5appliancesrent.model.Category;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
-import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemPage;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemSearchCriteria;
 import com.uniloftsky.springframework.spring5appliancesrent.services.CategoryService;
@@ -14,11 +10,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
-import java.util.Comparator;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -38,18 +31,6 @@ public class CatalogController {
     @GetMapping("/catalog")
     public String getCatalogPage(Model model) {
         return "redirect:/catalogFilter?type.typeName=&category.categoryName=";
-    }
-
-    @ModelAttribute("typeList")
-    public Set<Type> getTypeList() {
-        Comparator<Type> comparator = new TypeAscComparatorById();
-        return typeService.findAllSortedById(comparator);
-    }
-
-    @ModelAttribute("categoryList")
-    public Set<Category> getCategoryList() {
-        Comparator<Category> comparator = new CategoryAscComparatorById();
-        return categoryService.findAllSortedById(comparator);
     }
 
     @GetMapping("catalogFilter")
