@@ -33,7 +33,7 @@
                         <div class="filter">
                             <div class="filter-in">
                                 <label>Тип:</label>
-                                <select class="ui dropdown" name="type.typeName">
+                                <select id="type_select" class="ui dropdown" name="type.typeName">
                                     <option value="">Тип</option>
                                     <option th:each="type : ${typeList}" th:text="${type.typeName}"
                                             name="type.typeName">Male
@@ -42,7 +42,7 @@
                             </div>
                             <div class="filter-in">
                                 <label>Категорія:</label>
-                                <select class="ui dropdown" name="category.categoryName" th:selected="${#request.getAttribute('category.categoryName')}">
+                                <select id="category_select" class="ui dropdown" name="category.categoryName" th:selected="${#request.getAttribute('category.categoryName')}">
                                     <option value="">Категорія</option>
                                     <option th:each="category : ${categoryList}" th:text="${category.categoryName}"
                                             name="category.categoryName">Male

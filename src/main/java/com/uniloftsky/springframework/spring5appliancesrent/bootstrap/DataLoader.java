@@ -33,55 +33,25 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<Role> roles = new ArrayList<>();
-        roles.add(new Role("USER"));
-        roles.add(new Role("ADMIN"));
-        roleRepository.saveAll(roles);
+        dataLoading();
+    }
 
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
-        String password = encoder.encode("123456");
-        user.setPassword(password);
-        user.getRoles().add(roles.get(1));
-        user.getRoles().add(roles.get(0));
+    public void dataLoading() {
 
-        User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
-        String password1 = encoder.encode("123456");
-        user1.setPassword(password1);
-        user1.getRoles().add(roles.get(0));
+        List<Role> roles = loadRoles();
 
-        userService.save(user);
-        userService.save(user1);
+        User user = loadUsers(roles);
 
-        List<Type> types = new ArrayList<>();
-        types.add(new Type("Побутова техніка"));
-        types.add(new Type("Високотехнологічна електроніка"));
+        List<Type> types = loadTypes();
 
-        typeService.saveAll(types);
+        List<Category> categories1 = loadFirstCategories(types);
 
-        List<Category> categories1 = new ArrayList<>();
-        categories1.add(new Category(types.get(0), "Холодильники"));
-        categories1.add(new Category(types.get(0), "Пральні машинки"));
-        categories1.add(new Category(types.get(0), "Кондиціонери"));
-        categories1.add(new Category(types.get(0), "Мультиварки"));
-        categories1.add(new Category(types.get(0), "Пилососи"));
-        categories1.add(new Category(types.get(0), "Бойлери"));
-        categories1.add(new Category(types.get(0), "Морозильні камери"));
-        categories1.add(new Category(types.get(0), "Вбудовані духові шафи"));
-        categories1.add(new Category(types.get(0), "Конвектори"));
-        categories1.add(new Category(types.get(0), "Витяжки"));
+        List<Category> categories2 = loadSecondCategories(types);
 
-        categoryService.saveAll(categories1);
+        loadItems(user, categories1, categories2);
+    }
 
-        List<Category> categories2 = new ArrayList<>();
-        categories2.add(new Category(types.get(1), "Комп'ютери"));
-        categories2.add(new Category(types.get(1), "Телефони"));
-        categories2.add(new Category(types.get(1), "Смартфони"));
-        categories2.add(new Category(types.get(1), "Телевізори"));
-        categories2.add(new Category(types.get(1), "Ігрові консолі"));
-
-        categoryService.saveAll(categories2);
-
+    private void loadItems(User user, List<Category> categories1, List<Category> categories2) {
         List<Item> items = new ArrayList<>();
         items.add(new Item(categories1.get(0), user, "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
         items.add(new Item(categories1.get(0), user, "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
@@ -100,4 +70,69 @@ public class DataLoader implements CommandLineRunner {
 
         itemService.saveAll(items);
     }
+
+    private List<Category> loadSecondCategories(List<Type> types) {
+        List<Category> categories2 = new ArrayList<>();
+        categories2.add(new Category(types.get(1), "Комп'ютери"));
+        categories2.add(new Category(types.get(1), "Телефони"));
+        categories2.add(new Category(types.get(1), "Смартфони"));
+        categories2.add(new Category(types.get(1), "Телевізори"));
+        categories2.add(new Category(types.get(1), "Ігрові консолі"));
+
+        categoryService.saveAll(categories2);
+        return categories2;
+    }
+
+    private List<Category> loadFirstCategories(List<Type> types) {
+        List<Category> categories1 = new ArrayList<>();
+        categories1.add(new Category(types.get(0), "Холодильники"));
+        categories1.add(new Category(types.get(0), "Пральні машинки"));
+        categories1.add(new Category(types.get(0), "Кондиціонери"));
+        categories1.add(new Category(types.get(0), "Мультиварки"));
+        categories1.add(new Category(types.get(0), "Пилососи"));
+        categories1.add(new Category(types.get(0), "Бойлери"));
+        categories1.add(new Category(types.get(0), "Морозильні камери"));
+        categories1.add(new Category(types.get(0), "Вбудовані духові шафи"));
+        categories1.add(new Category(types.get(0), "Конвектори"));
+        categories1.add(new Category(types.get(0), "Витяжки"));
+
+        categoryService.saveAll(categories1);
+        return categories1;
+    }
+
+    private List<Type> loadTypes() {
+        List<Type> types = new ArrayList<>();
+        types.add(new Type("Побутова техніка"));
+        types.add(new Type("Високотехнологічна техніка"));
+
+        typeService.saveAll(types);
+        return types;
+    }
+
+    private User loadUsers(List<Role> roles) {
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
+        String password = encoder.encode("123456");
+        user.setPassword(password);
+        user.getRoles().add(roles.get(1));
+        user.getRoles().add(roles.get(0));
+
+        User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
+        String password1 = encoder.encode("123456");
+        user1.setPassword(password1);
+        user1.getRoles().add(roles.get(0));
+
+        userService.save(user);
+        userService.save(user1);
+        return user;
+    }
+
+    private List<Role> loadRoles() {
+        List<Role> roles = new ArrayList<>();
+        roles.add(new Role("USER"));
+        roles.add(new Role("ADMIN"));
+        roleRepository.saveAll(roles);
+        return roles;
+    }
+
 }
