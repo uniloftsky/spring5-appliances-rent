@@ -21,6 +21,9 @@ public class UserController {
 
     @GetMapping(value = "/profile", params = "login")
     public String showProfile(Model model, @RequestParam("login") String login) {
+        if(login.equals("anonymousUser")) {
+            return "signin_form";
+        }
         model.addAttribute("user", userService.findByLogin(login));
         return "profile";
     }
@@ -40,6 +43,12 @@ public class UserController {
     public String editProfileProcess(@ModelAttribute User user) {
         User savedUser = userService.save(user);
         return "redirect:/profile?login=" + savedUser.getLogin();
+    }
+
+    @PostMapping("/changePassword")
+    public String editPasswordForm(@RequestParam("newPassword") String newPassword, Authentication authentication) {
+        User user = userService.changePassword(authentication, newPassword);
+        return "redirect:/profile";
     }
 
 }

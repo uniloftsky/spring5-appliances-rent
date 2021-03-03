@@ -2,6 +2,8 @@ package com.uniloftsky.springframework.spring5appliancesrent.services;
 
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.UserRepository;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -40,6 +42,15 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByLogin(String login) {
         return userRepository.findByLogin(login);
+    }
+
+    @Override
+    public User changePassword(Authentication authentication, String password) {
+        User user = userRepository.findByLogin(authentication.getName());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String newPassword = encoder.encode(password);
+        user.setPassword(newPassword);
+        return userRepository.save(user);
     }
 
     @Override
