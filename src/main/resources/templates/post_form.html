@@ -29,6 +29,12 @@
             <form th:action="@{/postOffer}" method="post" th:object="${offer}">
                 <div class="input-block">
                     <p class="input-block-title"><b>Інформація</b> про оголошення</p>
+                    <div class="input-block-inner" style="width: 100%; margin-bottom: 1em;">
+                        <label>Назва: <span class="required-color">*</span></label>
+                        <div class="ui input" style="width: 100%;">
+                            <input type="text" placeholder="Назва" th:field="*{name}">
+                        </div>
+                    </div>
                     <div class="input-block-in">
                         <div class="input-block-inner">
                             <label>Тип: <span class="required-color">*</span></label>
