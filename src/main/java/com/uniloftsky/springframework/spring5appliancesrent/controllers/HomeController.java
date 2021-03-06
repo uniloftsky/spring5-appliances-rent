@@ -34,7 +34,7 @@ public class HomeController {
     @GetMapping({"", "/", "index", "/index"})
     public String getIndexPage(Model model) {
         model.addAttribute("items", itemService.findAll());
-        model.addAttribute("lastPost", itemService.getLimitedCountPosts(comparator, 1).stream().findFirst().get());
+        model.addAttribute("lastPost", getLastPost());
         return "index";
     }
 
@@ -48,9 +48,14 @@ public class HomeController {
         return itemService.findAll();
     }
 
+    private Item getLastPost() {
+        return itemService.findAllSortedById(comparator).last();
+    }
+
+    //todo
     @ModelAttribute("lastPosts")
     public Set<Item> getLastPosts() {
-        return itemService.getLastPostsIndexPage();
+        return itemService.findAllSortedById(comparator);
     }
 
 }

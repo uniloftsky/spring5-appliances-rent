@@ -8,13 +8,14 @@ import org.springframework.security.core.Authentication;
 
 import java.util.Comparator;
 import java.util.Set;
+import java.util.TreeSet;
 
 public interface ItemService extends GenericService<Item, Long> {
 
     Set<Item> findAllActive();
-    Set<Item> findAllSortedById(Comparator<Item> comparator);
-    Set<Item> getLimitedCountPosts(Comparator<Item> comparator, int count);
-    Set<Item> getLastPostsIndexPage();
+    TreeSet<Item> findAllSortedById(Comparator<Item> comparator);
+    TreeSet<Item> getLimitedCountPosts(Comparator<Item> comparator, int count);
+    TreeSet<Item> getLastPostsIndexPage();
     Set<Item> getSimilarPosts();
     Page<Item> getCatalogItems(ItemPage employeePage, ItemSearchCriteria employeeSearchCriteria);
     Item save(Item obj, Authentication authentication);

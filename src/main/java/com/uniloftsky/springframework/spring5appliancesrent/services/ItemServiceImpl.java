@@ -43,19 +43,19 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Set<Item> findAllSortedById(Comparator<Item> comparator) {
+    public TreeSet<Item> findAllSortedById(Comparator<Item> comparator) {
         TreeSet<Item> sortedItems = new TreeSet<>(comparator);
         itemRepository.findAll().stream().iterator().forEachRemaining(sortedItems::add);
         return sortedItems;
     }
 
     @Override
-    public Set<Item> getLimitedCountPosts(Comparator<Item> comparator, int count) {
+    public TreeSet<Item> getLimitedCountPosts(Comparator<Item> comparator, int count) {
         return findAllSortedById(comparator).stream().limit(count).collect(toCollection(() -> new TreeSet<>(comparator)));
     }
 
     @Override
-    public Set<Item> getLastPostsIndexPage() {
+    public TreeSet<Item> getLastPostsIndexPage() {
         return getLimitedCountPosts(comparatorDescById, 4)
                 .stream()
                     .collect(toCollection(() -> new TreeSet<>(comparatorAscById)))
