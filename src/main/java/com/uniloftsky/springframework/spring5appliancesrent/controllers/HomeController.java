@@ -52,10 +52,9 @@ public class HomeController {
         return itemService.findAllSortedById(comparator).last();
     }
 
-    //todo
     @ModelAttribute("lastPosts")
     public Set<Item> getLastPosts() {
-        return itemService.findAllSortedById(comparator);
+        return itemService.getLastPostsIndexPage();
     }
 
 }

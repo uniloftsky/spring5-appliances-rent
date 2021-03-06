@@ -41,4 +41,18 @@ public class Item extends BaseEntity {
     private String description;
     private boolean active = true;
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "category=" + category +
+                ", user=" + user +
+                ", name='" + name + '\'' +
+                ", img='" + img + '\'' +
+                ", location='" + location + '\'' +
+                ", price=" + price +
+                ", date=" + date +
+                ", description='" + description + '\'' +
+                ", active=" + active +
+                '}';
+    }
 }

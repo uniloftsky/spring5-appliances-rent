@@ -56,11 +56,10 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public TreeSet<Item> getLastPostsIndexPage() {
-        return getLimitedCountPosts(comparatorDescById, 4)
-                .stream()
-                    .collect(toCollection(() -> new TreeSet<>(comparatorAscById)))
-                .stream()
-                    .limit(3).collect(toCollection(() -> new TreeSet<>(comparatorDescById)));
+        TreeSet<Item> treeSet = findAllSortedById(comparatorDescById);
+        List<Item> preLastThree = (new ArrayList<>(treeSet)).subList(1, 4);
+        return preLastThree.stream()
+                .collect(toCollection(() -> new TreeSet<>(comparatorDescById)));
     }
 
     @Override
