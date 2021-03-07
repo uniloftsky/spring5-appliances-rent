@@ -4,7 +4,6 @@ import com.uniloftsky.springframework.spring5appliancesrent.model.*;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.RoleRepository;
 import com.uniloftsky.springframework.spring5appliancesrent.services.*;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
@@ -110,16 +109,11 @@ public class DataLoader implements CommandLineRunner {
     }
 
     private User loadUsers(List<Role> roles) {
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
-        String password = encoder.encode("123456");
-        user.setPassword(password);
         user.getRoles().add(roles.get(1));
         user.getRoles().add(roles.get(0));
 
         User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
-        String password1 = encoder.encode("123456");
-        user1.setPassword(password1);
         user1.getRoles().add(roles.get(0));
 
         userService.save(user);

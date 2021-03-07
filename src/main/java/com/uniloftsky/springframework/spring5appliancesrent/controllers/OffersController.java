@@ -10,7 +10,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Set;
 
 @Controller
@@ -30,11 +33,10 @@ public class OffersController {
         return "post_form";
     }
 
-    //todo
+    //todo image size
     @PostMapping("/postOffer")
-    public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication) {
-        item.setImg("img"); //need to be changed
-        Item savedItem = itemService.save(item, authentication);
+    public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication, @RequestParam("itemImage") MultipartFile file) throws IOException {
+        Item savedItem = itemService.save(item, authentication, file);
         return "redirect:/offer?id=" + savedItem.getId();
     }
 

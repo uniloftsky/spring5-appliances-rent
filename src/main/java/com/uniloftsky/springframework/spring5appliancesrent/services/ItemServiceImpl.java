@@ -11,7 +11,9 @@ import com.uniloftsky.springframework.spring5appliancesrent.repositories.item.It
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -25,11 +27,13 @@ public class ItemServiceImpl implements ItemService {
     private final Comparator<Item> comparatorDescById = new ItemDescComparatorById();
     private final UserService userService;
     private final ItemCriteriaRepository itemCriteriaRepository;
+    private final ImageService imageService;
 
-    public ItemServiceImpl(ItemRepository itemRepository, UserService userService, ItemCriteriaRepository itemCriteriaRepository) {
+    public ItemServiceImpl(ItemRepository itemRepository, UserService userService, ItemCriteriaRepository itemCriteriaRepository, ImageService imageService) {
         this.itemRepository = itemRepository;
         this.userService = userService;
         this.itemCriteriaRepository = itemCriteriaRepository;
+        this.imageService = imageService;
     }
 
     @Override
@@ -87,10 +91,11 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
-    public Item save(Item obj, Authentication authentication) {
+    public Item save(Item obj, Authentication authentication, MultipartFile file) throws IOException {
         User user = userService.findByLogin(authentication.getName());
         obj.setUser(user);
         obj.setDate(LocalDate.now());
+        imageService.setItemImage(obj, file);
         return itemRepository.save(obj);
     }
 

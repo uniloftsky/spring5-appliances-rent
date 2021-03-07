@@ -3,9 +3,7 @@ package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemPage;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemSearchCriteria;
-import com.uniloftsky.springframework.spring5appliancesrent.services.CategoryService;
 import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService;
-import com.uniloftsky.springframework.spring5appliancesrent.services.TypeService;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,17 +17,13 @@ import java.util.stream.IntStream;
 public class CatalogController {
 
     private final ItemService itemService;
-    private final TypeService typeService;
-    private final CategoryService categoryService;
 
-    public CatalogController(ItemService itemService, TypeService typeService, CategoryService categoryService) {
+    public CatalogController(ItemService itemService) {
         this.itemService = itemService;
-        this.typeService = typeService;
-        this.categoryService = categoryService;
     }
 
     @GetMapping("/catalog")
-    public String getCatalogPage(Model model) {
+    public String getCatalogPage() {
         return "redirect:/catalogFilter?type.typeName=&category.categoryName=";
     }
 

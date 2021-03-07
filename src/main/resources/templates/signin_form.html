@@ -35,7 +35,7 @@
                             <label>Логін</label>
                         </div>
                         <div class="ui left icon input" style="width: 100%;">
-                            <input type="text" placeholder="Логін" name="username">
+                            <input type="text" placeholder="Логін" name="username" value="login">
                             <i class="user icon"></i>
                         </div>
                     </div>
@@ -44,7 +44,7 @@
                             <label>Пароль</label>
                         </div>
                         <div class="ui left icon input" style="width: 100%;">
-                            <input type="password" placeholder="Пароль" name="password">
+                            <input type="password" placeholder="Пароль" name="password" value="123456">
                             <i class="lock icon"></i>
                         </div>
                     </div>
@@ -66,6 +66,10 @@
                     Ви успішно зареєструвались
                 </div>
                 <p>Використайте <b>форму вище</b> для авторизації.</p>
+            </div>
+            <div th:if="${param.error}">
+                <p th:text="${param.error}">Помилка</p>
+                <p>жопа</p>
             </div>
         </div>
 

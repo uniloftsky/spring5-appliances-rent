@@ -36,7 +36,7 @@
         <div class="wrap">
             <div class="offer-section-header">
                 <div class="offer-section-header-img-block">
-                    <img class="offer-section-img" th:src="@{images/items/fridge4.webp}">
+                    <img class="offer-section-img" th:src="${'img/' + offer.img}">
                 </div>
                 <div class="offer-section-header-info">
                     <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>

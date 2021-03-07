@@ -5,7 +5,9 @@ import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.Ite
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemSearchCriteria;
 import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
@@ -18,6 +20,6 @@ public interface ItemService extends GenericService<Item, Long> {
     TreeSet<Item> getLastPostsIndexPage();
     Set<Item> getSimilarPosts();
     Page<Item> getCatalogItems(ItemPage employeePage, ItemSearchCriteria employeeSearchCriteria);
-    Item save(Item obj, Authentication authentication);
+    Item save(Item obj, Authentication authentication, MultipartFile file) throws IOException;
 
 }

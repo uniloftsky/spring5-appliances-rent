@@ -6,6 +6,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -67,6 +68,7 @@ public class UserServiceImpl implements UserService {
             BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
             String encodedPassword = passwordEncoder.encode(obj.getPassword());
             obj.setPassword(encodedPassword);
+            obj.setRegisterDate(LocalDate.now());
             return userRepository.save(obj);
         }
 

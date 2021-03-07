@@ -26,7 +26,7 @@
 
     <section class="post-offer-section">
         <div class="wrap">
-            <form th:action="@{/postOffer}" method="post" th:object="${offer}">
+            <form th:action="@{/postOffer}" method="post" th:object="${offer}" enctype="multipart/form-data">
                 <div class="input-block">
                     <p class="input-block-title"><b>Інформація</b> про оголошення</p>
                     <div class="input-block-inner" style="width: 100%; margin-bottom: 1em;">
@@ -89,7 +89,7 @@
                             <label>Зображення: <span class="required-color">*</span></label>
                             <div class="ui action input">
                                 <input id="imageText" type="text" placeholder="Фото" readonly>
-                                <input id="imageUpload" type="file">
+                                <input id="imageUpload" type="file" name="itemImage">
                                 <div id="imageButton" class="ui icon button">
                                     <i class="attach icon"></i>
                                 </div>
