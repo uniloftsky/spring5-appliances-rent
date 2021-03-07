@@ -1,7 +1,7 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.CategoryAscComparatorById;
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.TypeAscComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.category.CategoryAscComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.type.TypeAscComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Category;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
 import com.uniloftsky.springframework.spring5appliancesrent.services.CategoryService;

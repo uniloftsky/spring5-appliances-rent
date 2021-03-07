@@ -39,7 +39,7 @@ public class DataLoader implements CommandLineRunner {
 
         List<Role> roles = loadRoles();
 
-        User user = loadUsers(roles);
+        List<User> users = loadUsers(roles);
 
         List<Type> types = loadTypes();
 
@@ -47,25 +47,25 @@ public class DataLoader implements CommandLineRunner {
 
         List<Category> categories2 = loadSecondCategories(types);
 
-        loadItems(user, categories1, categories2);
+        loadItems(users, categories1, categories2);
     }
 
-    private void loadItems(User user, List<Category> categories1, List<Category> categories2) {
+    private void loadItems(List<User> userList, List<Category> categories1, List<Category> categories2) {
         List<Item> items = new ArrayList<>();
-        items.add(new Item(categories1.get(0), user, "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name2", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name3", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", false));
-        items.add(new Item(categories1.get(0), user, "name4", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name5", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), user, "name6", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name7", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name8", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name9", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name10", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name11", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), user, "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name2", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name3", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", false));
+        items.add(new Item(categories1.get(0), userList.get(1), "name4", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(1), "name5", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(1), "name6", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name7", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name8", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name9", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(3), "name10", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(3), "name11", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(0), "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(0), "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
 
         itemService.saveAll(items);
     }
@@ -108,7 +108,8 @@ public class DataLoader implements CommandLineRunner {
         return types;
     }
 
-    private User loadUsers(List<Role> roles) {
+    private List<User> loadUsers(List<Role> roles) {
+        List<User> userList = new ArrayList<>();
         User user = new User("login", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
         user.getRoles().add(roles.get(1));
         user.getRoles().add(roles.get(0));
@@ -116,9 +117,18 @@ public class DataLoader implements CommandLineRunner {
         User user1 = new User("login1", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
         user1.getRoles().add(roles.get(0));
 
-        userService.save(user);
-        userService.save(user1);
-        return user;
+        User user2 = new User("login2", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
+        user1.getRoles().add(roles.get(0));
+
+        User user3 = new User("login3", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
+        user1.getRoles().add(roles.get(0));
+
+        userList.add(user);
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+        userService.saveAll(userList);
+        return userList;
     }
 
     private List<Role> loadRoles() {

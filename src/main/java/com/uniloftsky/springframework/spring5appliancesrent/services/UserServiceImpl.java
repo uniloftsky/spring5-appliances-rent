@@ -1,5 +1,7 @@
 package com.uniloftsky.springframework.spring5appliancesrent.services;
 
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorByItemsCount;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
@@ -7,15 +9,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+
+import static java.util.stream.Collectors.toCollection;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final Comparator<User> comparatorDescById = new UserDescComparatorById();
+    private final Comparator<User> comparatorDescByItemsCount = new UserDescComparatorByItemsCount();
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -52,6 +55,14 @@ public class UserServiceImpl implements UserService {
         String newPassword = encoder.encode(password);
         user.setPassword(newPassword);
         return userRepository.save(user);
+    }
+
+    @Override
+    public Set<User> getPopularUsers() {
+        TreeSet<User> popularUsers = new TreeSet<>(comparatorDescByItemsCount);
+        userRepository.findAll().stream().iterator().forEachRemaining(popularUsers::add);
+        return popularUsers.stream().limit(4)
+                .collect(toCollection(() -> new TreeSet<>(comparatorDescByItemsCount)));
     }
 
     @Override

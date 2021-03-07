@@ -1,7 +1,7 @@
 package com.uniloftsky.springframework.spring5appliancesrent.services;
 
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemAscComparatorById;
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemAscComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemPage;

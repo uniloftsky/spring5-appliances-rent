@@ -1,4 +1,4 @@
-package com.uniloftsky.springframework.spring5appliancesrent.comparators;
+package com.uniloftsky.springframework.spring5appliancesrent.comparators.type;
 
 import com.uniloftsky.springframework.spring5appliancesrent.model.Type;
 

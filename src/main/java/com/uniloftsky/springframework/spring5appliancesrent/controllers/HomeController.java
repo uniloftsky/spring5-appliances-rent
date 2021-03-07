@@ -1,6 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
-import com.uniloftsky.springframework.spring5appliancesrent.comparators.ItemDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.services.CategoryService;
 import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService;
@@ -35,6 +35,7 @@ public class HomeController {
     public String getIndexPage(Model model) {
         model.addAttribute("items", itemService.findAll());
         model.addAttribute("lastPost", getLastPost());
+        model.addAttribute("popularUsers", userService.getPopularUsers());
         return "index";
     }
 
@@ -56,5 +57,14 @@ public class HomeController {
     public Set<Item> getLastPosts() {
         return itemService.getLastPostsIndexPage();
     }
+
+/*    @ModelAttribute("popularUsers")
+    public Set<User> getPopularUsers() {
+        for(User u : userService.getPopularUsers()) {
+            System.out.println("loop");
+            System.out.println(u.getId());
+        }
+        return userService.getPopularUsers();
+    }*/
 
 }

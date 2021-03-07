@@ -88,35 +88,14 @@
                     </div>
                 </div>
                 <div class="main-link">
-                    <p class="main-link-title"><b>Car</b> dealers</p>
+                    <p class="main-link-title"><b>Популярні</b> власники</p>
                     <div class="main-link-dealers">
-                        <div class="main-link-dealer">
+                        <div class="main-link-dealer" th:each="user : ${popularUsers}">
                             <div class="dealer-left">
                                 <i class="circle icon"></i>
-                                <p class="dealer-name">Dealer</p>
+                                <p class="dealer-name" th:text="${user.login}">Dealer</p>
                             </div>
-                            <p class="dealer-right">162 offers</p>
-                        </div>
-                        <div class="main-link-dealer">
-                            <div class="dealer-left">
-                                <i class="circle icon"></i>
-                                <p class="dealer-name">Dealer</p>
-                            </div>
-                            <p class="dealer-right">162 offers</p>
-                        </div>
-                        <div class="main-link-dealer">
-                            <div class="dealer-left">
-                                <i class="circle icon"></i>
-                                <p class="dealer-name">Dealer</p>
-                            </div>
-                            <p class="dealer-right">162 offers</p>
-                        </div>
-                        <div class="main-link-dealer">
-                            <div class="dealer-left">
-                                <i class="circle icon"></i>
-                                <p class="dealer-name">Dealer</p>
-                            </div>
-                            <p class="dealer-right">162 offers</p>
+                            <p class="dealer-right" th:text="${user.items.size()}">162 offers</p>
                         </div>
                     </div>
                 </div>
