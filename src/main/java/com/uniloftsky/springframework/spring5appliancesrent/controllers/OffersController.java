@@ -33,7 +33,7 @@ public class OffersController {
     //todo
     @PostMapping("/postOffer")
     public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication) {
-        item.setImg("img");
+        item.setImg("img"); //need to be changed
         Item savedItem = itemService.save(item, authentication);
         return "redirect:/offer?id=" + savedItem.getId();
     }

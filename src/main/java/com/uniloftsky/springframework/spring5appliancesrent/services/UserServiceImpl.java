@@ -64,6 +64,9 @@ public class UserServiceImpl implements UserService {
             foundUser.setLogin(obj.getLogin());
             return userRepository.save(foundUser);
         } else {
+            BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            String encodedPassword = passwordEncoder.encode(obj.getPassword());
+            obj.setPassword(encodedPassword);
             return userRepository.save(obj);
         }
 
