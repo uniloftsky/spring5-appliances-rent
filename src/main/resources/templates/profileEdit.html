@@ -35,49 +35,67 @@
                     <p class="input-block-title"><b>Дані</b> користувача</p>
                     <div class="input-block-in profile-edit" style="flex-wrap:  wrap;">
                         <div class="input-block-inner">
-                            <label>Ім'я: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Ім'я" th:field="*{firstName}">
+                            <label th:errorclass="label-error" name="firstName">Ім'я: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="firstName">
+                                <input type="text" placeholder="Ім'я" name="firstName" th:field="*{firstName}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('firstName')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                         <div class="input-block-inner">
-                            <label>Прізвище: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Прізвище" th:field="*{lastName}">
+                            <label th:errorclass="label-error" name="lastName">Прізвище: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="lastName">
+                                <input type="text" placeholder="Прізвище" name="lastName" th:field="*{lastName}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('lastName')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                         <div class="input-block-inner">
-                            <label>Номер телефону: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Номер телефону" th:field="*{phone}">
+                            <label th:errorclass="label-error" name="phone">Номер телефону: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="phone">
+                                <input type="text" placeholder="Номер телефону" name="phone" th:field="*{phone}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('phone')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('phone')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                         <div class="input-block-inner">
-                            <label>Пошта: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Пошта" th:field="*{email}">
+                            <label th:errorclass="label-error" name="email">Пошта: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="email">
+                                <input type="text" placeholder="Пошта" name="email" th:field="*{email}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('email')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('email')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="input-block-inner">
-                            <label>Адреса: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Адреса">
-                            </div>
-                        </div>
-
                     </div>
                 </div>
                 <div class="input-block">
                     <p class="input-block-title"><b>Дані</b> захисту</p>
                     <div class="input-block-in flex-wrap register-page">
                         <div class="input-block-inner">
-                            <label>Логін: <span class="required-color">*</span></label>
-                            <div class="ui input">
-                                <input type="text" placeholder="Логін" th:field="*{login}">
+                            <label th:errorclass="label-error" name="login">Логін: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="login">
+                                <input type="text" placeholder="Логін" name="login" th:field="*{login}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('login')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('login')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                         <div class="input-block-inner">
-                            <button type="button" class="ui green button click" style="margin-top: auto; padding: .6em;">Зміна
+                            <button type="button" class="ui green button click" style="margin-top: 1.25em; padding: .6em;">Зміна
                                 паролю
                             </button>
                         </div>

@@ -5,10 +5,13 @@ import com.uniloftsky.springframework.spring5appliancesrent.services.UserService
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.validation.Valid;
 
 @Controller
 public class UserController {
@@ -42,7 +45,10 @@ public class UserController {
     }
 
     @PostMapping("/editProfile")
-    public String editProfileProcess(@ModelAttribute User user) {
+    public String editProfileProcess(@Valid @ModelAttribute User user, BindingResult result) {
+        if(result.hasErrors()) {
+            return "profileEdit";
+        }
         userService.save(user);
         return "redirect:/profile";
     }

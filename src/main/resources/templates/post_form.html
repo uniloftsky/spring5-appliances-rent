@@ -30,9 +30,14 @@
                 <div class="input-block">
                     <p class="input-block-title"><b>Інформація</b> про оголошення</p>
                     <div class="input-block-inner" style="width: 100%; margin-bottom: 1em;">
-                        <label>Назва: <span class="required-color">*</span></label>
-                        <div class="ui input" style="width: 100%;">
-                            <input type="text" placeholder="Назва" th:field="*{name}">
+                        <label th:errorclass="label-error" name="name">Назва: <span class="required-color">*</span></label>
+                        <div class="ui input" th:errorclass="error" name="name" style="width: 100%;">
+                            <input type="text" placeholder="Назва" name="name" th:field="*{name}">
+                        </div>
+                        <div th:if="${#fields.hasErrors('name')}" class="ui pointing red basic label">
+                            <ul style="padding-left: 1em;">
+                                <li th:each="err : ${#fields.errors('name')}" th:text="${err}"></li>
+                            </ul>
                         </div>
                     </div>
                     <div class="input-block-in">
@@ -44,16 +49,26 @@
                             </select>
                         </div>
                         <div class="input-block-inner">
-                            <label>Категорія: <span class="required-color">*</span></label>
-                            <select id="category_select" class="ui corner labeled dropdown" th:field="*{category}">
+                            <label th:errorclass="label-error" name="category">Категорія: <span class="required-color">*</span></label>
+                            <select id="category_select" class="ui corner labeled dropdown" th:errorclass="error" name="category.id" th:field="*{category}">
                                 <option value="">Категорія</option>
                                 <option th:each="category : ${categoryList}" th:text="${category.categoryName}" th:class="${category.type.typeName}" th:value="${category.id}">Male</option>
                             </select>
+                            <div th:if="${#fields.hasErrors('category')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('category')}" th:text="${err}"></li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="input-block-inner">
-                            <label>Розташування: <span class="required-color">*</span></label>
-                            <div class="ui input">
+                            <label th:errorclass="label-error" name="location">Розташування: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="location">
                                 <input type="text" placeholder="Розташування" th:field="*{location}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('location')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('location')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -63,9 +78,14 @@
                     <div class="input-block-in">
                         <div class="input-block-inner full-width">
                             <div class="ui form">
-                                <label>Опис: <span class="required-color">*</span></label>
-                                <div class="field">
+                                <label th:errorclass="label-error" name="description">Опис: <span class="required-color">*</span></label>
+                                <div class="field" th:errorclass="error" name="description">
                                     <textarea style="resize: none" th:field="*{description}"></textarea>
+                                </div>
+                                <div th:if="${#fields.hasErrors('description')}" class="ui pointing red basic label">
+                                    <ul style="padding-left: 1em;">
+                                        <li th:each="err : ${#fields.errors('description')}" th:text="${err}"></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -75,9 +95,14 @@
                     <p class="input-block-title"><b>Ціна</b> оголошення</p>
                     <div class="input-block-in">
                         <div class="input-block-inner">
-                            <label>Ціна: <span class="required-color">*</span></label>
-                            <div class="ui input">
+                            <label th:errorclass="label-error" name="price">Ціна: <span class="required-color">*</span></label>
+                            <div class="ui input" th:errorclass="error" name="price">
                                 <input type="number" placeholder="Ціна" th:field="*{price}">
+                            </div>
+                            <div th:if="${#fields.hasErrors('price')}" class="ui pointing red basic label">
+                                <ul style="padding-left: 1em;">
+                                    <li th:each="err : ${#fields.errors('price')}" th:text="${err}"></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -86,13 +111,16 @@
                     <p class="input-block-title"><b>Зображення</b> оголошення</p>
                     <div class="input-block-in">
                         <div class="input-block-inner">
-                            <label>Зображення: <span class="required-color">*</span></label>
-                            <div class="ui action input">
+                            <label th:class="${fileError ? 'label-error' : ''}">Зображення: <span class="required-color">*</span></label>
+                            <div class="ui action input" th:class="${fileError ? 'ui action input error' : 'ui action input'}">
                                 <input id="imageText" type="text" placeholder="Фото" readonly>
                                 <input id="imageUpload" type="file" name="itemImage">
                                 <div id="imageButton" class="ui icon button">
                                     <i class="attach icon"></i>
                                 </div>
+                            </div>
+                            <div th:if="${fileError}" class="ui pointing red basic label">
+                                Оберіть зображення
                             </div>
                         </div>
                     </div>

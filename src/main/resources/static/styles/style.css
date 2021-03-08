@@ -1106,7 +1106,10 @@ footer p {
 
 .profile-edit .input-block-inner:last-child {
     margin-right: auto;
-    margin-left: 1.5em;
+}
+
+.label-error {
+    color: #db2828;
 }
 
 /* order section */

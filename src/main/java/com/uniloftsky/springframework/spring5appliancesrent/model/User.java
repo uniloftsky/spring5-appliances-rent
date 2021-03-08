@@ -42,8 +42,6 @@ public class User extends BaseEntity {
     @Column(unique = true)
     private String login;
 
-    @NotBlank
-    @Size(min = 4)
     private String password;
 
     @NotBlank

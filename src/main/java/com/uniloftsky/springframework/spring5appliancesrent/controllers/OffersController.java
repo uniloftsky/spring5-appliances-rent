@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Set;
 
@@ -35,12 +37,17 @@ public class OffersController {
     @GetMapping("/postOffer")
     public String initPostOfferForm(Model model) {
         model.addAttribute("offer", new Item());
+        model.addAttribute("fileError", false);
         return "post_form";
     }
 
     //todo image size
     @PostMapping("/postOffer")
-    public String processPostOfferForm(@ModelAttribute Item item, Authentication authentication, @RequestParam("itemImage") MultipartFile file) throws IOException {
+    public String processPostOfferForm(@Valid @ModelAttribute("offer") Item item, BindingResult result, Authentication authentication, @RequestParam("itemImage") MultipartFile file, Model model) throws IOException {
+        if((result.hasErrors() && file.isEmpty()) || file.isEmpty()) {
+            model.addAttribute("fileError", true);
+            return "post_form";
+        }
         Item savedItem = itemService.save(item, authentication, file);
         return "redirect:/offer?id=" + savedItem.getId();
     }
