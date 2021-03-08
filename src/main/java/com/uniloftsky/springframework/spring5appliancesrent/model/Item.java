@@ -5,6 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -27,32 +30,29 @@ public class Item extends BaseEntity {
         this.active = active;
     }
 
+    @NotNull
     @ManyToOne
     private Category category;
 
     @ManyToOne
     private User user;
 
+    @NotBlank
     private String name;
-    private String img;
-    private String location;
-    private BigDecimal price;
-    private LocalDate date;
-    private String description;
-    private boolean active = true;
 
-    @Override
-    public String toString() {
-        return "Item{" +
-                "category=" + category +
-                ", user=" + user +
-                ", name='" + name + '\'' +
-                ", img='" + img + '\'' +
-                ", location='" + location + '\'' +
-                ", price=" + price +
-                ", date=" + date +
-                ", description='" + description + '\'' +
-                ", active=" + active +
-                '}';
-    }
+    private String img;
+
+    @NotBlank
+    private String location;
+
+    @NotNull
+    private BigDecimal price;
+
+    private LocalDate date;
+
+    @NotBlank
+    @Size(max = 1000)
+    private String description;
+
+    private boolean active = true;
 }

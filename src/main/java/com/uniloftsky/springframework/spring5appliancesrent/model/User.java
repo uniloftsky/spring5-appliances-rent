@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,13 +37,27 @@ public class User extends BaseEntity {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    @NotBlank
+    @Size(min = 3, max = 15)
     @Column(unique = true)
     private String login;
 
+    @NotBlank
+    @Size(min = 4)
     private String password;
+
+    @NotBlank
+    @Size(min = 1, max = 15)
     private String phone;
+
+    @NotBlank
     private String email;
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
+
     private LocalDate registerDate;
 }
