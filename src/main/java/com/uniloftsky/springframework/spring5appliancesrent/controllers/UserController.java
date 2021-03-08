@@ -1,5 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
+import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.services.UserService;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,7 @@ public class UserController {
         }
         model.addAttribute("user", userService.findByLogin(login));
         model.addAttribute("rentingHistory", userService.findByLogin(login).getRentings());
-        model.addAttribute("currentItems", userService.findByLogin(login).getItems());
+        model.addAttribute("currentItems", userService.findByLogin(login).getItems().stream().filter(Item::isActive));
         return "profile";
     }
 

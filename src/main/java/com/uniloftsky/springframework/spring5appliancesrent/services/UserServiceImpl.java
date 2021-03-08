@@ -1,7 +1,11 @@
 package com.uniloftsky.springframework.spring5appliancesrent.services;
 
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.renting.RentingDescComparatorByDate;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorByItemsCount;
+import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.model.Renting;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
@@ -19,6 +23,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final Comparator<User> comparatorDescById = new UserDescComparatorById();
     private final Comparator<User> comparatorDescByItemsCount = new UserDescComparatorByItemsCount();
+    private final Comparator<Item> itemComparatorDescById = new ItemDescComparatorById();
+    private final Comparator<Renting> rentingComparatorDescByDate = new RentingDescComparatorByDate();
 
     public UserServiceImpl(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -55,6 +61,16 @@ public class UserServiceImpl implements UserService {
         String newPassword = encoder.encode(password);
         user.setPassword(newPassword);
         return userRepository.save(user);
+    }
+
+    @Override
+    public TreeSet<Item> getUserItems(User user) {
+        return user.getItems().stream().filter(Item::isActive).collect(toCollection(() -> new TreeSet<>(itemComparatorDescById)));
+    }
+
+    @Override
+    public TreeSet<Renting> getUserRentings(User user) {
+        return user.getRentings().stream().collect(toCollection(() -> new TreeSet<>(rentingComparatorDescByDate)));
     }
 
     @Override

@@ -74,8 +74,7 @@
                 </div>
                 <div class="catalog">
                     <div th:if="${catalogItems.isEmpty()}" class="ui negative message">
-                        <p>За вашими критеріями не знайдено жодного оголошення
-                        </p>
+                        <p>За вашими критеріями не знайдено жодного оголошення</p>
                     </div>
                     <div class="pagination-block" th:if="${not catalogItems.isEmpty() and catalogItems.totalPages > 1}">
                         <div class="ui pagination menu">

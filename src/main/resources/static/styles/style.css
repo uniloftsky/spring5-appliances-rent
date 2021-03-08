@@ -1064,6 +1064,19 @@ footer p {
     display: flex;
 }
 
+.profile-items {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.profile-items .catalog-item:first-child {
+    border-top: 0;
+}
+
+.profile-items .catalog-item:last-child {
+    border-bottom: 0;
+}
+
 /* profile edit */
 
 .ui.modal>.change-password-header {

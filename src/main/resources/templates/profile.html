@@ -101,16 +101,55 @@
                             <p>Не знайдено жодного оголошення
                             </p>
                         </div>
-                        
+                        <div class="catalog-items profile-items">
+                            <div class="catalog-item" th:each="item : ${currentItems}">
+                                <div class="catalog-item-img-block">
+                                    <img class="catalog-item-img" src="" th:src="${'img/' + item.img}" alt="">
+                                </div>
+                                <div class="catalog-item-info">
+                                    <div class="catalog-item-header">
+                                        <p class="catalog-item-title"><b th:text="${item.name}">Холодильник SAMSUNG
+                                            RB29FSRNDSA/UA</b></p>
+                                        <p class="catalog-item-price" th:text="${item.price + ' грн.'}">11499 грн.</p>
+                                    </div>
+                                    <div class="catalog-item-main">
+                                        <p class="catalog-item-punkt" th:text="${item.category.type.typeName}">Пункт1</p>
+                                        <p class="catalog-item-punkt" th:text="${item.category.categoryName}">Пункт2</p>
+                                    </div>
+                                    <div class="catalog-item-footer">
+                                        <p class="catalog-item-location" th:text="${item.location}">м. Бердичів, вул.
+                                            Соборна, 18</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="ui bottom attached tab segment" data-tab="second">
-                        <div th:if="${rentingHistory.isEmpty()}" class="ui negative message">
+                        <div th:if="${rentingHistory.isEmpty()}" class="ui negative message" style="margin-bottom: 0">
                             <p>Не знайдено жодного оголошення
                             </p>
                         </div>
-                        <div th:each="renting : ${rentingHistory}">
-                            <p th:text="${renting.item.name}"></p>
-                            <p th:text="${renting.item.active}"></p>
+                        <div class="catalog-items profile-items">
+                            <div class="catalog-item" th:each="renting : ${rentingHistory}">
+                                <div class="catalog-item-img-block">
+                                    <img class="catalog-item-img" src="" th:src="${'img/' + renting.img}" alt="">
+                                </div>
+                                <div class="catalog-item-info">
+                                    <div class="catalog-item-header">
+                                        <p class="catalog-item-title"><b th:text="${renting.name}">Холодильник SAMSUNG
+                                            RB29FSRNDSA/UA</b></p>
+                                        <p class="catalog-item-price" th:text="${renting.price + ' грн.'}">11499 грн.</p>
+                                    </div>
+                                    <div class="catalog-item-main">
+                                        <p class="catalog-item-punkt" th:text="${renting.category.type.typeName}">Пункт1</p>
+                                        <p class="catalog-item-punkt" th:text="${renting.category.categoryName}">Пункт2</p>
+                                    </div>
+                                    <div class="catalog-item-footer">
+                                        <p class="catalog-item-location" th:text="${renting.location}">м. Бердичів, вул.
+                                            Соборна, 18</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
