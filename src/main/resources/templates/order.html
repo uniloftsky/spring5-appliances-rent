@@ -21,6 +21,8 @@
                     <div class="ui breadcrumb">
                         <a class="section" href="/index">Головна</a>
                         <i class="right angle icon divider"></i>
+                        <a class="section" th:href="@{/catalog}">Каталог</a>
+                        <i class="right angle icon divider"></i>
                         <a class="section" th:href="@{/offer(id=${offer.id})}" th:text="${offer.name}"></a>
                         <i class="right angle icon divider"></i>
                         <a class="section" th:href="@{/order(id=${offer.id})}">Оформлення оголошення</a>
@@ -80,8 +82,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
-        $('.ui.dropdown')
-            .dropdown();
+        $('.ui.dropdown').dropdown();
+        $('#header-dropdown').dropdown({
+            action: 'select'
+        });
     });
 </script>
 </body>

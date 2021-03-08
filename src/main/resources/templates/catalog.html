@@ -33,7 +33,7 @@
                         <div class="filter">
                             <div class="filter-in">
                                 <label>Тип:</label>
-                                <select id="type_select" class="ui dropdown" name="type.typeName">
+                                <select id="type_select" class="ui dropdown not-select" name="type.typeName">
                                     <option value="">Тип</option>
                                     <option th:each="type : ${typeList}" th:text="${type.typeName}"
                                             name="type.typeName">Male
@@ -42,7 +42,7 @@
                             </div>
                             <div class="filter-in">
                                 <label>Категорія:</label>
-                                <select id="category_select" class="ui dropdown" name="category.categoryName" th:selected="${#request.getAttribute('category.categoryName')}">
+                                <select id="category_select" class="ui dropdown not-select" name="category.categoryName" th:selected="${#request.getAttribute('category.categoryName')}">
                                     <option value="">Категорія</option>
                                     <option th:each="category : ${categoryList}" th:text="${category.categoryName}"
                                             name="category.categoryName">Male
@@ -76,7 +76,7 @@
                     <div th:if="${catalogItems.isEmpty()}" class="ui negative message">
                         <p>За вашими критеріями не знайдено жодного оголошення</p>
                     </div>
-                    <div class="pagination-block" th:if="${not catalogItems.isEmpty() and catalogItems.totalPages > 1}">
+                    <div class="pagination-block" th:if="${not catalogItems.isEmpty() and maxPage > 1}">
                         <div class="ui pagination menu">
                             <a class="item" th:if="${currentPage != 0}"
                                th:href="@{/catalogFilter(size=8, pageNumber=0, type.typeName=${#request.getParameter('type.typeName')}, category.categoryName=${#request.getParameter('category.categoryName')})}"><i
@@ -131,7 +131,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pagination-block" th:if="${not catalogItems.isEmpty() and catalogItems.totalPages > 1}">
+                    <div class="pagination-block" th:if="${not catalogItems.isEmpty() and maxPage > 1}">
                         <div class="ui pagination menu">
                             <a class="item" th:if="${currentPage != 0}"
                                th:href="@{/catalogFilter(size=8, pageNumber=0, type.typeName=${#request.getParameter('type.typeName')}, category.categoryName=${#request.getParameter('category.categoryName')})}"><i
@@ -174,7 +174,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 <script>
     $(document).ready(function () {
-        $('.ui.dropdown').dropdown({
+        $('.ui.dropdown').dropdown();
+        $('#header-dropdown').dropdown({
             action: 'select'
         });
     });

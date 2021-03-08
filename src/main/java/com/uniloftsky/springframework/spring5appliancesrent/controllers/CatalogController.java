@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -36,6 +37,19 @@ public class CatalogController {
         List<Integer> pageNumbers = IntStream.rangeClosed(1, pages.getTotalPages()).boxed().collect(Collectors.toList());
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("currentPage", pages.getNumber());
+        return "catalog";
+    }
+
+    @GetMapping("/searchBox")
+    public String searchBox(@RequestParam("searchField") String field, Model model) {
+        model.addAttribute("catalogItems", itemService.searchBox(field, field, field, field));
+        model.addAttribute("maxPage", 0);
+        model.addAttribute("pageNumbers", 1);
+        model.addAttribute("currentPage", 0);
+//        System.out.println("list:");
+//        for(Item i : itemService.searchBox(field, field, field, field)) {
+//            System.out.println("id : " + i.getId());
+//        }
         return "catalog";
     }
 

@@ -20,6 +20,7 @@ public interface ItemService extends GenericService<Item, Long> {
     TreeSet<Item> getLastPostsIndexPage();
     Set<Item> getSimilarPosts();
     Page<Item> getCatalogItems(ItemPage employeePage, ItemSearchCriteria employeeSearchCriteria);
+    Set<Item> searchBox(String name, String category, String type, String desc);
     Item save(Item obj, Authentication authentication, MultipartFile file) throws IOException;
 
 }

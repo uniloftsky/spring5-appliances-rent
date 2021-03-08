@@ -14,23 +14,28 @@
                     </div>
                 </div>
                 <div class="title-box">
-                    <div th:class="${#authorization.expression('isAuthenticated()') ? 'inner-box' : 'inner-box-anonymous'}" class="inner-box inner-box-anonymous">
+                    <div th:class="${#authorization.expression('isAuthenticated()') ? 'inner-box' : 'inner-box-anonymous'}"
+                         class="inner-box inner-box-anonymous">
                         <i class="user secret icon" style="color: #2185D0;"></i>
-                        <a th:href="@{/profile(login=${#request.userPrincipal.name})}" sec:authorize="${isAuthenticated()}" sec:authentication="name" style="color: #bcbcbc; font-weight: 600;"></a>
-                        <p sec:authorize="${isAnonymous()}" style="color: #bcbcbc; font-weight: 600;"><a href="/login">Авторизуватись</a></p>
+                        <a th:href="@{/profile(login=${#request.userPrincipal.name})}"
+                           sec:authorize="${isAuthenticated()}" sec:authentication="name"
+                           style="color: #bcbcbc; font-weight: 600;"></a>
+                        <p sec:authorize="${isAnonymous()}" style="color: #bcbcbc; font-weight: 600;"><a href="/login">Авторизуватись</a>
+                        </p>
                     </div>
                     <div sec:authorize="${isAuthenticated()}" class="inner-box">
                         <form id="logout-form" th:action="@{/logout}" method="post">
                         </form>
                         <i class="power off icon" style="color: #969DAC;"></i>
-                        <p id="logout-form-button" style="font-weight: 400; color: #bcbcbc; cursor: pointer;"><a>Вийти</a></p>
+                        <p id="logout-form-button" style="font-weight: 400; color: #bcbcbc; cursor: pointer;">
+                            <a>Вийти</a></p>
                     </div>
                 </div>
                 <div class="title-box">
                     <button class="ui primary button" onclick="window.location='/postOffer';">
                         <i class="plus icon"></i>ОГОЛОШЕННЯ
                     </button>
-                    <div class="ui dropdown button">
+                    <div id="header-dropdown" class="ui dropdown button">
                         <div class="text">СТОРІНКИ</div>
                         <div class="menu">
                             <div class="item"><a href="/index">Головна</a></div>
@@ -49,29 +54,36 @@
         </div>
     </header>
     <div class="subheader">
-        <div class="wrap">
-            <div class="subheader-items">
-                <div class="subheader-inner">
-                    <div onclick="window.location = '/catalogFilter?type.typeName=Побутова+техніка'" class="menu-item">
-                        <i class="cogs icon"></i>
-                        <p>ПОБУТОВА ТЕХНІКА</p>
+        <form th:action="@{/searchBox}" method="get">
+            <div class="wrap">
+                <div class="subheader-items">
+                    <div class="subheader-inner">
+                        <div onclick="window.location = '/catalogFilter?type.typeName=Побутова+техніка'"
+                             class="menu-item">
+                            <i class="cogs icon"></i>
+                            <p>ПОБУТОВА ТЕХНІКА</p>
+                        </div>
+                        <div onclick="window.location = '/catalogFilter?type.typeName=Високотехнологічна+електроніка'"
+                             class="menu-item">
+                            <i class="keyboard icon"></i>
+                            <p>ВИСОК. ТЕХНІКА</p>
+                        </div>
                     </div>
-                    <div onclick="window.location = '/catalogFilter?type.typeName=Високотехнологічна+електроніка'" class="menu-item">
-                        <i class="keyboard icon"></i>
-                        <p>ВИСОК. ТЕХНІКА</p>
+                    <div class="subheader-inner" style="width: 70%;">
+
+                        <div class="ui left icon input search-input">
+                            <input style="display: inline-block; width: 100%;" type="text" placeholder="Пошук..."
+                                   name="searchField">
+                            <i class="search icon"></i>
+                        </div>
+                        <button type="submit" class="ui primary button search-button">
+                            <i class="hidden search icon"></i>Пошук
+                        </button>
+
                     </div>
-                </div>
-                <div class="subheader-inner" style="width: 70%;">
-                    <div class="ui left icon input search-input">
-                        <input style="display: inline-block; width: 100%;" type="text" placeholder="Пошук...">
-                        <i class="search icon"></i>
-                    </div>
-                    <button class="ui primary button search-button">
-                        <i class="hidden search icon"></i>Пошук
-                    </button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </th:block>
 <script>
@@ -81,9 +93,10 @@
         form.submit();
     });
     $(document).ready(function () {
-        $('.ui.dropdown').dropdown({
+        $('#header-dropdown').dropdown({
             action: 'select'
         });
+        $('.ui.dropdown').dropdown();
     });
 </script>
 </body>
