@@ -123,11 +123,14 @@ public class DataLoader implements CommandLineRunner {
         User user3 = new User("login3", "123456", "380971279332", "uniloftsky@gmail.com", "Anton", "Kulyk", LocalDate.now());
         user1.getRoles().add(roles.get(0));
 
+        userService.save(user);
+        userService.save(user1);
+        userService.save(user2);
+        userService.save(user3);
         userList.add(user);
         userList.add(user1);
         userList.add(user2);
         userList.add(user3);
-        userService.saveAll(userList);
         return userList;
     }
 

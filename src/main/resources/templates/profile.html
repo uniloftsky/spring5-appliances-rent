@@ -97,14 +97,21 @@
                         <a class="item" data-tab="second">Історія оголошень</a>
                     </div>
                     <div class="ui bottom attached tab segment active" data-tab="first">
-                        <div class="ui negative message">
+                        <div th:if="${currentItems.isEmpty()}" class="ui negative message">
                             <p>Не знайдено жодного оголошення
-                            </p></div>
+                            </p>
+                        </div>
+                        
                     </div>
                     <div class="ui bottom attached tab segment" data-tab="second">
-                        <div class="ui negative message">
+                        <div th:if="${rentingHistory.isEmpty()}" class="ui negative message">
                             <p>Не знайдено жодного оголошення
-                            </p></div>
+                            </p>
+                        </div>
+                        <div th:each="renting : ${rentingHistory}">
+                            <p th:text="${renting.item.name}"></p>
+                            <p th:text="${renting.item.active}"></p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -21,11 +21,13 @@
                     <div class="ui breadcrumb">
                         <a class="section" href="/index">Головна</a>
                         <i class="right angle icon divider"></i>
-                        <a class="section" href="/offer">Оформлення оголошення</a>
+                        <a class="section" th:href="@{/offer(id=${offer.id})}" th:text="${offer.name}"></a>
+                        <i class="right angle icon divider"></i>
+                        <a class="section" th:href="@{/order(id=${offer.id})}">Оформлення оголошення</a>
                     </div>
                 </div>
                 <div class="offer-header-id">
-                    <p class="id-text">ID оголошення: 12345</p>
+                    <p class="id-text">ID оголошення: <span th:text="${offer.id}"></span></p>
                 </div>
             </div>
         </div>
@@ -37,9 +39,9 @@
                 <p><b>Інструкція щодо оформлення оренди</b></p>
                 <p>Якщо ви знайшли бажану техніку і хочете оформити оренду, слідуйте наступним крокам:</p>
                 <ul class="order-instruction">
+                    <li>Оформіть оренду на сайті</li>
                     <li>Зв'яжіться із власником техніки за допомогою номера телефону або напишіть йому на електронну пошту</li>
                     <li>Узгодьте методи оплати і транспортування побутової техніки</li>
-                    <li>Оформіть оренду на сайті</li>
                 </ul>
             </div>
             <div class="order-information">
@@ -47,21 +49,27 @@
                 <div class="ui items">
                     <div class="item">
                         <div class="ui small image">
-                            <img src="/images/wireframe/image.png" th:src="@{/images/items/fridge3.webp}">
+                            <img src="/images/wireframe/image.png" th:src="${'img/' + offer.img}">
                         </div>
                         <div class="content">
-                            <div class="header">Холодильник Самсунг</div>
+                            <div class="header" th:text="${offer.name}">Холодильник Самсунг</div>
                             <div class="meta">
-                                <span class="price">5000 грн</span>
-                                <span class="stay">Холодильники</span>
+                                <span class="price" th:text="${offer.price}">5000 грн</span>
+                                <span class="stay" th:text="${offer.category.categoryName}">Холодильники</span>
                             </div>
-                            <div class="description">
+                            <div class="description" th:text="${offer.description}" style="white-space: pre-line;">
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus. In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam. Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu orci.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="ui green button">Підтвердити замовлення</button>
+                <form th:action="@{/makeOrder}" method="post">
+                    <input type="hidden" name="userOwner" th:value="${offer.user.login}">
+                    <input type="hidden" name="userBuyer" th:value="${#authentication.name}">
+                    <input type="hidden" name="itemId" th:value="${offer.id}">
+                    <button type="submit" class="ui green button">Підтвердити замовлення</button>
+                </form>
+
             </div>
         </div>
 

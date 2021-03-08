@@ -1,7 +1,9 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService;
+import com.uniloftsky.springframework.spring5appliancesrent.services.RentingService;
 import com.uniloftsky.springframework.spring5appliancesrent.services.UserService;
 import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.Authentication;
@@ -21,10 +23,12 @@ public class OffersController {
 
     private final ItemService itemService;
     private final UserService userService;
+    private final RentingService rentingService;
 
-    public OffersController(ItemService itemService, UserService userService) {
+    public OffersController(ItemService itemService, UserService userService, RentingService rentingService) {
         this.itemService = itemService;
         this.userService = userService;
+        this.rentingService = rentingService;
     }
 
     @GetMapping("/postOffer")
@@ -62,9 +66,18 @@ public class OffersController {
     }
 
     //todo
-    @GetMapping("/order")
-    public String getOrder() {
+    @GetMapping(value = "/order", params = "id")
+    public String getOrder(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("offer", itemService.findById(id));
         return "order";
+    }
+
+    @PostMapping("/makeOrder")
+    public String processOrder(@RequestParam("userOwner") String ownerLogin, @RequestParam("itemId") Long itemId) {
+        User ownerUser = userService.findByLogin(ownerLogin);
+        Item item = itemService.findById(itemId);
+        rentingService.saveOrder(ownerUser, item);
+        return "redirect:/index";
     }
 
 }

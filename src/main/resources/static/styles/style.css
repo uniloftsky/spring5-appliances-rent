@@ -889,6 +889,7 @@ footer p {
     font-weight: 600;
     font-size: 1.5rem;
     color: #2185D0;
+    margin-bottom: 0;
 }
 
 .offer-detail-info {
@@ -994,6 +995,13 @@ footer p {
 
 .offer-section {
     padding: 0 1em 0 1em;
+}
+
+.price-and-buy-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
 }
 
 /* profile page */
@@ -1373,6 +1381,15 @@ footer p {
 
     .offer-page .right-offer-info p {
         font-size: .8rem;
+    }
+
+    .price-and-buy-block {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .offer-price {
+        margin-bottom: .5em;
     }
 
 }

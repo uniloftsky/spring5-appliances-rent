@@ -1,9 +1,12 @@
 package com.uniloftsky.springframework.spring5appliancesrent.services;
 
+import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Renting;
+import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.repositories.RentingRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
@@ -13,9 +16,13 @@ import java.util.Set;
 public class RentingServiceImpl implements RentingService {
 
     private final RentingRepository rentingRepository;
+    private final ItemService itemService;
+    private final UserService userService;
 
-    public RentingServiceImpl(RentingRepository rentingRepository) {
+    public RentingServiceImpl(RentingRepository rentingRepository, ItemService itemService, UserService userService) {
         this.rentingRepository = rentingRepository;
+        this.itemService = itemService;
+        this.userService = userService;
     }
 
     @Override
@@ -26,7 +33,7 @@ public class RentingServiceImpl implements RentingService {
     @Override
     public Renting findById(Long id) {
         Optional<Renting> optional = rentingRepository.findById(id);
-        if(optional.isEmpty()) {
+        if (optional.isEmpty()) {
             throw new RuntimeException("Expected renting not found!");
         }
         return optional.get();
@@ -45,5 +52,19 @@ public class RentingServiceImpl implements RentingService {
     @Override
     public void delete(Renting obj) {
         rentingRepository.delete(obj);
+    }
+
+    @Override
+    public Renting saveOrder(User owner, Item item) {
+        if (item.isActive()) {
+            Renting renting = new Renting(item, item.getPrice(), LocalDate.now());
+            item.setActive(false);
+            itemService.save(item);
+            owner.getRentings().add(renting);
+            userService.save(owner);
+            return rentingRepository.save(renting);
+        } else {
+            throw new RuntimeException("Ви намагаєтесь орендувати неактивне оголошення!");
+        }
     }
 }

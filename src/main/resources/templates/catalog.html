@@ -111,7 +111,7 @@
                     <div class="catalog-items">
                         <div class="catalog-item" th:each="item : ${catalogItems}">
                             <div class="catalog-item-img-block">
-                                <img class="catalog-item-img" src="" th:src="${item.img}" alt="">
+                                <img class="catalog-item-img" src="" th:src="${'img/' + item.img}" alt="">
                             </div>
                             <div class="catalog-item-info">
                                 <div class="catalog-item-header">

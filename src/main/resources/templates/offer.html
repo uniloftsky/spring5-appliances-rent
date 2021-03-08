@@ -39,7 +39,10 @@
                     <img class="offer-section-img" th:src="${'img/' + offer.img}">
                 </div>
                 <div class="offer-section-header-info">
-                    <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>
+                    <div class="price-and-buy-block">
+                        <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>
+                        <a th:href="@{/order(id=${offer.id})}" th:class="${offer.active ? 'ui primary button' : 'ui disabled button'}" th:text="${offer.active ? 'ОФОРМИТИ' : 'ОФОРМЛЕНО'}">ОФОРМИТИ</a>
+                    </div>
                     <div class="offer-info-details">
                         <div class="offer-info-detail">
                             <p class="offer-detail-name">Категорія</p>
@@ -89,7 +92,7 @@
                             <div class="contact-detail-icon">
                                 <i class="envelope icon"></i>
                             </div>
-                            <p class="contact-detail-text">Зв'язатись через email</p>
+                            <p class="contact-detail-text" th:text="${offer.user.email}">Зв'язатись через email</p>
                         </div>
                         <div class="contact-detail">
                             <div class="contact-detail-icon">
@@ -115,7 +118,7 @@
                         <a th:each="similar : ${similarPosts}" th:href="@{/offer(id = ${similar.id})}" class="right-offer offer-page">
                             <div  class="right-offer">
                                 <div class="right-offer-img-block">
-                                    <img th:src="${similar.img}" class="right-offer-img" alt="">
+                                    <img th:src="${'img/' + similar.img}" class="right-offer-img" alt="">
                                 </div>
                                 <div class="right-offer-info">
                                     <p class="right-offer-title" th:text="${similar.name}">Mercedes-Benz CLS 320</p>

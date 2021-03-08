@@ -16,7 +16,7 @@
                 <div class="title-box">
                     <div th:class="${#authorization.expression('isAuthenticated()') ? 'inner-box' : 'inner-box-anonymous'}" class="inner-box inner-box-anonymous">
                         <i class="user secret icon" style="color: #2185D0;"></i>
-                        <a th:href="@{/profle(login=${#request.userPrincipal.name})}" sec:authorize="${isAuthenticated()}" sec:authentication="name" style="color: #bcbcbc; font-weight: 600;"></a>
+                        <a th:href="@{/profile(login=${#request.userPrincipal.name})}" sec:authorize="${isAuthenticated()}" sec:authentication="name" style="color: #bcbcbc; font-weight: 600;"></a>
                         <p sec:authorize="${isAnonymous()}" style="color: #bcbcbc; font-weight: 600;"><a href="/login">Авторизуватись</a></p>
                     </div>
                     <div sec:authorize="${isAuthenticated()}" class="inner-box">

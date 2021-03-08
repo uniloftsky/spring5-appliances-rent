@@ -25,6 +25,8 @@ public class UserController {
             return "signin_form";
         }
         model.addAttribute("user", userService.findByLogin(login));
+        model.addAttribute("rentingHistory", userService.findByLogin(login).getRentings());
+        model.addAttribute("currentItems", userService.findByLogin(login).getItems());
         return "profile";
     }
 

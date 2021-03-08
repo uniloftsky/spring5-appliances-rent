@@ -71,6 +71,7 @@ public class ItemCriteriaRepository {
                     itemSearchCriteria.getMinPrice())
             );
         }
+        predicates.add(criteriaBuilder.equal(itemRoot.get("active"), true));
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
     }
 
