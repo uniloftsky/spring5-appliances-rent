@@ -67,7 +67,7 @@
                     <input type="hidden" name="userOwner" th:value="${offer.user.login}">
                     <input type="hidden" name="userBuyer" th:value="${#authentication.name}">
                     <input type="hidden" name="itemId" th:value="${offer.id}">
-                    <button type="submit" class="ui green button">Підтвердити замовлення</button>
+                    <button type="submit" th:class="${offer.active ? 'ui green button' : 'ui disabled button'}" th:text="${offer.active ? 'Підтвердити замовлення' : 'Оформлено'}">Підтвердити замовлення</button>
                 </form>
 
             </div>

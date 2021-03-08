@@ -43,13 +43,13 @@ public class UserController {
 
     @PostMapping("/editProfile")
     public String editProfileProcess(@ModelAttribute User user) {
-        User savedUser = userService.save(user);
-        return "redirect:/profile?login=" + savedUser.getLogin();
+        userService.save(user);
+        return "redirect:/profile";
     }
 
     @PostMapping("/changePassword")
     public String editPasswordForm(@RequestParam("newPassword") String newPassword, Authentication authentication) {
-        User user = userService.changePassword(authentication, newPassword);
+        userService.changePassword(authentication, newPassword);
         return "redirect:/profile";
     }
 

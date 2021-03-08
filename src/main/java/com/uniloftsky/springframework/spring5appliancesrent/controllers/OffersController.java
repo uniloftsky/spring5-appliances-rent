@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
 import java.util.Set;
@@ -73,11 +74,12 @@ public class OffersController {
     }
 
     @PostMapping("/makeOrder")
-    public String processOrder(@RequestParam("userOwner") String ownerLogin, @RequestParam("itemId") Long itemId) {
+    public String processOrder(RedirectAttributes rA, @RequestParam("userOwner") String ownerLogin, @RequestParam("itemId") Long itemId, Model model) {
         User ownerUser = userService.findByLogin(ownerLogin);
         Item item = itemService.findById(itemId);
         rentingService.saveOrder(ownerUser, item);
-        return "redirect:/index";
+        rA.addFlashAttribute("ordered", true);
+        return "redirect:/offer?id=" + itemId;
     }
 
 }

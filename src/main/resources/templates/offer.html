@@ -34,6 +34,12 @@
     </section>
     <section class="offer-section">
         <div class="wrap">
+            <div th:if="${ordered == true}" class="ui positive message">
+                <div class="header">
+                    Ви оформили оренду даної техніки
+                </div>
+                <p><b>Зв'яжіться із власником</b> для узгодження деталей.</p>
+            </div>
             <div class="offer-section-header">
                 <div class="offer-section-header-img-block">
                     <img class="offer-section-img" th:src="${'img/' + offer.img}">
