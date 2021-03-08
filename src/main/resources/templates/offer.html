@@ -41,7 +41,7 @@
                 <div class="offer-section-header-info">
                     <div class="price-and-buy-block">
                         <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>
-                        <a th:href="@{/order(id=${offer.id})}" th:class="${offer.active ? 'ui primary button' : 'ui disabled button'}" th:text="${offer.active ? 'ОФОРМИТИ' : 'ОФОРМЛЕНО'}">ОФОРМИТИ</a>
+                        <a th:if="${offer.user.login != #authentication.name}" th:href="@{/order(id=${offer.id})}" th:class="${offer.active ? 'ui primary button' : 'ui disabled button'}" th:text="${offer.active ? 'ОФОРМИТИ' : 'ОФОРМЛЕНО'}">ОФОРМИТИ</a>
                     </div>
                     <div class="offer-info-details">
                         <div class="offer-info-detail">
