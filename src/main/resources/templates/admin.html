@@ -314,18 +314,18 @@
             </tr>
             </thead>
             <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
+            <tr th:each="post : ${posts}">
+                <td data-label="Name" th:text="${post.id}">1</td>
+                <td data-label="Age" th:text="${post.category.categoryName}">ну</td>
+                <td data-label="Age" th:text="${post.category.type.typeName}">ну</td>
+                <td data-label="Age" th:text="${post.user.login}">ну</td>
+                <td data-label="Age" th:text="${post.location}">ну</td>
+                <td data-label="Age" th:text="${post.price}">ну</td>
+                <td data-label="Age" th:text="${post.date}">ну</td>
+                <td data-label="Age" th:text="${post.description}">ну</td>
+                <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button click2-1-1">Переглянути</button>
+                    <button class="delete-button">Переглянути</button>
                 </td>
             </tr>
             </tbody>
@@ -373,7 +373,7 @@
 
 <!--Оголошення активні-->
 
-<div id="draggable2-2" class="window" style="width: 600px">
+<div id="draggable2-2" class="window" style="width: 1200px">
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Активні оголошення</div>
         <div class="title-bar-controls">
@@ -398,18 +398,18 @@
             </tr>
             </thead>
             <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
+            <tr th:each="post : ${activePosts}">
+                <td data-label="Name" th:text="${post.id}">1</td>
+                <td data-label="Age" th:text="${post.category.categoryName}">ну</td>
+                <td data-label="Age" th:text="${post.category.type.typeName}">ну</td>
+                <td data-label="Age" th:text="${post.user.login}">ну</td>
+                <td data-label="Age" th:text="${post.location}">ну</td>
+                <td data-label="Age" th:text="${post.price}">ну</td>
+                <td data-label="Age" th:text="${post.date}">ну</td>
+                <td data-label="Age" th:text="${post.description}">ну</td>
+                <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button click2-1-1">Переглянути</button>
+                    <button class="delete-button">Переглянути</button>
                 </td>
             </tr>
             </tbody>
@@ -817,7 +817,7 @@
                 .css("left", "0");
         } else {
             $("#draggable2-2")
-                .css("width", "600px")
+                .css("width", "1200px")
                 .css("min-height", "100px")
                 .draggable({disabled: false});
         }

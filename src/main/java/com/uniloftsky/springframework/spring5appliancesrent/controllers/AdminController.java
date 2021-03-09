@@ -52,4 +52,9 @@ public class AdminController {
         return userService.findAllSortedById(userComparatorAscById);
     }
 
+    @ModelAttribute("activePosts")
+    public Set<Item> getActivePosts() {
+        return itemService.findAllActive();
+    }
+
 }
