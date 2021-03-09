@@ -65,7 +65,7 @@ footer p {
     font-family: 'Montserrat', sans-serif;
 }
 
-.title-box .ui.dropdown .menu>.item a {
+.title-box .ui.dropdown .menu > .item a {
     color: black;
 }
 
@@ -1079,7 +1079,7 @@ footer p {
 
 /* profile edit */
 
-.ui.modal>.change-password-header {
+.ui.modal > .change-password-header {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -1140,7 +1140,7 @@ footer p {
 
 /* media queries */
 
-@media screen and (max-width: 990px){
+@media screen and (max-width: 990px) {
 
     .header-in {
         flex-direction: column;
@@ -1170,15 +1170,14 @@ footer p {
 }
 
 
-@media screen and (max-width: 960px){
+@media screen and (max-width: 960px) {
     .offer-page .right-offer-info p {
         font-size: .65rem;
     }
 }
 
 
-
-@media screen and (max-width: 900px){
+@media screen and (max-width: 900px) {
 
     .offer-page .right-offer-info p {
         font-size: 1rem;
@@ -1760,7 +1759,7 @@ footer p {
 
     .offer-section-img {
         object-fit: contain;
-        min-height: unset!important;
+        min-height: unset !important;
     }
 
     .menu-item p {
@@ -1837,8 +1836,8 @@ footer p {
     border: 1.8px outset #fff;
     border-radius: 0;
     box-shadow: 1.5px 1.5px #000;
-    width: 40px;
-    font-family: 'W95FA', sans-serif;
+    width: 90px;
+    font-family: Tahoma, sans-serif;
     min-height: 2vh;
     text-align: center;
 }
@@ -1849,27 +1848,81 @@ footer p {
     border: 1.8px outset #fff;
     border-radius: 0;
     box-shadow: 1.5px 1.5px #000;
-    width: 30px;
-    font-family: 'W95FA', sans-serif;
+    width: 70px;
+    font-family: Tahoma, sans-serif;
     transition: 0s;
     margin-top: .3em;
     margin-left: -.15em;
 }
 
-.ui.dropdown .menu>.item.item98 {
+.ui.dropdown .menu > .item.item98 {
     font-size: 12px;
     color: #212529;
     font-weight: 400;
     border: 0;
     background-color: transparent;
-    padding: .5em!important;
-    font-family: 'W95FA', sans-serif;
+    padding: .5em !important;
+    font-family: Tahoma, sans-serif;
 }
 
-.ui.dropdown .menu>.item.item98:hover {
+.ui.dropdown .menu > .item.item98:hover {
     background-color: #B6B6B6;
 }
 
 .admin-menu {
     display: flex;
+}
+
+.ui.table thead th {
+    padding: 0;
+    font-size: 12px;
+    background: silver;
+    border: 1.8px outset #fff;
+    border-radius: 0;
+    width: 40px;
+    font-family: Tahoma, sans-serif;
+    min-height: 2vh;
+    text-align: center;
+}
+
+.ui.table td {
+    padding: 0.25em;
+}
+
+.tbody-winxp {
+    border-right: 50px solid black;
+    background-color: whitesmoke;
+    font-family: Tahoma, sans-serif;
+}
+
+.delete-button {
+    font-size: 11px;
+    padding: 0;
+    font-family: Tahoma, sans-serif;
+    min-width: 50px;
+    min-height: 15px;
+}
+
+.ui.table thead .delete-button-cell {
+    width: 80px;
+}
+
+#draggable1-1 {
+    font-family: Tahoma, sans-serif;
+}
+
+#draggable1-2 {
+    font-family: Tahoma, sans-serif;
+}
+
+#draggable1-3 {
+    font-family: Tahoma, sans-serif;
+}
+
+#draggable1-4 {
+    font-family: Tahoma, sans-serif;
+}
+
+#draggable1-5 {
+    font-family: Tahoma, sans-serif;
 }

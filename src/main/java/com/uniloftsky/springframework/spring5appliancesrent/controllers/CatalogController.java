@@ -46,10 +46,6 @@ public class CatalogController {
         model.addAttribute("maxPage", 0);
         model.addAttribute("pageNumbers", 1);
         model.addAttribute("currentPage", 0);
-//        System.out.println("list:");
-//        for(Item i : itemService.searchBox(field, field, field, field)) {
-//            System.out.println("id : " + i.getId());
-//        }
         return "catalog";
     }
 

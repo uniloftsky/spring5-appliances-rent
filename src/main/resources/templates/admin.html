@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://unpkg.com/xp.css"/>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css"
+    />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.ui/1.10.3/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
+    <!-- Material Design icon font -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link href="http://fonts.cdnfonts.com/css/w95fa" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css" th:href="@{/styles/style.css}" type="text/css"/>
+</head>
+<style>
+    #draggable1-1,
+    #draggable1-2,
+    #draggable1-3,
+    #draggable1-4,
+    #draggable1-5,
+    #draggable2-1,
+    #draggable2-1-1,
+    #draggable2-2,
+    #draggable2-3,
+    #draggable3-1 {
+        display: none;
+    }
+
+    .title-bar-text,
+    .window-body p {
+        font-family: "W95FA", sans-serif;
+    }
+</style>
+<body>
+<!-- ВЕРХНЕ МЕНЮ -->
+<nav class="admin-menu">
+    <div class="ui dropdown dropdown98">
+        <div class="text">Довідники</div>
+        <div class="menu menu98">
+            <div class="item item98 click1-1">Категорія</div>
+            <div class="item item98 click1-2">
+                <span class="description">ctrl + o</span>
+                Тип
+            </div>
+            <div class="item item98 click1-3">
+                <span class="description">ctrl + s</span>
+                Оголошення
+            </div>
+            <div class="item item98 click1-4">
+                <span class="description">коли вже домовились</span>
+                Готове оголошення
+            </div>
+            <div class="item item98 click1-5">
+                <span class="description"></span>
+                Користувач
+            </div>
+        </div>
+    </div>
+    <div class="ui dropdown dropdown98">
+        <div class="text">Оголошення</div>
+        <div class="menu menu98">
+            <div class="item item98 click2-1">Всі</div>
+            <div class="item item98 click2-2">
+                <span class="description">ctrl + o</span>
+                Активні
+            </div>
+            <div class="item item98 click2-3">
+                <span class="description">ctrl + s</span>
+                Закриті
+            </div>
+        </div>
+    </div>
+
+    <div class="ui dropdown dropdown98">
+        <div class="text">Користувачі</div>
+        <div class="menu menu98">
+            <div class="item item98 click3-1">Всі</div>
+        </div>
+    </div>
+
+    <div class="ui dropdown dropdown98">
+        <div class="text">Звіти</div>
+        <div class="menu menu98">
+            <div class="item item98 click4-1">По користувачам</div>
+
+            <div class="item item98 click4-2">
+                <span class="description">ctrl + o</span>
+                По оголошенням
+            </div>
+
+        </div>
+    </div>
+</nav>
+
+<!--ТАБЛИЧКА КАТЕГОРІЇ-->
+
+<div id="draggable1-1" class="window" style="width: 300px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Категорія</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize1-1"></button>
+            <button aria-label="Close" class="close1-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader six wide">ID</th>
+                <th class="twoheader six wide">Назва</th>
+                <th class="twoheader six wide">Тип</th>
+                <th class="twoheader six wide delete-button-cell">Видалення</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr th:each="category : ${categoryList}">
+                <td th:text="${category.id}"  data-label="Name">1</td>
+                <td th:text="${category.categoryName}"></td>
+                <td th:text="${category.type.typeName}"></td>
+                <td class="delete-button-cell" data-label="Видалення">
+                    <button class="delete-button">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ТАБЛИЧКА ТИПУ -->
+
+<div id="draggable1-2" class="window" style="width: 350px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Тип</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize1-2"></button>
+            <button aria-label="Close" class="close1-2"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader six wide">ID</th>
+                <th class="twoheader six wide">Назва</th>
+                <th class="twoheader two wide delete-button-cell">Видалення</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr th:each="type : ${typeList}">
+                <td th:text="${type.id}" data-label="Name">1</td>
+                <td th:text="${type.typeName}" data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ТАБЛИЧКА ОГОЛОШЕНЬ -->
+
+<div id="draggable1-3" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize1-3"></button>
+            <button aria-label="Close" class="close1-3"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader two wide">Категорія</th>
+                <th class="twoheader two wide">Тип</th>
+                <th class="twoheader two wide">Користувач</th>
+                <th class="twoheader two wide">Розташування</th>
+                <th class="twoheader one wide">Ціна</th>
+                <th class="twoheader one wide">Дата</th>
+                <th class="twoheader four wide">Опис</th>
+                <th class="twoheader one wide">Актив</th>
+                <th class="twoheader one wide delete-button-cell">Видалення</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr th:each="post : ${posts}">
+                <td data-label="Name" th:text="${post.id}">1</td>
+                <td data-label="Age" th:text="${post.category.categoryName}">ну</td>
+                <td data-label="Age" th:text="${post.category.type.typeName}">ну</td>
+                <td data-label="Age" th:text="${post.user.login}">ну</td>
+                <td data-label="Age" th:text="${post.location}">ну</td>
+                <td data-label="Age" th:text="${post.price}">ну</td>
+                <td data-label="Age" th:text="${post.date}">ну</td>
+                <td data-label="Age" th:text="${post.description}">ну</td>
+                <td data-label="Age" th:text="${post.active}">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Готове оголошення(коли вже домовились) -->
+
+<div id="draggable1-4" class="window" style="width: 600px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Закриті оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize1-4"></button>
+            <button aria-label="Close" class="close1-4"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader two wide">ID</th>
+                <th class="twoheader six wide">Оголошення</th>
+                <th class="twoheader six wide">Ціна</th>
+                <th class="twoheader six wide">Дата</th>
+                <th class="twoheader one wide delete-button-cell">Видалення</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr th:each="renting : ${rentings}">
+                <td data-label="Name" th:text="${renting.id}">1</td>
+                <td data-label="Age" th:text="${renting.item.name}">ну</td>
+                <td data-label="Age" th:text="${renting.price}">ну</td>
+                <td data-label="Age" th:text="${renting.date}">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- КОРИСТУВАЧ -->
+
+<div id="draggable1-5" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize1-5"></button>
+            <button aria-label="Close" class="close1-5"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader three wide">Ім'я</th>
+                <th class="twoheader three wide">Прізвище</th>
+                <th class="twoheader two wide">Телефон</th>
+                <th class="twoheader four wide">Логін</th>
+                <th class="twoheader three wide">Пошта</th>
+                <th class="twoheader one wide delete-button-cell">Видалення</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr th:each="user : ${users}">
+                <td data-label="Name" th:text="${user.id}">1</td>
+                <td data-label="Age" th:text="${user.firstName}">ну</td>
+                <td data-label="Age" th:text="${user.lastName}">ну</td>
+                <td data-label="Age" th:text="${user.phone}">ну</td>
+                <td data-label="Age" th:text="${user.login}">ну</td>
+                <td data-label="Age" th:text="${user.email}">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Видалити</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Оголошення-всі -->
+
+<div id="draggable2-1" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize2-1"></button>
+            <button aria-label="Close" class="close2-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader two wide">Категорія</th>
+                <th class="twoheader two wide">Тип</th>
+                <th class="twoheader two wide">Користувач</th>
+                <th class="twoheader two wide">Розташування</th>
+                <th class="twoheader one wide">Ціна</th>
+                <th class="twoheader one wide">Дата</th>
+                <th class="twoheader four wide">Опис</th>
+                <th class="twoheader one wide">Актив</th>
+                <th class="twoheader one wide delete-button-cell">Переглянути</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button click2-1-1">Переглянути</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--Конкретне Оголошення -->
+
+<div id="draggable2-1-1" class="window" style="width: 600px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize2-1-1"></button>
+            <button aria-label="Close" class="close2-1-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <div class="ui grid">
+
+            <div class="eight wide column">
+                <div class="offer-window-desc">
+                    <p>ID</p>
+                    <p>Категорія</p>
+                    <p>Тип</p>
+                    <p>Користувач</p>
+                    <p>Розташування</p>
+                    <p>Ціна</p>
+                    <p>Дата</p>
+                    <p>Опис</p>
+                    <p>Актив</p>
+                    <button class="delete-button">Udoli</button>
+                </div>
+            </div>
+
+            <div class="eight wide column">
+                <img class="ui image fluid"
+                     src="https://media.discordapp.net/attachments/539451575454793729/816440779689951272/fridge4.webp?width=509&height=677">
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<!--Оголошення активні-->
+
+<div id="draggable2-2" class="window" style="width: 600px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Активні оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize2-2"></button>
+            <button aria-label="Close" class="close2-2"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader two wide">Категорія</th>
+                <th class="twoheader two wide">Тип</th>
+                <th class="twoheader two wide">Користувач</th>
+                <th class="twoheader two wide">Розташування</th>
+                <th class="twoheader one wide">Ціна</th>
+                <th class="twoheader one wide">Дата</th>
+                <th class="twoheader four wide">Опис</th>
+                <th class="twoheader one wide">Актив</th>
+                <th class="twoheader one wide delete-button-cell">Переглянути</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button click2-1-1">Переглянути</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+<!--Оголошення закриті-->
+
+<div id="draggable2-3" class="window" style="width: 600px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Закриті оголошення</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize2-3"></button>
+            <button aria-label="Close" class="close2-3"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader two wide">Категорія</th>
+                <th class="twoheader two wide">Тип</th>
+                <th class="twoheader two wide">Користувач</th>
+                <th class="twoheader two wide">Розташування</th>
+                <th class="twoheader one wide">Ціна</th>
+                <th class="twoheader one wide">Дата</th>
+                <th class="twoheader four wide">Опис</th>
+                <th class="twoheader one wide">Актив</th>
+                <th class="twoheader one wide delete-button-cell">Переглянути</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button click2-1-1">Переглянути</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
+
+
+<!-- КОРИСТУВАЧ 3 -->
+
+<div id="draggable3-1" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize3-1"></button>
+            <button aria-label="Close" class="close3-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader three wide">Ім'я</th>
+                <th class="twoheader three wide">Прізвище</th>
+                <th class="twoheader four wide">Телефон</th>
+                <th class="twoheader four wide">Адреса</th>
+                <th class="twoheader two wide">Пошта</th>
+                <th class="twoheader one wide delete-button-cell">delete</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Udoli</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Звіт по користувачам -->
+
+<div id="draggable3-1" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize3-1"></button>
+            <button aria-label="Close" class="close3-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader three wide">Ім'я</th>
+                <th class="twoheader three wide">Прізвище</th>
+                <th class="twoheader four wide">Телефон</th>
+                <th class="twoheader four wide">Адреса</th>
+                <th class="twoheader two wide">Пошта</th>
+                <th class="twoheader one wide delete-button-cell">delete</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Udoli</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Звіт по оголошенням -->
+
+<div id="draggable3-1" class="window" style="width: 1200px">
+    <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
+        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-controls">
+            <button aria-label="Maximize" class="maximize3-1"></button>
+            <button aria-label="Close" class="close3-1"></button>
+        </div>
+    </div>
+    <div class="window-body">
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th class="twoheader one wide">ID</th>
+                <th class="twoheader three wide">Ім'я</th>
+                <th class="twoheader three wide">Прізвище</th>
+                <th class="twoheader four wide">Телефон</th>
+                <th class="twoheader four wide">Адреса</th>
+                <th class="twoheader two wide">Пошта</th>
+                <th class="twoheader one wide delete-button-cell">delete</th>
+            </tr>
+            </thead>
+            <tbody class="tbody-winxp">
+            <tr>
+                <td data-label="Name">1</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td data-label="Age">ну</td>
+                <td class="delete-button-cell" data-label="Udoli">
+                    <button class="delete-button">Udoli</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<!-- СКРІПТИ НА 1-1  -->
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".ui.dropdown").dropdown({
+            action: "select",
+        });
+    });
+    var x, y;
+    $(".click1-1").click(function () {
+        $("#draggable1-1").show();
+        $("#draggable1-1").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close1-1").click(function () {
+        $("#draggable1-1").hide();
+    });
+    var active = false;
+
+    $(".maximize1-1").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable1-1")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable1-1")
+                .css("width", "300px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+    // СКРІПТИ НА 1-2
+    $(".click1-2").click(function () {
+        $("#draggable1-2").show();
+        $("#draggable1-2").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close1-2").click(function () {
+        $("#draggable1-2").hide();
+    });
+    var active = false;
+
+    $(".maximize1-2").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable1-2")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable1-2")
+                .css("width", "300px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+    // СКРІПТИ НА 1-3
+    $(".click1-3").click(function () {
+        $("#draggable1-3").show();
+        $("#draggable1-3").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close1-3").click(function () {
+        $("#draggable1-3").hide();
+    });
+    var active = false;
+
+    $(".maximize1-3").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable1-3")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable1-3")
+                .css("width", "1200px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+    // CКРІПТИ НА 1-4
+    $(".click1-4").click(function () {
+        $("#draggable1-4").show();
+        $("#draggable1-4").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close1-4").click(function () {
+        $("#draggable1-4").hide();
+    });
+    var active = false;
+
+    $(".maximize1-4").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable1-4")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable1-4")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+    // CКРІПТИ НА 1-5
+    $(".click1-5").click(function () {
+        $("#draggable1-5").show();
+        $("#draggable1-5").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close1-5").click(function () {
+        $("#draggable1-5").hide();
+    });
+    var active = false;
+
+    $(".maximize1-5").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable1-5")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable1-5")
+                .css("width", "1200px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+    // CКРІПТИ НА 2-1
+    $(".click2-1").click(function () {
+        $("#draggable2-1").show();
+        $("#draggable2-1").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close2-1").click(function () {
+        $("#draggable2-1").hide();
+    });
+    var active = false;
+
+    $(".maximize2-1").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable2-1")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable2-1")
+                .css("width", "1200px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 2-1-1 Переглянути
+    $(".click2-1-1").click(function () {
+        $("#draggable2-1-1").show();
+        $("#draggable2-1-1").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close2-1-1").click(function () {
+        $("#draggable2-1-1").hide();
+    });
+    var active = false;
+
+    $(".maximize2-1-1").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable2-1-1")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable2-1-1")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 2-2
+    $(".click2-2").click(function () {
+        $("#draggable2-2").show();
+        $("#draggable2-2").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close2-2").click(function () {
+        $("#draggable2-2").hide();
+    });
+    var active = false;
+
+    $(".maximize2-2").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable2-2")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable2-2")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 2-3
+    $(".click2-3").click(function () {
+        $("#draggable2-3").show();
+        $("#draggable2-3").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close2-3").click(function () {
+        $("#draggable2-3").hide();
+    });
+    var active = false;
+
+    $(".maximize2-3").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable2-3")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable2-3")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 3-1
+    $(".click3-1").click(function () {
+        $("#draggable3-1").show();
+        $("#draggable3-1").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close3-1").click(function () {
+        $("#draggable3-1").hide();
+    });
+    var active = false;
+
+    $(".maximize3-1").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable3-1")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable3-1")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 4-1
+    $(".click4-1").click(function () {
+        $("#draggable4-1").show();
+        $("#draggable4-1").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close4-1").click(function () {
+        $("#draggable4-1").hide();
+    });
+    var active = false;
+
+    $(".maximize4-1").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable4-1")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable4-1")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+
+    // CКРІПТИ НА 4-2
+    $(".click4-2").click(function () {
+        $("#draggable4-2").show();
+        $("#draggable4-2").draggable({
+            handle: ".title-bar",
+        });
+    });
+    $(".close4-2").click(function () {
+        $("#draggable4-2").hide();
+    });
+    var active = false;
+
+    $(".maximize4-2").click(function () {
+        active = !active;
+        if (active) {
+            $("#draggable4-2")
+                .css("width", "99vw")
+                .css("min-height", "98vh")
+                .draggable({disabled: true})
+                .css("top", "0")
+                .css("left", "0");
+        } else {
+            $("#draggable4-2")
+                .css("width", "600px")
+                .css("min-height", "100px")
+                .draggable({disabled: false});
+        }
+    });
+</script>
+</body>
+</html>

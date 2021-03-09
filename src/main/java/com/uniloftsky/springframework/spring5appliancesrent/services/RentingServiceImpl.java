@@ -7,10 +7,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.repositories.Renting
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 public class RentingServiceImpl implements RentingService {
@@ -60,11 +57,16 @@ public class RentingServiceImpl implements RentingService {
             Renting renting = new Renting(item, item.getPrice(), LocalDate.now());
             item.setActive(false);
             itemService.save(item);
-            owner.getRentings().add(renting);
-            userService.save(owner);
             return rentingRepository.save(renting);
         } else {
             throw new RuntimeException("Ви намагаєтесь орендувати неактивне оголошення!");
         }
+    }
+
+    @Override
+    public TreeSet<Renting> findAllSortedById(Comparator<Renting> comparator) {
+        TreeSet<Renting> sortedRentings = new TreeSet<>(comparator);
+        rentingRepository.findAll().stream().iterator().forEachRemaining(sortedRentings::add);
+        return sortedRentings;
     }
 }

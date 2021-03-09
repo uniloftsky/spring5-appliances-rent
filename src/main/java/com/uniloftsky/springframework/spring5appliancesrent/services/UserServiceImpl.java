@@ -74,6 +74,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public TreeSet<User> findAllSortedById(Comparator<User> comparator) {
+        TreeSet<User> sortedUsers = new TreeSet<>(comparator);
+        userRepository.findAll().stream().iterator().forEachRemaining(sortedUsers::add);
+        return sortedUsers;
+    }
+
+    @Override
     public Set<User> getPopularUsers() {
         TreeSet<User> popularUsers = new TreeSet<>(comparatorDescByItemsCount);
         userRepository.findAll().stream().iterator().forEachRemaining(popularUsers::add);
