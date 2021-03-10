@@ -115,7 +115,6 @@
                 <th class="twoheader six wide">ID</th>
                 <th class="twoheader six wide">Назва</th>
                 <th class="twoheader six wide">Тип</th>
-                <th class="twoheader six wide delete-button-cell">Видалення</th>
             </tr>
             </thead>
             <tbody class="tbody-winxp">
@@ -123,9 +122,6 @@
                 <td th:text="${category.id}"  data-label="Name">1</td>
                 <td th:text="${category.categoryName}"></td>
                 <td th:text="${category.type.typeName}"></td>
-                <td class="delete-button-cell" data-label="Видалення">
-                    <button class="delete-button">Видалити</button>
-                </td>
             </tr>
             </tbody>
         </table>
@@ -147,16 +143,12 @@
             <tr>
                 <th class="twoheader six wide">ID</th>
                 <th class="twoheader six wide">Назва</th>
-                <th class="twoheader two wide delete-button-cell">Видалення</th>
             </tr>
             </thead>
             <tbody class="tbody-winxp">
             <tr th:each="type : ${typeList}">
                 <td th:text="${type.id}" data-label="Name">1</td>
                 <td th:text="${type.typeName}" data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Видалити</button>
-                </td>
             </tr>
             </tbody>
         </table>
@@ -200,7 +192,7 @@
                 <td data-label="Age" th:text="${post.description}">ну</td>
                 <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Видалити</button>
+                    <button class="delete-button"><a th:href="@{/itemDelete(id = ${post.id})}">Видалити</a></button>
                 </td>
             </tr>
             </tbody>

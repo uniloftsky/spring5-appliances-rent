@@ -111,6 +111,15 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public void delete(Item obj) {
+        Optional<Item> itemOptional = itemRepository.findById(obj.getId());
+        if(itemOptional.isEmpty()) {
+            throw new RuntimeException("Expected item not found!");
+        }
+        Item foundItem = itemOptional.get();
+        User user = foundItem.getUser();
+        user.getItems().remove(foundItem);
+        userService.save(user);
+        itemRepository.delete(foundItem);
         itemRepository.delete(obj);
     }
 }
