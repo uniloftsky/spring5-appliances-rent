@@ -50,15 +50,12 @@
         <div class="menu menu98">
             <div class="item item98 click1-1">Категорія</div>
             <div class="item item98 click1-2">
-                <span class="description">ctrl + o</span>
                 Тип
             </div>
             <div class="item item98 click1-3">
-                <span class="description">ctrl + s</span>
                 Оголошення
             </div>
             <div class="item item98 click1-4">
-                <span class="description">коли вже домовились</span>
                 Готове оголошення
             </div>
             <div class="item item98 click1-5">
@@ -72,11 +69,9 @@
         <div class="menu menu98">
             <div class="item item98 click2-1">Всі</div>
             <div class="item item98 click2-2">
-                <span class="description">ctrl + o</span>
                 Активні
             </div>
             <div class="item item98 click2-3">
-                <span class="description">ctrl + s</span>
                 Закриті
             </div>
         </div>
@@ -90,15 +85,10 @@
     </div>
 
     <div class="ui dropdown dropdown98">
-        <div class="text">Звіти</div>
+        <div class="text">Додавання</div>
         <div class="menu menu98">
-            <div class="item item98 click4-1">По користувачам</div>
-
-            <div class="item item98 click4-2">
-                <span class="description">ctrl + o</span>
-                По оголошенням
-            </div>
-
+            <div class="item item98 click4-1">Типів</div>
+            <div class="item item98 click4-2">Категорій</div>
         </div>
     </div>
 </nav>
@@ -270,7 +260,7 @@
                 <td data-label="Age" th:text="${user.login}">ну</td>
                 <td data-label="Age" th:text="${user.email}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Видалити</button>
+                    <button class="delete-button"><a th:href="@{/userDelete(id = ${user.id})}">Видалити</a></button>
                 </td>
             </tr>
             </tbody>

@@ -58,6 +58,12 @@ public class AdminController {
         return "redirect:/admin";
     }
 
+    @GetMapping(value = "/userDelete", params = "id")
+    public String deleteUser(@RequestParam("id") Long id) {
+        userService.delete(userService.findById(id));
+        return "redirect:/admin";
+    }
+
     @ModelAttribute("posts")
     public Set<Item> getPosts() {
         return itemService.findAllSortedById(itemComparatorAscById);
