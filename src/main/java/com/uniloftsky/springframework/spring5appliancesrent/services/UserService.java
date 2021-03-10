@@ -14,8 +14,8 @@ public interface UserService extends GenericService<User, Long> {
     User findByEmail(String email);
     User findByLogin(String login);
     User changePassword(Authentication authentication, String password);
-    TreeSet<Item> getUserItems(User user);
-    TreeSet<Renting> getUserRentings(User user);
+    TreeSet<Item> getUserItems(User user, Comparator<Item> comparator);
+    TreeSet<Renting> getUserRentings(User user, Comparator<Renting> comparator);
     TreeSet<User> findAllSortedById(Comparator<User> comparator);
     Set<User> getPopularUsers();
 

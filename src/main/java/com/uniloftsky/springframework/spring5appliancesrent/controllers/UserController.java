@@ -1,5 +1,10 @@
 package com.uniloftsky.springframework.spring5appliancesrent.controllers;
 
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemAscComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.comparators.renting.RentingDescComparatorByDate;
+import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
+import com.uniloftsky.springframework.spring5appliancesrent.model.Renting;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.services.UserService;
 import org.springframework.security.core.Authentication;
@@ -12,11 +17,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Comparator;
 
 @Controller
 public class UserController {
 
     private final UserService userService;
+    private final Comparator<Item> itemAscComparatorById = new ItemAscComparatorById();
+    private final Comparator<Item> itemDescComparatorById = new ItemDescComparatorById();
+    private final Comparator<Renting> rentingDescComparatorByDate = new RentingDescComparatorByDate();
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -28,8 +37,8 @@ public class UserController {
             return "signin_form";
         }
         model.addAttribute("user", userService.findByLogin(login));
-        model.addAttribute("rentingHistory", userService.getUserRentings(userService.findByLogin(login)));
-        model.addAttribute("currentItems", userService.getUserItems(userService.findByLogin(login)));
+        model.addAttribute("rentingHistory", userService.getUserRentings(userService.findByLogin(login), rentingDescComparatorByDate));
+        model.addAttribute("currentItems", userService.getUserItems(userService.findByLogin(login), itemDescComparatorById));
         return "profile";
     }
 

@@ -64,13 +64,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public TreeSet<Item> getUserItems(User user) {
-        return user.getItems().stream().filter(Item::isActive).collect(toCollection(() -> new TreeSet<>(itemComparatorDescById)));
+    public TreeSet<Item> getUserItems(User user, Comparator<Item> comparator) {
+        return user.getItems().stream().filter(Item::isActive).collect(toCollection(() -> new TreeSet<>(comparator)));
     }
 
     @Override
-    public TreeSet<Renting> getUserRentings(User user) {
-        return user.getRentings().stream().collect(toCollection(() -> new TreeSet<>(rentingComparatorDescByDate)));
+    public TreeSet<Renting> getUserRentings(User user, Comparator<Renting> comparator) {
+        return user.getRentings().stream().collect(toCollection(() -> new TreeSet<>(comparator)));
     }
 
     @Override

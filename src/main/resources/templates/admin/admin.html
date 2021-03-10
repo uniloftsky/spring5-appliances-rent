@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>POGMarket - Адмін-панель</title>
     <link rel="stylesheet" href="https://unpkg.com/xp.css"/>
     <link
             rel="stylesheet"
@@ -105,7 +105,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Категорія</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize1-1"></button>
             <button aria-label="Close" class="close1-1"></button>
         </div>
     </div>
@@ -139,7 +138,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Тип</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize1-2"></button>
             <button aria-label="Close" class="close1-2"></button>
         </div>
     </div>
@@ -171,7 +169,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize1-3"></button>
             <button aria-label="Close" class="close1-3"></button>
         </div>
     </div>
@@ -217,7 +214,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Закриті оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize1-4"></button>
             <button aria-label="Close" class="close1-4"></button>
         </div>
     </div>
@@ -253,7 +249,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Користувачі</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize1-5"></button>
             <button aria-label="Close" class="close1-5"></button>
         </div>
     </div>
@@ -293,7 +288,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize2-1"></button>
             <button aria-label="Close" class="close2-1"></button>
         </div>
     </div>
@@ -325,7 +319,7 @@
                 <td data-label="Age" th:text="${post.description}">ну</td>
                 <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Переглянути</button>
+                    <button class="delete-button"><a th:href="@{/itemDetail(id = ${post.id})}">Переглянути</a></button>
                 </td>
             </tr>
             </tbody>
@@ -339,7 +333,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize2-1-1"></button>
             <button aria-label="Close" class="close2-1-1"></button>
         </div>
     </div>
@@ -377,7 +370,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Активні оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize2-2"></button>
             <button aria-label="Close" class="close2-2"></button>
         </div>
     </div>
@@ -409,7 +401,7 @@
                 <td data-label="Age" th:text="${post.description}">ну</td>
                 <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Переглянути</button>
+                    <button class="delete-button"><a th:href="@{/itemDetail(id = ${post.id})}">Переглянути</a></button>
                 </td>
             </tr>
             </tbody>
@@ -425,7 +417,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Закриті оголошення</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize2-3"></button>
             <button aria-label="Close" class="close2-3"></button>
         </div>
     </div>
@@ -433,32 +424,18 @@
         <table class="ui celled table">
             <thead>
             <tr>
-                <th class="twoheader one wide">ID</th>
-                <th class="twoheader two wide">Категорія</th>
-                <th class="twoheader two wide">Тип</th>
-                <th class="twoheader two wide">Користувач</th>
-                <th class="twoheader two wide">Розташування</th>
-                <th class="twoheader one wide">Ціна</th>
-                <th class="twoheader one wide">Дата</th>
-                <th class="twoheader four wide">Опис</th>
-                <th class="twoheader one wide">Актив</th>
-                <th class="twoheader one wide delete-button-cell">Переглянути</th>
+                <th class="twoheader two wide">ID</th>
+                <th class="twoheader six wide">Оголошення</th>
+                <th class="twoheader six wide">Ціна</th>
+                <th class="twoheader six wide">Дата</th>
             </tr>
             </thead>
             <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button click2-1-1">Переглянути</button>
-                </td>
+            <tr th:each="renting : ${rentings}">
+                <td data-label="Name" th:text="${renting.id}">1</td>
+                <td data-label="Age" th:text="${renting.item.name}">ну</td>
+                <td data-label="Age" th:text="${renting.price}">ну</td>
+                <td data-label="Age" th:text="${renting.date}">ну</td>
             </tr>
             </tbody>
         </table>
@@ -474,7 +451,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Користувачі</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize3-1"></button>
             <button aria-label="Close" class="close3-1"></button>
         </div>
     </div>
@@ -485,22 +461,22 @@
                 <th class="twoheader one wide">ID</th>
                 <th class="twoheader three wide">Ім'я</th>
                 <th class="twoheader three wide">Прізвище</th>
-                <th class="twoheader four wide">Телефон</th>
-                <th class="twoheader four wide">Адреса</th>
-                <th class="twoheader two wide">Пошта</th>
-                <th class="twoheader one wide delete-button-cell">delete</th>
+                <th class="twoheader two wide">Телефон</th>
+                <th class="twoheader four wide">Логін</th>
+                <th class="twoheader three wide">Пошта</th>
+                <th class="twoheader one wide delete-button-cell">Переглянути</th>
             </tr>
             </thead>
             <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
+            <tr th:each="user : ${users}">
+                <td data-label="Name" th:text="${user.id}">1</td>
+                <td data-label="Age" th:text="${user.firstName}">ну</td>
+                <td data-label="Age" th:text="${user.lastName}">ну</td>
+                <td data-label="Age" th:text="${user.phone}">ну</td>
+                <td data-label="Age" th:text="${user.login}">ну</td>
+                <td data-label="Age" th:text="${user.email}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Udoli</button>
+                    <button class="delete-button"><a th:href="@{/userDetail(id = ${user.id})}">Переглянути</a></button>
                 </td>
             </tr>
             </tbody>
@@ -514,7 +490,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Користувачі</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize3-1"></button>
             <button aria-label="Close" class="close3-1"></button>
         </div>
     </div>
@@ -554,7 +529,6 @@
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
         <div class="title-bar-text">Користувачі</div>
         <div class="title-bar-controls">
-            <button aria-label="Maximize" class="maximize3-1"></button>
             <button aria-label="Close" class="close3-1"></button>
         </div>
     </div>

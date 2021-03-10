@@ -10,8 +10,10 @@ import com.uniloftsky.springframework.spring5appliancesrent.services.ItemService
 import com.uniloftsky.springframework.spring5appliancesrent.services.RentingService;
 import com.uniloftsky.springframework.spring5appliancesrent.services.UserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Comparator;
 import java.util.Set;
@@ -34,7 +36,20 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String getAdminPanel() {
-        return "admin";
+        return "admin/admin";
+    }
+
+    @GetMapping(value = "/itemDetail", params = "id")
+    public String getItemDetail(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("item", itemService.findById(id));
+        return "admin/itemDetail";
+    }
+
+    @GetMapping(value = "/userDetail", params = "id")
+    public String getUserDetail(@RequestParam("id") Long id, Model model) {
+        model.addAttribute("user", userService.findById(id));
+        model.addAttribute("userItems", userService.getUserItems(userService.findById(id), itemComparatorAscById));
+        return "admin/userDetail";
     }
 
     @ModelAttribute("posts")
