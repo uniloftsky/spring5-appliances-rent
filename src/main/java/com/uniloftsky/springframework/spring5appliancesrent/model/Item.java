@@ -30,28 +30,28 @@ public class Item extends BaseEntity {
         this.active = active;
     }
 
-    @NotNull
+    @NotNull(message = "{offer.field.NotNull}")
     @ManyToOne
     private Category category;
 
     @ManyToOne
     private User user;
 
-    @NotBlank
+    @NotBlank(message = "{offer.field.NotNull}")
     private String name;
 
     private String img;
 
-    @NotBlank
+    @NotBlank(message = "{user.field.NotBlank}")
     private String location;
 
-    @NotNull
+    @NotNull(message = "{offer.field.NotNull}")
     private BigDecimal price;
 
     private LocalDate date;
 
-    @NotBlank
-    @Size(max = 1000)
+    @NotBlank(message = "{user.field.NotBlank}")
+    @Size(max = 1000, message = "{offer.field.Size}")
     private String description;
 
     private boolean active = true;

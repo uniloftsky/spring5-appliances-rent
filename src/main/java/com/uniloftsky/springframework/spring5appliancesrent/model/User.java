@@ -37,24 +37,24 @@ public class User extends BaseEntity {
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
-    @NotBlank
-    @Size(min = 3, max = 15)
+    @NotBlank(message = "{user.field.NotBlank}")
+    @Size(min = 3, max = 15, message = "{user.login.Size}")
     @Column(unique = true)
     private String login;
 
     private String password;
 
-    @NotBlank
-    @Size(min = 1, max = 15)
+    @NotBlank(message = "{user.field.NotBlank}")
+    @Size(min = 1, max = 15, message = "{user.phone.Size}")
     private String phone;
 
-    @NotBlank
+    @NotBlank(message = "{user.field.NotBlank}")
     private String email;
 
-    @NotBlank
+    @NotBlank(message = "{user.field.NotBlank}")
     private String firstName;
 
-    @NotBlank
+    @NotBlank(message = "{user.field.NotBlank}")
     private String lastName;
 
     private LocalDate registerDate;
