@@ -29,7 +29,9 @@
     #draggable2-1-1,
     #draggable2-2,
     #draggable2-3,
-    #draggable3-1 {
+    #draggable3-1,
+    #draggable4-1,
+    #draggable4-2 {
         display: none;
     }
 
@@ -38,7 +40,7 @@
         font-family: "W95FA", sans-serif;
     }
 </style>
-<body>
+<body class="admin-body">
 <!-- ВЕРХНЕ МЕНЮ -->
 <nav class="admin-menu">
     <div class="ui dropdown dropdown98">
@@ -109,7 +111,7 @@
             </thead>
             <tbody class="tbody-winxp">
             <tr th:each="category : ${categoryList}">
-                <td th:text="${category.id}"  data-label="Name">1</td>
+                <td th:text="${category.id}" data-label="Name">1</td>
                 <td th:text="${category.categoryName}"></td>
                 <td th:text="${category.type.typeName}"></td>
             </tr>
@@ -462,81 +464,45 @@
     </div>
 </div>
 
-<!-- Звіт по користувачам -->
+<!-- Додавання типів -->
 
-<div id="draggable3-1" class="window" style="width: 1200px">
+<div id="draggable4-1" class="window" style="width: 300px">
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
-        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-text">Додавання типу</div>
         <div class="title-bar-controls">
-            <button aria-label="Close" class="close3-1"></button>
+            <button aria-label="Close" class="close4-1"></button>
         </div>
     </div>
     <div class="window-body">
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th class="twoheader one wide">ID</th>
-                <th class="twoheader three wide">Ім'я</th>
-                <th class="twoheader three wide">Прізвище</th>
-                <th class="twoheader four wide">Телефон</th>
-                <th class="twoheader four wide">Адреса</th>
-                <th class="twoheader two wide">Пошта</th>
-                <th class="twoheader one wide delete-button-cell">delete</th>
-            </tr>
-            </thead>
-            <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Udoli</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form th:action="@{/typeAdd}" th:object="${type}" method="post">
+            <label>Назва типу:</label><br>
+            <input th:field="*{typeName}" type="text" style="margin-bottom: 1em; width: 100%;" autocomplete="off"><br>
+            <button type="submit" style="margin: 0 auto; width: 75px;">Додати</button>
+        </form>
     </div>
 </div>
 
-<!-- Звіт по оголошенням -->
+<!-- Додавання категорій -->
 
-<div id="draggable3-1" class="window" style="width: 1200px">
+<div id="draggable4-2" class="window" style="width: 300px">
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
-        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-text">Додавання категорії</div>
         <div class="title-bar-controls">
-            <button aria-label="Close" class="close3-1"></button>
+            <button aria-label="Close" class="close4-2"></button>
         </div>
     </div>
     <div class="window-body">
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th class="twoheader one wide">ID</th>
-                <th class="twoheader three wide">Ім'я</th>
-                <th class="twoheader three wide">Прізвище</th>
-                <th class="twoheader four wide">Телефон</th>
-                <th class="twoheader four wide">Адреса</th>
-                <th class="twoheader two wide">Пошта</th>
-                <th class="twoheader one wide delete-button-cell">delete</th>
-            </tr>
-            </thead>
-            <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Udoli</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form th:action="@{/categoryAdd}" th:object="${category}" method="post">
+            <label>Тип:</label><br>
+            <select id="type_select" th:field="*{type.id}" style="width: 100%; margin-bottom: .5em;">
+                <option value="1" th:each="type : ${typeList}" th:text="${type.typeName}" th:value="${type.id}">Male
+                </option>
+            </select>
+            <label>Назва категорії:</label>
+            <input th:field="*{categoryName}" type="text" style="margin-bottom: 1em; width: 100%;"
+                   autocomplete="off"><br>
+            <button type="submit" style="margin: 0 auto; width: 75px;">Додати</button>
+        </form>
     </div>
 </div>
 
@@ -558,24 +524,6 @@
     $(".close1-1").click(function () {
         $("#draggable1-1").hide();
     });
-    var active = false;
-
-    $(".maximize1-1").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable1-1")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable1-1")
-                .css("width", "300px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
     // СКРІПТИ НА 1-2
     $(".click1-2").click(function () {
         $("#draggable1-2").show();
@@ -585,24 +533,6 @@
     });
     $(".close1-2").click(function () {
         $("#draggable1-2").hide();
-    });
-    var active = false;
-
-    $(".maximize1-2").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable1-2")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable1-2")
-                .css("width", "300px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
     });
     // СКРІПТИ НА 1-3
     $(".click1-3").click(function () {
@@ -614,24 +544,7 @@
     $(".close1-3").click(function () {
         $("#draggable1-3").hide();
     });
-    var active = false;
 
-    $(".maximize1-3").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable1-3")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable1-3")
-                .css("width", "1200px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
     // CКРІПТИ НА 1-4
     $(".click1-4").click(function () {
         $("#draggable1-4").show();
@@ -642,24 +555,7 @@
     $(".close1-4").click(function () {
         $("#draggable1-4").hide();
     });
-    var active = false;
 
-    $(".maximize1-4").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable1-4")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable1-4")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
     // CКРІПТИ НА 1-5
     $(".click1-5").click(function () {
         $("#draggable1-5").show();
@@ -670,24 +566,7 @@
     $(".close1-5").click(function () {
         $("#draggable1-5").hide();
     });
-    var active = false;
 
-    $(".maximize1-5").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable1-5")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable1-5")
-                .css("width", "1200px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
     // CКРІПТИ НА 2-1
     $(".click2-1").click(function () {
         $("#draggable2-1").show();
@@ -697,24 +576,6 @@
     });
     $(".close2-1").click(function () {
         $("#draggable2-1").hide();
-    });
-    var active = false;
-
-    $(".maximize2-1").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable2-1")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable2-1")
-                .css("width", "1200px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
     });
 
     // CКРІПТИ НА 2-1-1 Переглянути
@@ -727,24 +588,6 @@
     $(".close2-1-1").click(function () {
         $("#draggable2-1-1").hide();
     });
-    var active = false;
-
-    $(".maximize2-1-1").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable2-1-1")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable2-1-1")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
 
     // CКРІПТИ НА 2-2
     $(".click2-2").click(function () {
@@ -755,24 +598,6 @@
     });
     $(".close2-2").click(function () {
         $("#draggable2-2").hide();
-    });
-    var active = false;
-
-    $(".maximize2-2").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable2-2")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable2-2")
-                .css("width", "1200px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
     });
 
     // CКРІПТИ НА 2-3
@@ -785,24 +610,6 @@
     $(".close2-3").click(function () {
         $("#draggable2-3").hide();
     });
-    var active = false;
-
-    $(".maximize2-3").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable2-3")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable2-3")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
 
     // CКРІПТИ НА 3-1
     $(".click3-1").click(function () {
@@ -813,24 +620,6 @@
     });
     $(".close3-1").click(function () {
         $("#draggable3-1").hide();
-    });
-    var active = false;
-
-    $(".maximize3-1").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable3-1")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable3-1")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
     });
 
     // CКРІПТИ НА 4-1
@@ -843,24 +632,6 @@
     $(".close4-1").click(function () {
         $("#draggable4-1").hide();
     });
-    var active = false;
-
-    $(".maximize4-1").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable4-1")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable4-1")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
-    });
 
     // CКРІПТИ НА 4-2
     $(".click4-2").click(function () {
@@ -871,24 +642,6 @@
     });
     $(".close4-2").click(function () {
         $("#draggable4-2").hide();
-    });
-    var active = false;
-
-    $(".maximize4-2").click(function () {
-        active = !active;
-        if (active) {
-            $("#draggable4-2")
-                .css("width", "99vw")
-                .css("min-height", "98vh")
-                .draggable({disabled: true})
-                .css("top", "0")
-                .css("left", "0");
-        } else {
-            $("#draggable4-2")
-                .css("width", "600px")
-                .css("min-height", "100px")
-                .draggable({disabled: false});
-        }
     });
 </script>
 </body>

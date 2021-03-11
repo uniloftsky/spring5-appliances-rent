@@ -29,7 +29,9 @@
     #draggable2-1-1,
     #draggable2-2,
     #draggable2-3,
-    #draggable3-1 {
+    #draggable3-1,
+    #draggable4-1,
+    #draggable4-2 {
         display: none;
     }
 
@@ -536,81 +538,45 @@
 
 </div>
 
-<!-- Звіт по користувачам -->
+<!-- Додавання типів -->
 
-<div id="draggable3-1" class="window" style="width: 1200px">
+<div id="draggable4-1" class="window" style="width: 300px">
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
-        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-text">Додавання типу</div>
         <div class="title-bar-controls">
-            <button aria-label="Close" class="close3-1"></button>
+            <button aria-label="Close" class="close4-1"></button>
         </div>
     </div>
     <div class="window-body">
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th class="twoheader one wide">ID</th>
-                <th class="twoheader three wide">Ім'я</th>
-                <th class="twoheader three wide">Прізвище</th>
-                <th class="twoheader four wide">Телефон</th>
-                <th class="twoheader four wide">Адреса</th>
-                <th class="twoheader two wide">Пошта</th>
-                <th class="twoheader one wide delete-button-cell">delete</th>
-            </tr>
-            </thead>
-            <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Udoli</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form th:action="@{/typeAdd}" th:object="${type}" method="post">
+            <label>Назва типу:</label><br>
+            <input th:field="*{typeName}" type="text" style="margin-bottom: 1em; width: 100%;" autocomplete="off"><br>
+            <button type="submit" style="margin: 0 auto; width: 75px;">Додати</button>
+        </form>
     </div>
 </div>
 
-<!-- Звіт по оголошенням -->
+<!-- Додавання категорій -->
 
-<div id="draggable3-1" class="window" style="width: 1200px">
+<div id="draggable4-2" class="window" style="width: 300px">
     <div class="title-bar" style="padding: 1em 0.25em 1em 0.25em">
-        <div class="title-bar-text">Користувачі</div>
+        <div class="title-bar-text">Додавання категорії</div>
         <div class="title-bar-controls">
-            <button aria-label="Close" class="close3-1"></button>
+            <button aria-label="Close" class="close4-2"></button>
         </div>
     </div>
     <div class="window-body">
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th class="twoheader one wide">ID</th>
-                <th class="twoheader three wide">Ім'я</th>
-                <th class="twoheader three wide">Прізвище</th>
-                <th class="twoheader four wide">Телефон</th>
-                <th class="twoheader four wide">Адреса</th>
-                <th class="twoheader two wide">Пошта</th>
-                <th class="twoheader one wide delete-button-cell">delete</th>
-            </tr>
-            </thead>
-            <tbody class="tbody-winxp">
-            <tr>
-                <td data-label="Name">1</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td data-label="Age">ну</td>
-                <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Udoli</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <form th:action="@{/categoryAdd}" th:object="${category}" method="post">
+            <label>Тип:</label><br>
+            <select id="type_select" th:field="*{type.id}" style="width: 100%; margin-bottom: .5em;">
+                <option value="1" th:each="type : ${typeList}" th:text="${type.typeName}" th:value="${type.id}">Male
+                </option>
+            </select>
+            <label>Назва категорії:</label>
+            <input th:field="*{categoryName}" type="text" style="margin-bottom: 1em; width: 100%;"
+                   autocomplete="off"><br>
+            <button type="submit" style="margin: 0 auto; width: 75px;">Додати</button>
+        </form>
     </div>
 </div>
 
