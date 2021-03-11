@@ -111,8 +111,8 @@
                     <p class="input-block-title"><b>Зображення</b> оголошення</p>
                     <div class="input-block-in">
                         <div class="input-block-inner">
-                            <label th:class="${fileError ? 'label-error' : ''}">Зображення: <span class="required-color">*</span></label>
-                            <div class="ui action input" th:class="${fileError ? 'ui action input error' : 'ui action input'}">
+                            <label th:class="${fileError or fileSize ? 'label-error' : ''}">Зображення: <span class="required-color">*</span></label>
+                            <div class="ui action input" th:class="${fileError or fileSize ? 'ui action input error' : 'ui action input'}">
                                 <input id="imageText" type="text" placeholder="Фото" readonly>
                                 <input id="imageUpload" type="file" name="itemImage">
                                 <div id="imageButton" class="ui icon button">
@@ -121,6 +121,9 @@
                             </div>
                             <div th:if="${fileError}" class="ui pointing red basic label">
                                 Оберіть зображення
+                            </div>
+                            <div th:if="${fileSize}" class="ui pointing red basic label">
+                                Розмір файла перевищує 20 МБ
                             </div>
                         </div>
                     </div>
