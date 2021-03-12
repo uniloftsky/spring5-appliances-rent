@@ -107,15 +107,17 @@
             </form>
         </div>
     </section>
-
     <div class="ui mini modal">
         <div class="header change-password-header">Зміна паролю</div>
         <div class="content">
             <form id="changePasswordId" method="post" th:action="@{/changePassword}">
                 <div class="input-block-inner change-password">
-                    <label>Новий пароль: <span class="required-color">*</span></label>
-                    <div class="ui input">
-                        <input type="text" name="newPassword" placeholder="Новий пароль">
+                    <label th:class="${passwordError ? 'label-error' : ''}">Новий пароль: <span class="required-color">*</span></label>
+                    <div class="ui input" th:class="${passwordError ? 'ui input error' : 'ui input'}">
+                        <input type="password" name="newPassword" placeholder="Новий пароль">
+                    </div>
+                    <div th:if="${passwordError}" class="ui pointing red basic label">
+                        Пароль не може бути порожнім
                     </div>
                 </div>
             </form>

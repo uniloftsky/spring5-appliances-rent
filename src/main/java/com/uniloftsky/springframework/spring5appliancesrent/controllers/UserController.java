@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.Comparator;
@@ -50,11 +51,13 @@ public class UserController {
     @GetMapping("/editProfile")
     public String editProfileInit(Model model, Authentication authentication) {
         model.addAttribute("user", userService.findByLogin(authentication.getName()));
+        model.addAttribute("passwordError", false);
         return "profileEdit";
     }
 
     @PostMapping("/editProfile")
-    public String editProfileProcess(@Valid @ModelAttribute User user, BindingResult result) {
+    public String editProfileProcess(@Valid @ModelAttribute("user") User user, BindingResult result) {
+        System.out.println("method1");
         if(result.hasErrors()) {
             return "profileEdit";
         }
@@ -63,7 +66,12 @@ public class UserController {
     }
 
     @PostMapping("/changePassword")
-    public String editPasswordForm(@RequestParam("newPassword") String newPassword, Authentication authentication) {
+    public String editPasswordForm(RedirectAttributes rA, @RequestParam("newPassword") String newPassword, Authentication authentication, Model model) {
+        if(newPassword.isBlank()) {
+            model.addAttribute("passwordError", true);
+            model.addAttribute("user", userService.findByLogin(authentication.getName()));
+            return "profileEdit";
+        }
         userService.changePassword(authentication, newPassword);
         return "redirect:/profile";
     }

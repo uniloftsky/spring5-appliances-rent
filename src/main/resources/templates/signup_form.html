@@ -45,7 +45,7 @@
                         <div class="input-block-inner">
                             <label th:class="${passwordError ? 'label-error' : ''}">Пароль: <span class="required-color">*</span></label>
                             <div class="ui input" th:class="${passwordError ? 'ui input error' : 'ui input'}">
-                                <input type="text" name="password" th:field="*{password}" placeholder="Пароль">
+                                <input type="password" name="password" th:field="*{password}" placeholder="Пароль">
                             </div>
                             <div th:if="${passwordError}" class="ui pointing red basic label">
                                 Поле Пароль не може бути порожнім
@@ -54,7 +54,7 @@
                         <div class="input-block-inner">
                             <label th:class="${repeatPasswordError ? 'label-error' : ''}">Повторіть пароль: <span class="required-color">*</span></label>
                             <div class="ui input" th:class="${repeatPasswordError ? 'ui input error' : 'ui input'}">
-                                <input type="text" name="repeat_password" placeholder="Повторіть пароль">
+                                <input type="password" name="repeat_password" placeholder="Повторіть пароль">
                             </div>
                             <div th:if="${repeatPasswordError}" class="ui pointing red basic label">
                                 Паролі не співпадають
