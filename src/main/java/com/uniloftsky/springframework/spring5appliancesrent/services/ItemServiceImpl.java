@@ -2,6 +2,7 @@ package com.uniloftsky.springframework.spring5appliancesrent.services;
 
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemAscComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.ItemDescComparatorById;
+import com.uniloftsky.springframework.spring5appliancesrent.exceptions.NotFoundException;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
 import com.uniloftsky.springframework.spring5appliancesrent.model.pagination.ItemPage;
@@ -85,7 +86,7 @@ public class ItemServiceImpl implements ItemService {
     public Item findById(Long id) {
         Optional<Item> optional = itemRepository.findById(id);
         if (optional.isEmpty()) {
-            throw new RuntimeException("Expected item not found!");
+            throw new NotFoundException("Оголошення з заданим ID не зайдено!");
         }
         return optional.get();
     }
@@ -113,7 +114,7 @@ public class ItemServiceImpl implements ItemService {
     public void delete(Item obj) {
         Optional<Item> itemOptional = itemRepository.findById(obj.getId());
         if(itemOptional.isEmpty()) {
-            throw new RuntimeException("Expected item not found!");
+            throw new NotFoundException("Оголошення з заданим ID не знайдено!");
         }
         Item foundItem = itemOptional.get();
         User user = foundItem.getUser();

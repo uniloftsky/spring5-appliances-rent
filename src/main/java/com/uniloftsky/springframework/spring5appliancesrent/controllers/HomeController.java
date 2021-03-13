@@ -58,13 +58,9 @@ public class HomeController {
         return itemService.getLastPostsIndexPage();
     }
 
-/*    @ModelAttribute("popularUsers")
-    public Set<User> getPopularUsers() {
-        for(User u : userService.getPopularUsers()) {
-            System.out.println("loop");
-            System.out.println(u.getId());
-        }
-        return userService.getPopularUsers();
-    }*/
+    @GetMapping("/forbidden")
+    public String forbiddenHandler() {
+        return "forbiddenPage";
+    }
 
 }

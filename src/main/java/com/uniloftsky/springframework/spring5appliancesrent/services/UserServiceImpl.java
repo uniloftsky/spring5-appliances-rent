@@ -4,6 +4,7 @@ import com.uniloftsky.springframework.spring5appliancesrent.comparators.item.Ite
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.renting.RentingDescComparatorByDate;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorById;
 import com.uniloftsky.springframework.spring5appliancesrent.comparators.user.UserDescComparatorByItemsCount;
+import com.uniloftsky.springframework.spring5appliancesrent.exceptions.NotFoundException;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Item;
 import com.uniloftsky.springframework.spring5appliancesrent.model.Renting;
 import com.uniloftsky.springframework.spring5appliancesrent.model.User;
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
     public User findById(Long id) {
         Optional<User> optional = userRepository.findById(id);
         if (optional.isEmpty()) {
-            throw new RuntimeException("Expected user not found!");
+            throw new NotFoundException("Користувача з заданим ID не знайдено!");
         }
         return optional.get();
     }
