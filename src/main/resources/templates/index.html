@@ -19,7 +19,7 @@
             <div class="last-offers">
                 <div class="left-offer">
                     <div class="left-offer-img-block">
-                        <img th:src="${lastPost.img}" class="left-offer-img" alt="">
+                        <img th:src="${'img/' + lastPost.img}" class="left-offer-img" alt="">
                     </div>
                     <div class="left-offer-info">
                         <p class="left-offer-title" th:text="${lastPost.name}">Mercedes-Benz CLS 320</p>
@@ -29,7 +29,7 @@
                 <div class="right-offers">
                     <div class="right-offer" th:each="lastPost1 : ${lastPosts}">
                         <div class="right-offer-img-block">
-                            <img th:src="${lastPost1.img}" class="right-offer-img" alt="">
+                            <img th:src="${'img/' + lastPost1.img}" class="right-offer-img" alt="">
                         </div>
                         <div class="right-offer-info">
                             <p class="right-offer-title" th:text="${lastPost1.name}">Mercedes-Benz CLS 320</p>

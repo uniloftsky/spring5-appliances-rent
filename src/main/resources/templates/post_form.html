@@ -154,7 +154,12 @@
             var name = e.target.files[0].name;
             $('input:text', $(e.target).parent()).val(name);
         });
-
+    $(document).ready(function () {
+        $('.ui.dropdown').dropdown();
+        $('#header-dropdown').dropdown({
+            action: 'select'
+        });
+    });
 </script>
 <script th:src="@{/js/chainedselect.js}" type="text/javascript"></script>
 </body>

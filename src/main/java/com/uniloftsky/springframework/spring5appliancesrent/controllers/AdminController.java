@@ -45,6 +45,8 @@ public class AdminController {
     @GetMapping(value = "/itemDetail", params = "id")
     public String getItemDetail(@RequestParam("id") Long id, Model model) {
         model.addAttribute("item", itemService.findById(id));
+        model.addAttribute("type", new Type());
+        model.addAttribute("category", new Category());
         return "admin/itemDetail";
     }
 

@@ -52,22 +52,22 @@ public class DataLoader implements CommandLineRunner {
 
     private void loadItems(List<User> userList, List<Category> categories1, List<Category> categories2) {
         List<Item> items = new ArrayList<>();
-        items.add(new Item(categories1.get(0), userList.get(0), "name", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam id diam maecenas ultricies. Fusce ut placerat orci nulla. At volutpat diam ut venenatis tellus in metus. Fermentum leo vel orci porta. Condimentum vitae sapien pellentesque habitant morbi. Urna porttitor rhoncus dolor purus non enim praesent. Nibh tellus molestie nunc non blandit. Tellus in hac habitasse platea dictumst vestibulum. Placerat in egestas erat imperdiet. Aliquet porttitor lacus luctus accumsan. Vitae sapien pellentesque habitant morbi tristique. Risus quis varius quam quisque id diam.\n" +
+        items.add(new Item(categories1.get(0), userList.get(0), "name", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Aliquam id diam maecenas ultricies. Fusce ut placerat orci nulla. At volutpat diam ut venenatis tellus in metus. Fermentum leo vel orci porta. Condimentum vitae sapien pellentesque habitant morbi. Urna porttitor rhoncus dolor purus non enim praesent. Nibh tellus molestie nunc non blandit. Tellus in hac habitasse platea dictumst vestibulum. Placerat in egestas erat imperdiet. Aliquet porttitor lacus luctus accumsan. Vitae sapien pellentesque habitant morbi tristique. Risus quis varius quam quisque id diam.\n" +
                 "\n" +
                 "Volutpat sed cras ornare arcu dui vivamus arcu felis bibendum. Vitae aliquet nec ullamcorper sit amet risus. Enim praesent elementum facilisis leo vel fringilla. Quis viverra", true));
-        items.add(new Item(categories1.get(0), userList.get(0), "name1", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), userList.get(0), "name2", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), userList.get(0), "name3", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), userList.get(1), "name4", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), userList.get(1), "name5", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories1.get(0), userList.get(1), "name6", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(2), "name7", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(2), "name8", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(2), "name9", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(3), "name10", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(3), "name11", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(0), "name12", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
-        items.add(new Item(categories2.get(0), userList.get(0), "name13", "img", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name1", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name2", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(0), "name3", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(1), "name4", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(1), "name5", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories1.get(0), userList.get(1), "name6", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name7", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name8", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(2), "name9", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(3), "name10", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(3), "name11", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(0), "name12", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
+        items.add(new Item(categories2.get(0), userList.get(0), "name13", "items/3b175194-9012-4841-9d37-e3589d41301a-fridge4.webp", "location", new BigDecimal("2.0"), LocalDate.now(), "desc", true));
 
         itemService.saveAll(items);
     }
