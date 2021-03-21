@@ -54,8 +54,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/postOffer").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/editProfile").authenticated()
+                .antMatchers("/postOffer").authenticated()
                 .antMatchers("/order").authenticated()
                 .anyRequest().permitAll()
                 .and()

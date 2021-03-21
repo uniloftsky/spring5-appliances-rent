@@ -55,7 +55,8 @@
                         УВІЙТИ
                     </button>
                     <div class="or hidden-or" data-text="or"></div>
-                    <button type="button" onclick="window.location='/register';" id="register-btn" class="ui right labeled icon positive button login-button">
+                    <button type="button" onclick="window.location='/register';" id="register-btn"
+                            class="ui right labeled icon positive button login-button">
                         <i class="user plus icon"></i>
                         РЕЄСТРАЦІЯ
                     </button>
@@ -67,9 +68,9 @@
                 </div>
                 <p>Використайте <b>форму вище</b> для авторизації.</p>
             </div>
-            <div th:if="${param.error}">
-                <p th:text="${param.error}">Помилка</p>
-                <p>жопа</p>
+            <div th:if="${param.error}" class="ui negative message">
+                <div class="header">Помилка входу</div>
+                <p>Неправильний <b>логін</b> чи <b>пароль!</b></p>
             </div>
         </div>
 

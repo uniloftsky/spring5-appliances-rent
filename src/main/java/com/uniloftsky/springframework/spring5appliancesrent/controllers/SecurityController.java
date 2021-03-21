@@ -31,7 +31,7 @@ public class SecurityController {
 
     @PostMapping("/register")
     public String processRegister(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, @RequestParam("repeat_password") String password) {
-        if ((result.hasErrors() && user.getPassword().isBlank()) || user.getPassword().isBlank() || !password.equals(user.getPassword())) {
+        if ((result.hasErrors() && user.getPassword().isBlank()) || result.hasErrors() || user.getPassword().isBlank() || !password.equals(user.getPassword())) {
             model.addAttribute("passwordError", true);
             model.addAttribute("repeatPasswordError", true);
             return "signup_form";

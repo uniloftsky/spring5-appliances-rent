@@ -68,7 +68,7 @@
                     <div class="input-block-in flex-wrap register-page">
                         <div class="input-block-inner">
                             <label th:errorclass="label-error" name="firstName">Ім'я: <span class="required-color">*</span></label>
-                            <div class="ui input" th:errorclass="error" name="login">
+                            <div class="ui input" th:errorclass="error" name="firstName">
                                 <input type="text" name="firstName" th:field="*{firstName}" placeholder="First name">
                             </div>
                             <div th:if="${#fields.hasErrors('firstName')}" class="ui pointing red basic label">
