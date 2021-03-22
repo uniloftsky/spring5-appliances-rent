@@ -34,9 +34,6 @@ public class UserController {
 
     @GetMapping(value = "/profile", params = "login")
     public String showProfile(Model model, @RequestParam("login") String login) {
-        if(login.equals("anonymousUser")) {
-            return "signin_form";
-        }
         model.addAttribute("user", userService.findByLogin(login));
         model.addAttribute("rentingHistory", userService.getUserRentings(userService.findByLogin(login), rentingDescComparatorByDate));
         model.addAttribute("currentItems", userService.getUserItems(userService.findByLogin(login), itemDescComparatorById));
@@ -45,7 +42,11 @@ public class UserController {
 
     @GetMapping("/profile")
     public String getProfilePage(Authentication authentication) {
-        return "redirect:/profile?login=" + authentication.getName();
+        if (authentication == null || authentication.getName().equals("anonymousUser")) {
+            return "signin_form";
+        } else {
+            return "redirect:/profile?login=" + authentication.getName();
+        }
     }
 
     @GetMapping("/editProfile")
@@ -57,8 +58,7 @@ public class UserController {
 
     @PostMapping("/editProfile")
     public String editProfileProcess(@Valid @ModelAttribute("user") User user, BindingResult result) {
-        System.out.println("method1");
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             return "profileEdit";
         }
         userService.save(user);
@@ -67,7 +67,7 @@ public class UserController {
 
     @PostMapping("/changePassword")
     public String editPasswordForm(RedirectAttributes rA, @RequestParam("newPassword") String newPassword, Authentication authentication, Model model) {
-        if(newPassword.isBlank()) {
+        if (newPassword.isBlank()) {
             model.addAttribute("passwordError", true);
             model.addAttribute("user", userService.findByLogin(authentication.getName()));
             return "profileEdit";

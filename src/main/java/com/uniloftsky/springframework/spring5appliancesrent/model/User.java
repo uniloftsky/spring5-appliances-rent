@@ -1,6 +1,8 @@
 package com.uniloftsky.springframework.spring5appliancesrent.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,10 +14,10 @@ import java.util.Set;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class User extends BaseEntity {
-
-    public User() {}
 
     public User(String login, String password, String phone, String email, String firstName, String lastName, LocalDate registerDate) {
         this.login = login;

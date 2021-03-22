@@ -6,6 +6,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -14,7 +16,9 @@ public class ImageServiceImpl implements ImageService {
     private final String uploadPath = System.getProperty("user.dir") + "/resources/";
 
     @Override
-    public void setItemImage(Item item, MultipartFile file) throws IOException {
+    public void setItemImage(Item item, List<MultipartFile> file) throws IOException {
+        List<String> files = new ArrayList<>();
+
         if (file != null) {
             File uploadDir = new File(uploadPath);
             if (!uploadDir.exists()) {
@@ -25,13 +29,15 @@ public class ImageServiceImpl implements ImageService {
                 }
             }
 
-            String uuidFile = UUID.randomUUID().toString();
+            String resultFilename = "";
 
-            String resultFilename = "items/" + uuidFile + "-" + file.getOriginalFilename();
+            for (MultipartFile img : file) {
+                resultFilename = "items/" + UUID.randomUUID().toString() + "-" + img.getOriginalFilename();
+                files.add(resultFilename);
+                img.transferTo(new File(uploadPath + resultFilename));
+            }
 
-            file.transferTo(new File(uploadPath + resultFilename));
-
-            item.setImg(resultFilename);
+            item.setImg(files);
         }
     }
 }

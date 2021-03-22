@@ -39,7 +39,7 @@
                         <div class="text">СТОРІНКИ</div>
                         <div class="menu">
                             <div class="item"><a href="/index">Головна</a></div>
-                            <div class="item"><a href="/catalog">Каталог</a></div>
+<!--                            <div class="item"><a href="/catalog">Каталог</a></div>-->
                             <div class="item"><a href="/postOffer">Додати оголошення</a></div>
                             <div class="item"><a th:href="@{/profile(login=${#authentication.name})}">Профіль</a></div>
                             <div class="divider"></div>
@@ -56,20 +56,8 @@
     <div class="subheader">
         <form th:action="@{/searchBox}" method="get">
             <div class="wrap">
-                <div class="subheader-items">
-                    <div class="subheader-inner">
-                        <div onclick="window.location = '/catalogFilter?type.typeName=Побутова+техніка'"
-                             class="menu-item">
-                            <i class="cogs icon"></i>
-                            <p>ПОБУТОВА ТЕХНІКА</p>
-                        </div>
-                        <div onclick="window.location = '/catalogFilter?type.typeName=Високотехнологічна+техніка'"
-                             class="menu-item">
-                            <i class="keyboard icon"></i>
-                            <p>ВИСОК. ТЕХНІКА</p>
-                        </div>
-                    </div>
-                    <div class="subheader-inner" style="width: 70%;">
+                <div class="subheader-items" style="padding: 1.25em 0;">
+                    <div class="subheader-inner" style="width: 100%; margin-left: 0;">
 
                         <div class="ui left icon input search-input">
                             <input style="display: inline-block; width: 100%;" type="text" placeholder="Пошук..."

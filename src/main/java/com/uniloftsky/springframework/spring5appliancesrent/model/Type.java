@@ -1,5 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,6 +13,7 @@ import java.util.Set;
 
 @Getter
 @Setter
+@AllArgsConstructor
 @Entity
 public class Type extends BaseEntity {
 

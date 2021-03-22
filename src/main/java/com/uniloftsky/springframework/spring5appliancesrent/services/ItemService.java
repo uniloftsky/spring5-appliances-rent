@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -21,6 +22,8 @@ public interface ItemService extends GenericService<Item, Long> {
     Set<Item> getSimilarPosts();
     Page<Item> getCatalogItems(ItemPage employeePage, ItemSearchCriteria employeeSearchCriteria);
     Set<Item> searchBox(String name, String category, String type, String desc);
-    Item save(Item obj, Authentication authentication, MultipartFile file) throws IOException;
+    List<String> getImages(Item item);
+    String getMainImage(Item item);
+    Item save(Item obj, Authentication authentication, List<MultipartFile> file) throws IOException;
 
 }

@@ -1,6 +1,8 @@
 package com.uniloftsky.springframework.spring5appliancesrent.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -10,17 +12,10 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Renting extends BaseEntity {
-
-    public Renting() {
-    }
-
-    public Renting(Item item, BigDecimal price, LocalDate date) {
-        this.item = item;
-        this.price = price;
-        this.date = date;
-    }
 
     @OneToOne
     private Item item;

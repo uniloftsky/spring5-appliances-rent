@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -38,19 +39,16 @@ public class OffersController {
     public String initPostOfferForm(Model model) {
         model.addAttribute("offer", new Item());
         model.addAttribute("fileError", false);
-        model.addAttribute("fileSize", false);
         return "post_form";
     }
 
     //todo image size
     @PostMapping("/postOffer")
-    public String processPostOfferForm(@Valid @ModelAttribute("offer") Item item, BindingResult result, Authentication authentication, @RequestParam("itemImage") MultipartFile file, Model model) throws IOException {
-        if((result.hasErrors() && file.isEmpty()) || file.isEmpty() || file.getSize() > 20971520) {
+    public String processPostOfferForm(@Valid @ModelAttribute("offer") Item item, BindingResult result, Authentication authentication, @RequestParam("itemImage") List<MultipartFile> file, Model model) throws IOException {
+        if ((result.hasErrors() && file.isEmpty()) || file.isEmpty()) {
             model.addAttribute("fileError", true);
-            model.addAttribute("fileSize", true);
             return "post_form";
         }
-        System.out.println(file.getSize());
         Item savedItem = itemService.save(item, authentication, file);
         return "redirect:/offer?id=" + savedItem.getId();
     }
@@ -58,6 +56,8 @@ public class OffersController {
     @GetMapping(value = "/offer", params = "id")
     public String getOffer(@Param("id") Long id, Model model) {
         model.addAttribute("offer", itemService.findById(id));
+        model.addAttribute("mainImg", itemService.getMainImage(itemService.findById(id)));
+        model.addAttribute("otherImgs", itemService.getImages(itemService.findById(id)));
         return "offer";
     }
 

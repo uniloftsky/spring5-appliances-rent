@@ -104,7 +104,7 @@
                         <div class="catalog-items profile-items">
                             <div class="catalog-item" th:each="item : ${currentItems}">
                                 <div class="catalog-item-img-block">
-                                    <img class="catalog-item-img" src="" th:src="${'img/' + item.img}" alt="">
+                                    <img class="catalog-item-img" src="" th:src="${'img/' + item.img.get(0)}" alt="">
                                 </div>
                                 <div class="catalog-item-info">
                                     <div class="catalog-item-header">

@@ -42,12 +42,14 @@
             </div>
             <div class="offer-section-header">
                 <div class="offer-section-header-img-block">
-                    <img class="offer-section-img" th:src="${'img/' + offer.img}">
+                    <img class="offer-section-img" th:src="${'img/' + mainImg}">
                 </div>
                 <div class="offer-section-header-info">
                     <div class="price-and-buy-block">
                         <p class="offer-price"><span th:text="${offer.price}">54.980</span> грн.</p>
-                        <a th:if="${offer.user.login != #authentication.name}" th:href="@{/order(id=${offer.id})}" th:class="${offer.active ? 'ui primary button' : 'ui disabled button'}" th:text="${offer.active ? 'ОФОРМИТИ' : 'ОФОРМЛЕНО'}">ОФОРМИТИ</a>
+                        <a th:if="${offer.user.login != #authentication.name}" th:href="@{/order(id=${offer.id})}"
+                           th:class="${offer.active ? 'ui primary button' : 'ui disabled button'}"
+                           th:text="${offer.active ? 'ОФОРМИТИ' : 'ОФОРМЛЕНО'}">ОФОРМИТИ</a>
                     </div>
                     <div class="offer-info-details">
                         <div class="offer-info-detail">
@@ -69,17 +71,25 @@
                     </div>
 
                     <div class="offer-map">
-                        <p class="offer-map-title"><b>Розташування</b> на карті</p>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d41126.13730243615!2d28.56422373451863!3d49.89160152266436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472cf987459e4d1f%3A0xfed4d70ca7c66999!2z0JHQtdGA0LTQuNGH0LXQsiwg0JbQuNGC0L7QvNC40YDRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgMTMzMDk!5e0!3m2!1sru!2sua!4v1613477371517!5m2!1sru!2sua"
-                                frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        <p class="offer-map-title"><b>Додаткові</b> зображення</p>
+                        <div class="offer-map-inner">
+                            <img th:each="offerImg : ${otherImgs}" th:src="${'img/' + offerImg}">
+                        </div>
+
                     </div>
                 </div>
             </div>
             <div class="offer-section-main">
                 <div class="offer-section-main-info">
                     <p class="offer-section-main-title"><b>Інформація</b> про оголошення</p>
-                    <p class="offer-section-main-text" th:text="${offer.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at. Maecenas eget massa at eros ornare rhoncus.
-                        In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam. Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu orci.</p>
+                    <p class="offer-section-main-text" th:text="${offer.description}">Lorem ipsum dolor sit amet,
+                        consectetur adipiscing elit. Aenean aliquet fringilla metus, a ultricies ligula consequat at.
+                        Maecenas eget massa at eros ornare rhoncus.
+                        In sit amet enim risus, in mattis felis. Donec lorem arcu, tempor quis fermentum et, viverra in
+                        turpis. Nam non nunc vitae justo tincidunt lobortis eu sit amet dui. Nam ut dui aliquet nisl
+                        fermentum mollis sit amet eget lectus. Vivamus iaculis massa sit amet velit convallis aliquam.
+                        Vestibulum dolor erat, congue nec viverra eget, aliquet sit amet nunc. Donec vitae arcu
+                        orci.</p>
                 </div>
             </div>
             <div class="offer-section-main">
@@ -112,7 +122,8 @@
                             <div class="contact-detail-icon">
                                 <i class="user icon"></i>
                             </div>
-                            <p class="contact-detail-text"><a th:href="@{/profile(login=${offer.user.login})}">Власник</a></p>
+                            <p class="contact-detail-text"><a
+                                    th:href="@{/profile(login=${offer.user.login})}">Власник</a></p>
                         </div>
                     </div>
                 </div>
@@ -121,10 +132,11 @@
                 <p class="offer-section-main-title"><b>Інші</b> оголошення</p>
                 <div class="other-offers-block">
                     <div class="other-offers">
-                        <a th:each="similar : ${similarPosts}" th:href="@{/offer(id = ${similar.id})}" class="right-offer offer-page">
-                            <div  class="right-offer">
+                        <a th:each="similar : ${similarPosts}" th:href="@{/offer(id = ${similar.id})}"
+                           class="right-offer offer-page">
+                            <div class="right-offer">
                                 <div class="right-offer-img-block">
-                                    <img th:src="${'img/' + similar.img}" class="right-offer-img" alt="">
+                                    <img th:src="${'img/' + similar.getImg().get(0)}" class="right-offer-img" alt="">
                                 </div>
                                 <div class="right-offer-info">
                                     <p class="right-offer-title" th:text="${similar.name}">Mercedes-Benz CLS 320</p>

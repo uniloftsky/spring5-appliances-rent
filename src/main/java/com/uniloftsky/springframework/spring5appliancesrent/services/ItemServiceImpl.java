@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toCollection;
 
@@ -90,12 +91,22 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    public List<String> getImages(Item item) {
+        return item.getImg().stream().skip(1).collect(Collectors.toList());
+    }
+
+    @Override
+    public String getMainImage(Item item) {
+        return item.getImg().stream().findFirst().get();
+    }
+
+    @Override
     public Item save(Item obj) {
         return itemRepository.save(obj);
     }
 
     @Override
-    public Item save(Item obj, Authentication authentication, MultipartFile file) throws IOException {
+    public Item save(Item obj, Authentication authentication, List<MultipartFile> file) throws IOException {
         User user = userService.findByLogin(authentication.getName());
         obj.setUser(user);
         obj.setDate(LocalDate.now());
@@ -111,7 +122,7 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public void delete(Item obj) {
         Optional<Item> itemOptional = itemRepository.findById(obj.getId());
-        if(itemOptional.isEmpty()) {
+        if (itemOptional.isEmpty()) {
             throw new NotFoundException("Оголошення з заданим ID не знайдено!");
         }
         Item foundItem = itemOptional.get();
