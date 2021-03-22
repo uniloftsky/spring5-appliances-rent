@@ -71,7 +71,7 @@
                     </div>
 
                     <div class="offer-map">
-                        <p class="offer-map-title"><b>Додаткові</b> зображення</p>
+                        <p class="offer-map-title" th:if="${not #lists.isEmpty(otherImgs)}"><b>Додаткові</b> зображення</p>
                         <div class="offer-map-inner">
                             <img th:each="offerImg : ${otherImgs}" th:src="${'img/' + offerImg}">
                         </div>

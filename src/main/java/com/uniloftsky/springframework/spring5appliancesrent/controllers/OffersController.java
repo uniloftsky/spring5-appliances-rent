@@ -45,7 +45,7 @@ public class OffersController {
     //todo image size
     @PostMapping("/postOffer")
     public String processPostOfferForm(@Valid @ModelAttribute("offer") Item item, BindingResult result, Authentication authentication, @RequestParam("itemImage") List<MultipartFile> file, Model model) throws IOException {
-        if ((result.hasErrors() && file.isEmpty()) || file.isEmpty()) {
+        if ((result.hasErrors() && file.isEmpty()) || file.isEmpty() || result.hasErrors() || file.size() > 3) {
             model.addAttribute("fileError", true);
             return "post_form";
         }
