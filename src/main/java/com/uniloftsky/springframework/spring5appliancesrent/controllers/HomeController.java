@@ -30,7 +30,7 @@ public class HomeController {
         this.itemService = itemService;
     }
 
-    @GetMapping({"", "/", "index", "/index"})
+    @GetMapping({"", "/", "index", "/index", "*", "/*", "*.html"})
     public String getIndexPage(Model model) {
         model.addAttribute("items", itemService.findAll());
         model.addAttribute("lastPost", itemService.findAllSortedById(comparator).first());
