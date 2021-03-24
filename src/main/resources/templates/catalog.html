@@ -35,7 +35,7 @@
                                 <label>Тип:</label>
                                 <select id="type_select" class="ui dropdown not-select" name="type.typeName">
                                     <option value="">Тип</option>
-                                    <option th:each="type : ${typeList}" th:text="${type.typeName}"
+                                    <option th:each="type : ${typeList}" th:text="${type.typeName}" th:class="${type.typeName}" th:value="${type.typeName}"
                                             name="type.typeName">Male
                                     </option>
                                 </select>
@@ -46,7 +46,7 @@
                                         th:selected="${#request.getAttribute('category.categoryName')}">
                                     <option value="">Категорія</option>
                                     <option th:each="category : ${categoryList}" th:text="${category.categoryName}"
-                                            name="category.categoryName">Male
+                                            name="category.categoryName" th:class="${category.type.typeName}" th:value="${category.categoryName}">Male
                                     </option>
                                 </select>
                             </div>
@@ -200,5 +200,6 @@
         });
     });
 </script>
+<script th:src="@{/js/chainedselect.js}" type="text/javascript"></script>
 </body>
 </html>
