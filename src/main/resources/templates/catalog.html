@@ -35,7 +35,7 @@
                                 <label>Тип:</label>
                                 <select id="type_select" class="ui dropdown not-select" name="type.typeName">
                                     <option value="">Тип</option>
-                                    <option th:each="type : ${typeList}" th:text="${type.typeName}" th:class="${type.typeName}" th:value="${type.typeName}"
+                                    <option th:each="type : ${typeList}" th:text="${type.typeName}" th:class="${type.typeName}" th:value="${type.typeName}" th:selected="${type.typeName == #request.getParameter('type.typeName')}"
                                             name="type.typeName">Male
                                     </option>
                                 </select>
@@ -46,7 +46,7 @@
                                         th:selected="${#request.getAttribute('category.categoryName')}">
                                     <option value="">Категорія</option>
                                     <option th:each="category : ${categoryList}" th:text="${category.categoryName}"
-                                            name="category.categoryName" th:class="${category.type.typeName}" th:value="${category.categoryName}">Male
+                                            name="category.categoryName" th:class="${category.type.typeName}" th:value="${category.categoryName}" th:selected="${category.categoryName == #request.getParameter('category.categoryName')}">Male
                                     </option>
                                 </select>
                             </div>
@@ -55,13 +55,13 @@
                                     <div class="filter-in-in">
                                         <label>Мін.ціна:</label>
                                         <div class="ui input">
-                                            <input type="number" placeholder="Min" name="minPrice">
+                                            <input type="number" placeholder="Min" name="minPrice" th:value="${#request.getParameter('minPrice')}">
                                         </div>
                                     </div>
                                     <div class="filter-in-in">
                                         <label>Макс.ціна:</label>
                                         <div class="ui input">
-                                            <input type="number" placeholder="Max" name="maxPrice">
+                                            <input type="number" placeholder="Max" name="maxPrice" th:value="${#request.getParameter('maxPrice')}">
                                         </div>
                                     </div>
                                 </div>
