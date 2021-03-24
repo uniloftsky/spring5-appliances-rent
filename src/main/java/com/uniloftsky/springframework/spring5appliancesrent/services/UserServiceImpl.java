@@ -52,7 +52,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByLogin(String login) {
-        return userRepository.findByLogin(login);
+        if(userRepository.findByLogin(login) == null) {
+            throw new NotFoundException("Користувача не знайдено");
+        } else {
+            return userRepository.findByLogin(login);
+        }
     }
 
     @Override

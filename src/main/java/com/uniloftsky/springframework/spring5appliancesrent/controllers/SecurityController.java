@@ -41,4 +41,9 @@ public class SecurityController {
         return "signin_form";
     }
 
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "signin_form";
+    }
+
 }

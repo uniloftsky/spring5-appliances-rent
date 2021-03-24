@@ -57,6 +57,8 @@ public class RentingServiceImpl implements RentingService {
             Renting renting = new Renting(item, item.getPrice(), LocalDate.now());
             item.setActive(false);
             itemService.save(item);
+            owner.getRentings().add(renting);
+            userService.save(owner);
             return rentingRepository.save(renting);
         } else {
             throw new RuntimeException("Ви намагаєтесь орендувати неактивне оголошення!");

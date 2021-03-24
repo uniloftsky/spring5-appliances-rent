@@ -51,7 +51,7 @@
                 <div class="ui items">
                     <div class="item">
                         <div class="ui small image">
-                            <img src="/images/wireframe/image.png" th:src="${'img/' + offer.img}">
+                            <img src="/images/wireframe/image.png" th:src="${'img/' + offer.img.get(0)}">
                         </div>
                         <div class="content">
                             <div class="header" th:text="${offer.name}">Холодильник Самсунг</div>
