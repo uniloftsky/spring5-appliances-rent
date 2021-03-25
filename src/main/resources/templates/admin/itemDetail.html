@@ -327,7 +327,7 @@
     <div class="window-body">
         <div class="ui grid">
 
-            <div class="eight wide column">
+            <div class="eleven wide column">
                 <div class="offer-window-desc">
                     <p>ID: <span th:text="${item.id}"></span></p>
                     <p>Категорія: <span th:text="${item.category.categoryName}"></span></p>
@@ -341,9 +341,9 @@
                 </div>
             </div>
 
-            <div class="eight wide column">
-                <img class="ui image fluid"
-                     src="https://media.discordapp.net/attachments/539451575454793729/816440779689951272/fridge4.webp?width=509&height=677" th:src="${item.img}">
+            <div class="five wide column">
+                <img class="" style="object-fit: contain; max-width: 150px; max-height: 200px;"
+                     src="https://media.discordapp.net/attachments/539451575454793729/816440779689951272/fridge4.webp?width=509&height=677" th:each="img : ${item.img}" th:src="${'/img/' + img}">
             </div>
 
         </div>
