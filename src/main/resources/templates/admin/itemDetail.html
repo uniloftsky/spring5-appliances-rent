@@ -188,7 +188,7 @@
                 <td data-label="Age" th:text="${post.description}">ну</td>
                 <td data-label="Age" th:text="${post.active}">ну</td>
                 <td class="delete-button-cell" data-label="Udoli">
-                    <button class="delete-button">Видалити</button>
+                    <button class="delete-button"><a th:href="@{/itemDelete(id = ${post.id})}">Видалити</a></button>
                 </td>
             </tr>
             </tbody>
