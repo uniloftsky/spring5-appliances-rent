@@ -67,6 +67,9 @@ public class UserController {
 
     @PostMapping("/changePassword")
     public String editPasswordForm(RedirectAttributes rA, @RequestParam("newPassword") String newPassword, Authentication authentication, Model model) {
+        if (authentication == null || authentication.getName().equals("anonymousUser")) {
+            return "signin_form";
+        }
         if (newPassword.isBlank()) {
             model.addAttribute("passwordError", true);
             model.addAttribute("user", userService.findByLogin(authentication.getName()));
