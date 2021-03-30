@@ -12,6 +12,6 @@ import java.util.Set;
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
     Page<Item> findAll(Pageable pageable);
-    Set<Item> findAllByNameIsLikeOrCategory_CategoryNameIsLikeOrCategory_Type_TypeNameIsLikeOrDescriptionIsLike(String name, String category, String type, String desc);
+    Set<Item> findAllByNameIsLikeOrCategory_CategoryNameIsLikeOrCategory_Type_TypeNameIsLikeOrDescriptionIsLikeAllIgnoreCase(String name, String category, String type, String desc);
 
 }

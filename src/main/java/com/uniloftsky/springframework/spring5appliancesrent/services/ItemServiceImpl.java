@@ -78,7 +78,7 @@ public class ItemServiceImpl implements ItemService {
 
     @Override
     public Set<Item> searchBox(String name, String category, String type, String desc) {
-        return itemRepository.findAllByNameIsLikeOrCategory_CategoryNameIsLikeOrCategory_Type_TypeNameIsLikeOrDescriptionIsLike("%" + name + "%", "%" + category + "%", "%" + type + "%", "%" + desc + "%");
+        return itemRepository.findAllByNameIsLikeOrCategory_CategoryNameIsLikeOrCategory_Type_TypeNameIsLikeOrDescriptionIsLikeAllIgnoreCase("%" + name + "%", "%" + category + "%", "%" + type + "%", "%" + desc + "%");
     }
 
     @Override

@@ -611,6 +611,7 @@ footer p {
     display: flex;
     align-items: center;
     justify-content: center;
+    min-height: 175px;
 }
 
 .right-offer-img {
@@ -939,13 +940,14 @@ footer p {
 
 .offer-map-inner {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
 
 .offer-map-inner img {
     object-fit: cover;
-    width: 45%;
+    max-width: 45%;
+    max-height: 350px;
 }
 
 .offer-section-main {

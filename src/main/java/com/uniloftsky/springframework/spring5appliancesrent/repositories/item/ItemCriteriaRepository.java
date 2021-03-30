@@ -51,14 +51,14 @@ public class ItemCriteriaRepository {
         List<Predicate> predicates = new ArrayList<>();
         if(Objects.nonNull(itemSearchCriteria.getType().getTypeName())){
             predicates.add(
-                    criteriaBuilder.like(itemRoot.get("category").get("type").get("typeName"),
-                            "%" + itemSearchCriteria.getType().getTypeName() + "%")
+                    criteriaBuilder.like(criteriaBuilder.lower(itemRoot.get("category").get("type").get("typeName")),
+                            "%" + itemSearchCriteria.getType().getTypeName().toLowerCase() + "%")
             );
         }
         if(Objects.nonNull(itemSearchCriteria.getCategory())){
             predicates.add(
-                    criteriaBuilder.like(itemRoot.get("category").get("categoryName"),
-                            "%" + itemSearchCriteria.getCategory().getCategoryName() + "%")
+                    criteriaBuilder.like(criteriaBuilder.lower(itemRoot.get("category").get("categoryName")),
+                            "%" + itemSearchCriteria.getCategory().getCategoryName().toLowerCase() + "%")
             );
         }
         if(Objects.nonNull(itemSearchCriteria.getMaxPrice())) {
