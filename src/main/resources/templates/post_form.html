@@ -148,10 +148,22 @@
 
     $('input:file', '.ui.action.input')
         .on('change', function (e) {
-            var name = e.target.files[0].name;
-            var name1 = e.target.files[1].name;
-            var name2 =  e.target.files[2].name;
-            $('input:text', $(e.target).parent()).val(name + ', ' + name1 + ', ' + name2);
+            var name;
+            var name1;
+            var name2;
+            if(e.target.files.length == 1) {
+                name = e.target.files[0].name;
+                $('input:text', $(e.target).parent()).val(name);
+            } else if(e.target.files.length == 2) {
+                name = e.target.files[0].name;
+                name1 = e.target.files[1].name;
+                $('input:text', $(e.target).parent()).val(name + ', ' + name1);
+            } else {
+                name = e.target.files[0].name;
+                name1 = e.target.files[1].name;
+                name2 = e.target.files[2].name;
+                $('input:text', $(e.target).parent()).val(name + ', ' + name1 + ', ' + name2);
+            }
         });
     $(document).ready(function () {
         $('.ui.dropdown').dropdown();

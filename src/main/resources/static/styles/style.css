@@ -860,8 +860,9 @@ footer p {
 
 .offer-section-img {
     margin-left: auto;
-    object-fit: cover;
-    min-height: 600px;
+    object-fit: contain;
+    /*min-height: 600px;*/
+    max-height: 600px;
 }
 
 .offer-section-header-info {
@@ -1429,6 +1430,7 @@ footer p {
     .offer-map {
         width: 100%;
     }
+
     /*.offer-map-inner {*/
     /*    flex-direction: column;*/
     /*}*/

@@ -70,7 +70,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().accessDeniedPage("/forbidden");
         http.csrf().disable();
         http.headers().frameOptions().disable();
-
     }
 
 }
