@@ -64,4 +64,9 @@ public class HomeController {
         return "forbiddenPage";
     }
 
+    @GetMapping("/help")
+    public String getHelpPage() {
+        return "help";
+    }
+
 }
