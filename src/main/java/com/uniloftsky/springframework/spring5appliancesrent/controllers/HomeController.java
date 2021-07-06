@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -23,8 +22,6 @@ public class HomeController {
     private final UserService userService;
     private final ItemService itemService;
 
-    private final Comparator<Item> comparator = new ItemDescComparatorById();
-
     public HomeController(UserService userService, ItemService itemService) {
         this.userService = userService;
         this.itemService = itemService;
@@ -33,7 +30,7 @@ public class HomeController {
     @GetMapping({"", "/", "index", "/index", "*", "/*", "*.html"})
     public String getIndexPage(Model model) {
         model.addAttribute("items", itemService.findAll());
-        model.addAttribute("lastPost", itemService.findAllSortedById(comparator).first());
+        model.addAttribute("lastPost", itemService.findAllSortedById(new ItemDescComparatorById()).first());
         model.addAttribute("popularUsers", userService.getPopularUsers());
         return "redirect:/catalogFilter?type.typeName=&category.categoryName=";
     }

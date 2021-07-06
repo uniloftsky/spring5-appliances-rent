@@ -1,9 +1,6 @@
 package com.uniloftsky.springframework.spring5appliancesrent.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -21,7 +18,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Item extends BaseEntity {
+public class Item extends BaseEntity implements Comparable<Item> {
+
+    @Builder
+    public Item(Long id) {
+        super(id);
+    }
 
     @NotNull(message = "{offer.field.NotNull}")
     @ManyToOne
@@ -49,4 +51,9 @@ public class Item extends BaseEntity {
     private String description;
 
     private boolean active = true;
+
+    @Override
+    public int compareTo(Item o) {
+        return this.getId().compareTo(o.getId());
+    }
 }
